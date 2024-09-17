@@ -17,14 +17,18 @@
       <header>
         <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
 
+        <p>{{ site.contributors | default: <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a> }}</p>
+        
+        <!-- <p>{{ site.description | default: site.github.project_tagline }}</p> -->
+        
+        <p style="font-size: 12px;">{{ site.affiliation | default:  }}</p>
+
+        
         {% if site.logo %}
           <img src="{{site.logo | relative_url}}" alt="Logo" />
         {% endif %}
 
-        <p>{{ site.description | default: site.github.project_tagline }}</p>
-
-        <p style="font-size: 12px;">{{ site.affiliation | default:  }}</p>
-
+        
       </header>
 
       <section>
@@ -33,9 +37,6 @@
 
       </section>
       <footer>
-        {% if site.github.is_project_page %}
-        <p><small>This project is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></small></p>
-        {% endif %}
         <p><small>Hosted on GitHub Pages &mdash; <a href="https://github.com/pages-themes/minimal?tab=readme-ov-file">Theme</a> by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
     </div>
