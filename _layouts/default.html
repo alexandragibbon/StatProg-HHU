@@ -16,10 +16,14 @@
     <div class="wrapper">
       <header>
         <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
-
-        <p>{{ site.contributors | default: <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a> }}</p>
         
         <!-- <p>{{ site.description | default: site.github.project_tagline }}</p> -->
+
+        {% if site.contributors %}
+          <p>{{ site.contributors }}</p>
+          {% else %}
+          <p><a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></p>
+        {% endif %}
         
         <p style="font-size: 12px;">{{ site.affiliation | default:  }}</p>
 
