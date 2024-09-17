@@ -15,13 +15,13 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1><a href="{{ "/" | absolute_url }}">{{ site.title | MW122 - Topics in Econometrics and Data Science}}</a></h1>
+        <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: MW122 - Topics in Econometrics and Data Science}}</a></h1>
 
         {% if site.logo %}
           <img src="{{site.logo | relative_url}}" alt="Logo" />
         {% endif %}
 
-        <p>{{ site.description | Prof. Dr. Jannis Kück, Alexandra Gibbon (M.Sc.), Mara Mattes (M.Sc.) - Düsseldorf Institute for Competition Economics (DICE), Heinrich Heine University Düsseldorf }}</p>
+        <p>{{ site.description | default: Prof. Dr. Jannis Kück, Alexandra Gibbon (M.Sc.), Mara Mattes (M.Sc.) - Düsseldorf Institute for Competition Economics (DICE), Heinrich Heine University Düsseldorf }}</p>
 
       </header>
       <section>
