@@ -8,4 +8,4 @@
 - [Tutorial 1](./tutorial/tutorial-1/tutorial_1.html)
 
 ### Solutions 
-- [Solution Tutorial 1](./tutorial/tutorial-1-solution/tutorial-1-solution.html)
+- [Solution Tutorial 1](./tutorial/tutorial-1-solution/tutorial_1_solution.html)
