@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -68,8 +68,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="tutorial_1_solution_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="tutorial_1_solution_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -85,9 +83,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#exercise-1-user-input-and-strings" id="toc-exercise-1-user-input-and-strings" class="nav-link" data-scroll-target="#exercise-1-user-input-and-strings">Exercise 1: User Input and Strings</a></li>
   <li><a href="#exercise-2-user-input-and-integers" id="toc-exercise-2-user-input-and-integers" class="nav-link" data-scroll-target="#exercise-2-user-input-and-integers">Exercise 2: User Input and Integers</a></li>
-  <li><a href="#exercise-3-tuples-lists-and-dictionaries" id="toc-exercise-3-tuples-lists-and-dictionaries" class="nav-link" data-scroll-target="#exercise-3-tuples-lists-and-dictionaries">Exercise 3: Tuples, Lists and Dictionaries</a></li>
-  <li><a href="#exercise-4-lists" id="toc-exercise-4-lists" class="nav-link" data-scroll-target="#exercise-4-lists">Exercise 4: Lists</a></li>
-  <li><a href="#exercise-5-functions" id="toc-exercise-5-functions" class="nav-link" data-scroll-target="#exercise-5-functions">Exercise 5: Functions</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -109,7 +104,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <section id="general-note" class="level4">
 <h4 class="anchored" data-anchor-id="general-note">General Note</h4>
@@ -167,7 +164,7 @@ The agenda of tutorial one is close the structure of lecture 1.
 <ul>
 <li><strong>Hint</strong>: Use the Python function <code>input()</code> and f-strings.</li>
 </ul>
-<div class="cell" data-execution_count="1">
+<div id="1a0fb2fb" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># If input() does not work, you can replace it by a string of your choice</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>first_name <span class="op">=</span> <span class="bu">input</span>(<span class="st">"What is your first name? "</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>last_name <span class="op">=</span> <span class="bu">input</span>(<span class="st">"What is your last name? "</span>)</span>
@@ -187,7 +184,7 @@ The agenda of tutorial one is close the structure of lecture 1.
 <li><p>… shows the very first occurence of the substring <code>"a"</code> excluding the first and the last letter.</p></li>
 </ul></li>
 </ol>
-<div class="cell" data-execution_count="2">
+<div id="9928628c" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>string_input <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Please provide a string: "</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(string_input[<span class="dv">0</span>:<span class="dv">3</span>])</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(string_input[<span class="op">-</span><span class="dv">3</span>:])</span>
@@ -234,7 +231,7 @@ The agenda of tutorial one is close the structure of lecture 1.
 <li><p>… if you test them with <code>in</code> and <code>not</code>,</p></li>
 </ul></li>
 </ol>
-<div class="cell" data-execution_count="3">
+<div id="a1729900" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>string1 <span class="op">=</span> <span class="st">"stringabc"</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>string2 <span class="op">=</span> <span class="st">"stringabcd"</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(string1 <span class="op">&gt;</span> string2)</span>
@@ -248,7 +245,7 @@ True
 False</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="4">
+<div id="39c393cf" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>string1 <span class="op">=</span> <span class="st">"stringabc"</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>string2 <span class="op">=</span> <span class="st">"stringabc"</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(string1 <span class="op">&gt;</span> string2)</span>
@@ -262,7 +259,7 @@ True
 True</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="5">
+<div id="2da6126e" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>string1 <span class="op">=</span> <span class="st">"stringabc"</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>string2 <span class="op">=</span> <span class="st">"stri"</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(string1 <span class="kw">in</span> string2)</span>
@@ -281,17 +278,17 @@ True</code></pre>
 <li><p>… the letters that are vowels.</p></li>
 </ul></li>
 </ol>
-<div class="cell" data-execution_count="6">
+<div id="1c5a9815" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>string_input <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Please provide a string: "</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="bu">len</span>(string_input)):</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i<span class="op">%</span><span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(string_input[i])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="7">
+<div id="35137176" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>string_input <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Please provide a string: "</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(string_input[::<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="8">
+<div id="cef72ad7" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>string_input <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Please provide a string: "</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>vowels <span class="op">=</span> [<span class="st">"a"</span>, <span class="st">"e"</span>, <span class="st">"i"</span>, <span class="st">"o"</span>, <span class="st">"u"</span>]</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -306,7 +303,7 @@ True</code></pre>
 <ul>
 <li><strong>Hint</strong>: <code>isnumeric()</code>.</li>
 </ul>
-<div class="cell" data-execution_count="9">
+<div id="c4786968" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>n1 <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Please provide an integer number: "</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>n2 <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Please provide another integer number: "</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> n1.isnumeric() <span class="op">==</span> <span class="va">False</span> <span class="kw">or</span> n2.isnumeric() <span class="op">==</span> <span class="va">False</span>:</span>
@@ -319,127 +316,133 @@ True</code></pre>
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
 <span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(n1<span class="op">*</span>n2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="10">
+<div id="be303d32" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span><span class="st">"4"</span> <span class="co"># if you only want to accept integers as input</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>a.isnumeric()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="40">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>True</code></pre>
 </div>
 </div>
-</section>
-<section id="exercise-3-tuples-lists-and-dictionaries" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-3-tuples-lists-and-dictionaries">Exercise 3: Tuples, Lists and Dictionaries</h2>
-<p>Consider the screenhot in <a href="#fig-wiki-list">Figure&nbsp;1</a> taken from <a href="https://en.wikipedia.org/wiki/List_of_heaviest_land_mammals">wikipedia.org</a>.</p>
-<div id="fig-wiki-list" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="figures/wiki_list.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;1: List of heaviest land mammals.</figcaption>
-</figure>
-</div>
-<ol type="a">
-<li><p>Which Python data types could you use in principle to collect …</p>
-<ul>
-<li><p>… the names of the five heaviest mammals? Implement it in every possible data type. Write a program that outputs the first, the second and the fifth of the heaviest mammals.</p></li>
-<li><p>… the names <em>and</em> the (maximum) mass of the mammals? Again, implement it in every possible data type and write a program that outputs the name and the maximum mass of the first, the second and the fifth heaviest mammal</p></li>
-</ul></li>
-</ol>
-<div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>mammals_names1 <span class="op">=</span> (<span class="st">"African bush elephant"</span>, <span class="st">"Asian elephant"</span>, <span class="st">"African forest elephant"</span>, <span class="st">"White rhinoceros"</span>, <span class="st">"Indian rhinoceros"</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>mammals_names2 <span class="op">=</span> [<span class="st">"African bush elephant"</span>, <span class="st">"Asian elephant"</span>, <span class="st">"African forest elephant"</span>, <span class="st">"White rhinoceros"</span>, <span class="st">"Indian rhinoceros"</span>]</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>mammals_names3 <span class="op">=</span> {<span class="st">'names'</span>: [<span class="st">"African bush elephant"</span>, <span class="st">"Asian elephant"</span>, <span class="st">"African forest elephant"</span>, <span class="st">"White rhinoceros"</span>, <span class="st">"Indian rhinoceros"</span>]}</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>mammals_names1[<span class="dv">0</span>]</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>mammals_names1[<span class="dv">1</span>]</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>mammals_names1[<span class="dv">4</span>]</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>mammals_names3[<span class="st">'names'</span>][<span class="dv">0</span>]</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Manual index provision</span></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">4</span>]:</span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(mammals_names1[i])</span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Manual index provision</span></span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">4</span>]:</span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(mammals_names2[i])</span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Short hand loop (one-liner) ("list comprehension")</span></span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>([mammals_names1[i] <span class="cf">for</span> i <span class="kw">in</span> [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">4</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>African bush elephant
+<!-- ## Exercise 3: Tuples, Lists and Dictionaries
+
+Consider the screenhot in @fig-wiki-list taken from [wikipedia.org](https://en.wikipedia.org/wiki/List_of_heaviest_land_mammals).
+
+![List of heaviest land mammals.](figures/wiki_list.png){#fig-wiki-list}
+
+a) Which Python data types could you use in principle to collect ...
+
+    * ... the names of the five heaviest mammals? Implement it in every possible data type. Write a program that outputs the first, the second and the fifth of the heaviest mammals.
+
+    * ... the names *and* the (maximum) mass of the mammals? Again, implement it in every possible data type and write a program that outputs the name and the maximum mass of the first, the second and the fifth heaviest mammal
+
+::: {#827db8ec .cell execution_count=11}
+``` {.python .cell-code}
+mammals_names1 = ("African bush elephant", "Asian elephant", "African forest elephant", "White rhinoceros", "Indian rhinoceros")
+
+mammals_names2 = ["African bush elephant", "Asian elephant", "African forest elephant", "White rhinoceros", "Indian rhinoceros"]
+
+mammals_names3 = {'names': ["African bush elephant", "Asian elephant", "African forest elephant", "White rhinoceros", "Indian rhinoceros"]}
+
+mammals_names1[0]
+mammals_names1[1]
+mammals_names1[4]
+
+mammals_names3['names'][0]
+
+
+# Manual index provision
+for i in [0,1,4]:
+    print(mammals_names1[i])
+
+# Manual index provision
+for i in [0,1,4]:
+    print(mammals_names2[i])
+
+# Short hand loop (one-liner) ("list comprehension")
+print([mammals_names1[i] for i in [0,1,4]])
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+African bush elephant
 Asian elephant
 Indian rhinoceros
 African bush elephant
 Asian elephant
 Indian rhinoceros
-['African bush elephant', 'Asian elephant', 'Indian rhinoceros']</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>mammals_mass1 <span class="op">=</span> (<span class="dv">8000</span>, <span class="dv">5000</span>, <span class="dv">4000</span>, <span class="dv">3600</span>, <span class="dv">3000</span>)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>mammals_mass2 <span class="op">=</span> [<span class="dv">8000</span>, <span class="dv">5000</span>, <span class="dv">4000</span>, <span class="dv">3600</span>, <span class="dv">3000</span>]</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Nested tuple</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>mammals1 <span class="op">=</span> ((<span class="st">"African bush elephant"</span>,<span class="dv">8000</span>), (<span class="st">"Asian elephant"</span>, <span class="dv">5000</span>), (<span class="st">"African forest elephant"</span>, <span class="dv">4000</span>), (<span class="st">"White rhinoceros"</span>, <span class="dv">3600</span>), (<span class="st">"Indian rhinoceros"</span>, <span class="dv">3000</span>))</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">4</span>]:</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(mammals1[i])</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Nested list</span></span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>mammals2 <span class="op">=</span> [[<span class="st">"African bush elephant"</span>,<span class="dv">8000</span>], [<span class="st">"Asian elephant"</span>, <span class="dv">5000</span>], [<span class="st">"African forest elephant"</span>, <span class="dv">4000</span>], [<span class="st">"White rhinoceros"</span>, <span class="dv">3600</span>], [<span class="st">"Indian rhinoceros"</span>, <span class="dv">3000</span>]]</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">4</span>]:</span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(mammals2[i])</span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="bu">len</span>(mammals2), <span class="dv">2</span>):</span>
-<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(mammals2[i])</span>
-<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Dictionary (with lists)</span></span>
-<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>mammals3 <span class="op">=</span> {<span class="st">"Name"</span>: mammals_names1,</span>
-<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Mass"</span>: mammals_mass1}</span>
-<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>mammals3.items()</span>
-<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>mammals4 <span class="op">=</span> {<span class="st">"African bush elephant"</span> : <span class="dv">8000</span>,</span>
-<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Asian elephant"</span> : <span class="dv">5000</span>,</span>
-<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">"African forest elephant"</span> : <span class="dv">4000</span>,</span>
-<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">"White rhinoceros"</span> : <span class="dv">3600</span>,</span>
-<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Indian rhinoceros"</span>: <span class="dv">3000</span></span>
-<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a><span class="co"># doesn't work</span></span>
-<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a><span class="co"># mammals4[0]</span></span>
-<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a>mammals4[<span class="st">'African bush elephant'</span>]</span>
-<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(mammals4.items())[<span class="dv">0</span>]</span>
-<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a><span class="co"># List of dictionary</span></span>
-<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a>mammals_list_with_dict <span class="op">=</span> []</span>
-<span id="cb17-38"><a href="#cb17-38" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="bu">len</span>(mammals2)):</span>
-<span id="cb17-39"><a href="#cb17-39" aria-hidden="true" tabindex="-1"></a>    a_dict <span class="op">=</span> {<span class="st">"Name"</span>: mammals2[i][<span class="dv">0</span>], <span class="st">"Mass"</span>: mammals2[i][<span class="dv">1</span>]}</span>
-<span id="cb17-40"><a href="#cb17-40" aria-hidden="true" tabindex="-1"></a>    mammals_list_with_dict.append(a_dict)</span>
-<span id="cb17-41"><a href="#cb17-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-42"><a href="#cb17-42" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mammals_list_with_dict)</span>
-<span id="cb17-43"><a href="#cb17-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-44"><a href="#cb17-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-45"><a href="#cb17-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Dictionary from list</span></span>
-<span id="cb17-46"><a href="#cb17-46" aria-hidden="true" tabindex="-1"></a>mammals_dict_from_list <span class="op">=</span> {i : mammals2[i] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="bu">len</span>(mammals2) ) }</span>
-<span id="cb17-47"><a href="#cb17-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-48"><a href="#cb17-48" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> [<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">4</span>]:</span>
-<span id="cb17-49"><a href="#cb17-49" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(mammals_dict_from_list[i])</span>
-<span id="cb17-50"><a href="#cb17-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-51"><a href="#cb17-51" aria-hidden="true" tabindex="-1"></a>mammals_dict_from_list2 <span class="op">=</span> {mammals2[i][<span class="dv">0</span>] : mammals2[i][<span class="dv">1</span>] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="bu">len</span>(mammals2) ) }</span>
-<span id="cb17-52"><a href="#cb17-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-53"><a href="#cb17-53" aria-hidden="true" tabindex="-1"></a><span class="co"># getting list from dict</span></span>
-<span id="cb17-54"><a href="#cb17-54" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(mammals4.keys())</span>
-<span id="cb17-55"><a href="#cb17-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-56"><a href="#cb17-56" aria-hidden="true" tabindex="-1"></a><span class="co"># using dict()</span></span>
-<span id="cb17-57"><a href="#cb17-57" aria-hidden="true" tabindex="-1"></a>mammals_dict_from_list3 <span class="op">=</span> <span class="bu">dict</span>.fromkeys(mammals_names2, <span class="dv">0</span>)</span>
-<span id="cb17-58"><a href="#cb17-58" aria-hidden="true" tabindex="-1"></a>mammals_dict_from_list3[<span class="st">'African bush elephant'</span>] <span class="op">=</span> <span class="dv">123</span> <span class="co"># or in loop</span></span>
-<span id="cb17-59"><a href="#cb17-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-60"><a href="#cb17-60" aria-hidden="true" tabindex="-1"></a>mammals_dict_from_list2  <span class="op">=</span> <span class="bu">dict</span>(<span class="bu">zip</span>(mammals_names2, mammals_mass2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>('African bush elephant', 8000)
+['African bush elephant', 'Asian elephant', 'Indian rhinoceros']
+```
+:::
+:::
+
+
+::: {#d3cfe52e .cell execution_count=12}
+``` {.python .cell-code}
+mammals_mass1 = (8000, 5000, 4000, 3600, 3000)
+mammals_mass2 = [8000, 5000, 4000, 3600, 3000]
+
+# Nested tuple
+mammals1 = (("African bush elephant",8000), ("Asian elephant", 5000), ("African forest elephant", 4000), ("White rhinoceros", 3600), ("Indian rhinoceros", 3000))
+
+for i in [0,1,4]:
+    print(mammals1[i])
+
+# Nested list
+mammals2 = [["African bush elephant",8000], ["Asian elephant", 5000], ["African forest elephant", 4000], ["White rhinoceros", 3600], ["Indian rhinoceros", 3000]]
+
+for i in [0,1,4]:
+    print(mammals2[i])
+
+for i in range(0, len(mammals2), 2):
+    print(mammals2[i])
+
+# Dictionary (with lists)
+mammals3 = {"Name": mammals_names1,
+            "Mass": mammals_mass1}
+mammals3.items()
+
+
+mammals4 = {"African bush elephant" : 8000,
+    "Asian elephant" : 5000,
+    "African forest elephant" : 4000,
+    "White rhinoceros" : 3600,
+    "Indian rhinoceros": 3000
+}
+# doesn't work
+# mammals4[0]
+mammals4['African bush elephant']
+list(mammals4.items())[0]
+
+# List of dictionary
+mammals_list_with_dict = []
+for i in range(0, len(mammals2)):
+    a_dict = {"Name": mammals2[i][0], "Mass": mammals2[i][1]}
+    mammals_list_with_dict.append(a_dict)
+
+print(mammals_list_with_dict)
+
+
+# Dictionary from list
+mammals_dict_from_list = {i : mammals2[i] for i in range(0, len(mammals2) ) }
+
+for i in [0,1,4]:
+    print(mammals_dict_from_list[i])
+
+mammals_dict_from_list2 = {mammals2[i][0] : mammals2[i][1] for i in range(0, len(mammals2) ) }
+
+# getting list from dict
+list(mammals4.keys())
+
+# using dict()
+mammals_dict_from_list3 = dict.fromkeys(mammals_names2, 0)
+mammals_dict_from_list3['African bush elephant'] = 123 # or in loop
+
+mammals_dict_from_list2  = dict(zip(mammals_names2, mammals_mass2))
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+('African bush elephant', 8000)
 ('Asian elephant', 5000)
 ('Indian rhinoceros', 3000)
 ['African bush elephant', 8000]
@@ -451,213 +454,297 @@ Indian rhinoceros
 [{'Name': 'African bush elephant', 'Mass': 8000}, {'Name': 'Asian elephant', 'Mass': 5000}, {'Name': 'African forest elephant', 'Mass': 4000}, {'Name': 'White rhinoceros', 'Mass': 3600}, {'Name': 'Indian rhinoceros', 'Mass': 3000}]
 ['African bush elephant', 8000]
 ['Asian elephant', 5000]
-['Indian rhinoceros', 3000]</code></pre>
-</div>
-</div>
-<ol start="2" type="a">
-<li>Based on Part a), consider the following problems. Discuss/show whether and how you could solve them with the different data type implementations.
-<ul>
-<li><p>Consider the names of the heaviest mammals only. A researcher wants to sort the names of the heaviest animals according to their alphabetical order. Create a new list called <code>mammals_names_sorted</code>. What happens do the original list of names, if you use Python’s <code>.sort()</code> method for lists?</p></li>
-<li><p>A new study reports the observation of a new species called “Giant Australian hamster” with a mass of 5000 kg. Insert this observation in your list. <strong>Hint</strong>: Use Python’s <code>.insert()</code> method for lists.</p></li>
-<li><p>Now, consider the list of the mammals’ name <em>and</em> mass. A new study reports that an African bush elephant with a mass of 10000 kg has been observed. Update the list of heaviest mammals in the solutions from Part a) (if possible).</p></li>
-</ul></li>
-</ol>
-<div class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>mammals_names_sorted <span class="op">=</span> mammals_names2.copy()</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>mammals_names_sorted.sort()</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mammals_names_sorted)</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mammals_names2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>['African bush elephant', 'African forest elephant', 'Asian elephant', 'Indian rhinoceros', 'White rhinoceros']
-['African bush elephant', 'Asian elephant', 'African forest elephant', 'White rhinoceros', 'Indian rhinoceros']</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort lists and tuples with sorted()</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>mammals_names_sorted <span class="op">=</span> <span class="bu">sorted</span>(mammals_names2)</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mammals_names_sorted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>['African bush elephant', 'African forest elephant', 'Asian elephant', 'Indian rhinoceros', 'White rhinoceros']</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>mammals_names2.insert(<span class="dv">1</span>, <span class="st">"Giant Australian hamster"</span>)</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mammals_names2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>['African bush elephant', 'Giant Australian hamster', 'Asian elephant', 'African forest elephant', 'White rhinoceros', 'Indian rhinoceros']</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>mammals2[<span class="dv">0</span>][<span class="dv">1</span>] <span class="op">=</span> <span class="dv">10000</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mammals2)</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>mammals2</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co"># dictionary</span></span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>mammals4[<span class="st">'African bush elephant'</span>] <span class="op">=</span> <span class="dv">10000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[['African bush elephant', 10000], ['Asian elephant', 5000], ['African forest elephant', 4000], ['White rhinoceros', 3600], ['Indian rhinoceros', 3000]]</code></pre>
-</div>
-</div>
-</section>
-<section id="exercise-4-lists" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-4-lists">Exercise 4: Lists</h2>
-<ol type="a">
-<li>Given a list of integers (which you define in your code), output <code>“True”</code> if the first and last number of the list are the same (else output <code>“False”</code>).</li>
-</ol>
-<div class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>list1 <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">23</span>,<span class="dv">4</span>,<span class="dv">123</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">2</span>]</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (list1[<span class="dv">0</span>] <span class="op">==</span> list1[<span class="op">-</span><span class="dv">1</span>]):</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"True"</span>)</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"False"</span>)    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>False</code></pre>
-</div>
-</div>
-<ol start="2" type="a">
-<li>Given a list of numbers (which you define in your code), print only those numbers that can be divided by 5 without residual.</li>
-</ol>
-<div class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>list2 <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">23</span>,<span class="dv">4</span>,<span class="dv">123</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">10</span>]</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> list2:</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i<span class="op">%</span><span class="dv">5</span> <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>5
-10</code></pre>
-</div>
-</div>
-<ol start="3" type="a">
-<li>Write a program that combines two lists by alternatingly taking elements, e.g.&nbsp;<code>["a","b","c"], [1,2,3] → ["a",1,"b",2,"c",3]</code></li>
-</ol>
-<div class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>list4 <span class="op">=</span> [<span class="st">'a'</span>,<span class="st">'b'</span>,<span class="st">'c'</span>]</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>list5 <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>list6 <span class="op">=</span> []</span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="bu">len</span>(list5)):</span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    list6.append(list4[i])</span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>    list6.append(list5[i])</span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(list4))</span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(list5))</span>
-<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(list6))</span>
-<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(list6)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>3
+['Indian rhinoceros', 3000]
+```
+:::
+:::
+
+
+b) Based on Part a), consider the following problems. Discuss/show whether and how you could solve them with the different data type implementations.
+    * Consider the names of the heaviest mammals only. A researcher wants to sort the names of the heaviest animals according to their alphabetical order. Create a new list called `mammals_names_sorted`. What happens do the original list of names, if you use Python's `.sort()` method for lists?
+    
+    * A new study reports the observation of a new species called "Giant Australian hamster" with a mass of 5000 kg. Insert this observation in your list. **Hint**: Use Python's `.insert()` method for lists.
+
+    * Now, consider the list of the mammals' name *and* mass. A new study reports that an African bush elephant with a mass of 10000 kg has been observed. Update the list of heaviest mammals in the solutions from Part a) (if possible).
+
+::: {#63be8df1 .cell execution_count=13}
+``` {.python .cell-code}
+mammals_names_sorted = mammals_names2.copy()
+mammals_names_sorted.sort()
+print(mammals_names_sorted)
+print(mammals_names2)
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+['African bush elephant', 'African forest elephant', 'Asian elephant', 'Indian rhinoceros', 'White rhinoceros']
+['African bush elephant', 'Asian elephant', 'African forest elephant', 'White rhinoceros', 'Indian rhinoceros']
+```
+:::
+:::
+
+
+::: {#91a09c04 .cell execution_count=14}
+``` {.python .cell-code}
+# Sort lists and tuples with sorted()
+mammals_names_sorted = sorted(mammals_names2)
+print(mammals_names_sorted)
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+['African bush elephant', 'African forest elephant', 'Asian elephant', 'Indian rhinoceros', 'White rhinoceros']
+```
+:::
+:::
+
+
+::: {#e9692865 .cell execution_count=15}
+``` {.python .cell-code}
+mammals_names2.insert(1, "Giant Australian hamster")
+print(mammals_names2)
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+['African bush elephant', 'Giant Australian hamster', 'Asian elephant', 'African forest elephant', 'White rhinoceros', 'Indian rhinoceros']
+```
+:::
+:::
+
+
+::: {#72a98e5e .cell execution_count=16}
+``` {.python .cell-code}
+mammals2[0][1] = 10000
+print(mammals2)
+
+mammals2
+
+# dictionary
+mammals4['African bush elephant'] = 10000
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+[['African bush elephant', 10000], ['Asian elephant', 5000], ['African forest elephant', 4000], ['White rhinoceros', 3600], ['Indian rhinoceros', 3000]]
+```
+:::
+:::
+
+
+## Exercise 4: Lists
+
+a) Given a list of integers (which you define in your code), output `“True”` if the first and last number of the list are the same (else output `“False”`).
+
+::: {#703a5d30 .cell execution_count=17}
+``` {.python .cell-code}
+list1 = [1,23,4,123,2,3,5,6,2]
+if (list1[0] == list1[-1]):
+    print("True")
+else:
+    print("False")    
+
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+False
+```
+:::
+:::
+
+
+b) Given a list of numbers (which you define in your code), print only those numbers that can be divided by 5 without residual. 
+
+::: {#670081ce .cell execution_count=18}
+``` {.python .cell-code}
+list2 = [1,23,4,123,2,3,5,6,10]
+for i in list2:
+    if i%5 == 0:
+        print(i)
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+5
+10
+```
+:::
+:::
+
+
+c) Write a program that combines two lists by alternatingly taking elements, e.g. `["a","b","c"], [1,2,3] → ["a",1,"b",2,"c",3]`
+
+::: {#3ba47df2 .cell execution_count=19}
+``` {.python .cell-code}
+list4 = ['a','b','c']
+list5 = [1,2,3]
+list6 = []
+for i in range(0,len(list5)):
+    list6.append(list4[i])
+    list6.append(list5[i])
+print(len(list4))
+print(len(list5))
+print(len(list6))
+print(list6)
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+3
 3
 6
-['a', 1, 'b', 2, 'c', 3]</code></pre>
-</div>
-</div>
-<ol start="4" type="a">
-<li>Let a small data set be <span class="math display">\[5\ 2\ 11\ 19\ 6.\]</span></li>
-</ol>
-<ul>
-<li>Enter these numbers into a list <code>x_list</code>.</li>
-<li>Find the square of each number and enter these numbers into a list <code>x_square</code>.</li>
-</ul>
-<div class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>x_list <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">11</span>, <span class="dv">19</span>, <span class="dv">6</span>]</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># empty list</span></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>x_square <span class="op">=</span> [<span class="dv">0</span>]<span class="op">*</span><span class="bu">len</span>(x_list)</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>x_square</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>x_list<span class="op">=</span>[<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">11</span>, <span class="dv">19</span>, <span class="dv">6</span>]</span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>x_square <span class="op">=</span> [<span class="dv">0</span>]<span class="op">*</span><span class="bu">len</span>(x_list) </span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(x_list)):</span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>    x_square[i]<span class="op">=</span>x_list[i]<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x_square)</span>
-<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Or short-hand notation</span></span>
-<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>x_square2 <span class="op">=</span> [i<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> i <span class="kw">in</span> x_list]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[25, 4, 121, 361, 36]</code></pre>
-</div>
-</div>
-</section>
-<section id="exercise-5-functions" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-5-functions">Exercise 5: Functions</h2>
-<ol type="a">
-<li>Write a function <code>compare</code> that returns the value
-<ul>
-<li>1 if <span class="math inline">\(x&gt;y\)</span>,</li>
-<li>0 if <span class="math inline">\(x=y\)</span> and</li>
-<li>-1 if <span class="math inline">\(x&lt;y\)</span>.</li>
-</ul></li>
-</ol>
-<p>The following program counts the number of times the letter “a” appears in a string</p>
-<div class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>word<span class="op">=</span><span class="st">"banana"</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>count<span class="op">=</span><span class="dv">0</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> letter <span class="kw">in</span> word:</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> letter <span class="op">==</span> <span class="st">"a"</span>:</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>        count<span class="op">=</span>count<span class="op">+</span><span class="dv">1</span></span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(count) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>3</code></pre>
-</div>
-</div>
-<ol start="2" type="a">
-<li><p>Encapsulate the code above in a function named <code>count(w,l,s)</code> that counts the number of times a letter <code>l</code> appears in a word <code>w</code>. Additionally, <code>s</code> gives the index in <code>w</code> where it should start the search.</p></li>
-<li><p>Generate a random integer between 1 and 10. Write a guessing game where the user has to guess the secret number. After every guess, the program tells the user whether their number was too large or too small. At the end the number of tries needed should be printed.</p></li>
-</ol>
-<ul>
-<li><strong>Hint</strong>: Use the function <code>randint()</code> provided in the <code>random</code> module to randomly draw integers. Also use <code>input()</code>.</li>
-</ul>
-<div class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compare(x,y):</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x<span class="op">&gt;</span>y:</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> x<span class="op">==</span>y:</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">0</span> </span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="op">-</span><span class="dv">1</span></span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>compare(<span class="dv">2</span>,<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="52">
-<pre><code>-1</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> count(w,l,s):</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    count<span class="op">=</span><span class="dv">0</span></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> letter <span class="kw">in</span> w[(s):<span class="bu">len</span>(w)]:</span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> letter <span class="op">==</span> l:</span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>            count<span class="op">=</span>count<span class="op">+</span><span class="dv">1</span></span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(count)</span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Example</span></span>
-<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>count(<span class="st">'hello'</span>, <span class="st">'l'</span>, <span class="dv">0</span>)      </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="53">
-<pre><code>2</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example for random integer with random</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>random.randint(<span class="dv">1</span>,<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="54">
-<pre><code>7</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>guess <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> random.randint(<span class="dv">1</span>,<span class="dv">10</span>)</span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>attempts <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> guess <span class="op">!=</span> r:</span>
-<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>    guess <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Please guess!"</span>)</span>
-<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>    guess <span class="op">=</span> <span class="bu">int</span>(guess)</span>
-<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> guess <span class="op">&gt;</span> r:</span>
-<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span> (<span class="st">"Smaller!"</span>)</span>
-<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>        attempts<span class="op">+=</span><span class="dv">1</span></span>
-<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> guess <span class="op">&lt;</span> r:</span>
-<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Bigger!"</span>)</span>
-<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>        attempts<span class="op">+=</span><span class="dv">1</span></span>
-<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (<span class="ss">f"Great, you found the number (</span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">) in </span><span class="sc">{</span>attempts<span class="sc">}</span><span class="ss"> tries!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+['a', 1, 'b', 2, 'c', 3]
+```
+:::
+:::
+
+
+d) Let a small data set be
+$$5\ 2\ 11\ 19\ 6.$$
+
+* Enter these numbers into a list `x_list`.
+* Find the square of each number and enter these numbers into a list  `x_square`.
+
+::: {#a870e9f7 .cell execution_count=20}
+``` {.python .cell-code}
+x_list = [5, 2, 11, 19, 6]
+# empty list
+x_square = [0]*len(x_list)
+x_square
+
+x_list=[5, 2, 11, 19, 6]
+x_square = [0]*len(x_list) 
+for i in range(len(x_list)):
+    x_square[i]=x_list[i]**2
+print(x_square)
+
+# Or short-hand notation
+x_square2 = [i**2 for i in x_list]
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+[25, 4, 121, 361, 36]
+```
+:::
+:::
+
+
+## Exercise 5:  Functions
+
+a) Write a function `compare` that returns the value
+    * 1 if $x>y$,
+    * 0 if $x=y$ and
+    * -1 if $x<y$.
+
+
+The following program counts the number of times the letter "a" appears in a string
+
+::: {#13987044 .cell execution_count=21}
+``` {.python .cell-code}
+word="banana"
+count=0
+for letter in word:
+    if letter == "a":
+        count=count+1
+print(count) 
+```
+
+::: {.cell-output .cell-output-stdout}
+```
+3
+```
+:::
+:::
+
+
+b) Encapsulate the code above in a function named `count(w,l,s)` that counts the number of times a letter `l` appears in a word `w`. Additionally, `s` gives the index in `w` where it should start the search.
+
+c) Generate a random integer between 1 and 10. Write a guessing game where the user has to guess the secret number. After every guess, the program tells the user whether their number was too large or too small. At the end the number of tries needed should be printed.
+
+* **Hint**: Use the function `randint()` provided in the `random` module to randomly draw integers. Also use `input()`.
+
+::: {#91b32b5b .cell execution_count=22}
+``` {.python .cell-code}
+def compare(x,y):
+    if x>y:
+        return 1
+    elif x==y:
+        return 0 
+    else:
+        return -1
+    
+compare(2,3)
+```
+
+::: {.cell-output .cell-output-display execution_count=16}
+```
+-1
+```
+:::
+:::
+
+
+::: {#3bb4f781 .cell execution_count=23}
+``` {.python .cell-code}
+def count(w,l,s):
+    count=0
+    for letter in w[(s):len(w)]:
+        if letter == l:
+            count=count+1
+    return(count)
+ 
+  # Example
+count('hello', 'l', 0)      
+```
+
+::: {.cell-output .cell-output-display execution_count=17}
+```
+2
+```
+:::
+:::
+
+
+::: {#dd6568dd .cell execution_count=24}
+``` {.python .cell-code}
+# Example for random integer with random
+import random
+random.randint(1,10)
+```
+
+::: {.cell-output .cell-output-display execution_count=18}
+```
+4
+```
+:::
+:::
+
+
+::: {#7b77490f .cell execution_count=25}
+``` {.python .cell-code}
+import random
+
+guess = 0
+r = random.randint(1,10)
+attempts = 1
+
+while guess != r:
+    guess = input("Please guess!")
+    guess = int(guess)
+    if guess > r:
+        print ("Smaller!")
+        attempts+=1
+    if guess < r:
+        print("Bigger!")
+        attempts+=1
+print (f"Great, you found the number ({r}) in {attempts} tries!")
+```
+:::
+
+
+--- -->
 </section>
 </section>
 
@@ -698,18 +785,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -741,11 +817,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -755,8 +870,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -768,7 +892,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -812,6 +1059,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -837,6 +1085,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -897,6 +1171,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 
