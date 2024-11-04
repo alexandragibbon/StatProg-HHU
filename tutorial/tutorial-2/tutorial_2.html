@@ -128,10 +128,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="general-note" class="level4">
 <h4 class="anchored" data-anchor-id="general-note">General Note</h4>
 <p>You will very likely find the solution to these exercises online. We, however, strongly encourage you to work on these exercises without doing so. Understanding someone else’s solution is very different from coming up with your own. Use the lecture notes and try to solve the exercises independently.</p>
-<p>Traditionally, the first program you write in a new language is called “Hello World!”. Use the <code>print()</code> statement to display “<em>Hello World!</em>” on the screen.</p>
-<ul>
-<li><strong>Hint</strong>: <code>help(print)</code></li>
-</ul>
+<!--Traditionally, the first program you write in a new language is called "Hello World!". Use the `print()` statement to display "*Hello World!*" on the screen.
+
+* **Hint**: `help(print)` -->
 <!--
 ## Agenda
 The agenda of tutorial one is close the structure of lecture 1.
@@ -235,35 +234,36 @@ The agenda of tutorial one is close the structure of lecture 1.
 <li><p>Implement a method <code>print_car()</code> that describes the object in a message saying something like: <code>"This is Mike's car. It is a Opel Manta."</code>.</p></li>
 <li><p>Add a method <code>avg_consumption()</code> that returns the average consumption (in liter per 100 kilometers) between the recorded fuel stops.</p></li>
 <li><p>Implement a new method <code>add_stop()</code> that allows to add data from a new fuel stop, i.e., enter a new entry for <code>kilometers</code> and <code>gas</code>. Add a new fuel stop and check if it is successfully listed in the output of the <code>avg_consumption()</code> call.</p></li>
-<li><p>Generate a new class <code>Carpool</code> (without any functionality) in which you encapsulate Mike’s and Jenny’s cars. Add a new stop to Mike’s record and see if the encapsulated object has changed. Explain why (not) and provide an example how you can avoid that your change is effective for the encapsulated object.</p></li>
 </ol>
-<ul>
-<li><strong>Hint</strong>: Use <code>import copy</code> to use the call <code>deepcopy</code> for generating a deep copy of a list.</li>
-</ul>
-<ol start="6" type="a">
-<li>Consider the following objects and do the tasks below.</li>
-</ol>
-<div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>BobsCar <span class="op">=</span> Car(<span class="st">"Bob"</span>, <span class="st">"VW T1"</span>, [<span class="dv">200000</span>, <span class="dv">200100</span>, <span class="dv">200300</span>], [<span class="dv">22</span>, <span class="dv">40</span>])</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>CarlsCar <span class="op">=</span> Car(<span class="st">"Carl"</span>, <span class="st">"Fiat Multipla"</span>, [<span class="dv">179400</span>, <span class="dv">183120</span>, <span class="dv">183998</span>], [<span class="dv">89</span>, <span class="dv">68</span>])</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>MikesCar <span class="op">=</span> Car(<span class="st">"Mike"</span>, <span class="st">"Opel Manta"</span>, [<span class="dv">1200</span>, <span class="dv">2000</span>, <span class="dv">2250</span>], [<span class="dv">70</span>, <span class="dv">22</span>])</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>JennysCar <span class="op">=</span> Car(<span class="st">"Jenny"</span>, <span class="st">"Cadillac Escalade"</span>, [<span class="dv">8200</span>, <span class="dv">9400</span>, <span class="dv">10400</span>, <span class="dv">12000</span>], [<span class="dv">80</span>, <span class="dv">68</span>, <span class="dv">110</span>])</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>car_list <span class="op">=</span> [MikesCar, JennysCar,  BobsCar, CarlsCar]</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>mixed_list <span class="op">=</span> [MikesCar, BobsCar, <span class="dv">23</span>, <span class="st">"abc"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ul>
-<li>Sort all cars in <code>car_list</code> according to the mileage (= maximum of entries in property <code>.kilometers</code>) starting with the largest value.</li>
-<li>Based on <code>car_list</code>, create two different lists one for cars with an average consumption below 10l/kilometer and one with the cars with 10l/kilometers and higher.</li>
-<li>Get all objects of class <code>Car</code> from <code>mixed_list</code>.</li>
-<li>(Optional: Implement the first two tasks in a method for the class <code>CarPool</code>.)</li>
-</ul>
+<!-- e) Generate a new class `Carpool` (without any functionality) in which you encapsulate Mike's and Jenny's cars. Add a new stop to Mike's record and see if the encapsulated object has changed. Explain why (not) and provide an example how you can avoid that your change is effective for the encapsulated object.
+
+* **Hint**: Use `import copy` to use the call `deepcopy` for generating a deep copy of a list.
+
+f) Consider the following objects and do the tasks below.
+
+::: {.cell execution_count=1}
+``` {.python .cell-code}
+BobsCar = Car("Bob", "VW T1", [200000, 200100, 200300], [22, 40])
+CarlsCar = Car("Carl", "Fiat Multipla", [179400, 183120, 183998], [89, 68])
+MikesCar = Car("Mike", "Opel Manta", [1200, 2000, 2250], [70, 22])
+JennysCar = Car("Jenny", "Cadillac Escalade", [8200, 9400, 10400, 12000], [80, 68, 110])
+
+car_list = [MikesCar, JennysCar,  BobsCar, CarlsCar]
+mixed_list = [MikesCar, BobsCar, 23, "abc"]
+```
+:::
+
+
+* Sort all cars in `car_list` according to the mileage (= maximum of entries in property `.kilometers`) starting with the largest value.
+* Based on `car_list`, create two different lists one for cars with an average consumption below 10l/kilometer and one with the cars with 10l/kilometers and higher.
+* Get all objects of class `Car` from `mixed_list`.
+* (Optional: Implement the first two tasks in a method for the class `CarPool`.) -->
 </section>
 <section id="exercise-2-basic-calculations-with-the-math-module" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-2-basic-calculations-with-the-math-module">Exercise 2: Basic Calculations with the <code>math</code> module</h2>
 <p>Import the <em>math</em> module by</p>
 <div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Use Python as you would a calculator to find the numeric answers</p>
 <ol type="1">
@@ -387,7 +387,7 @@ y_i = \beta_0 + \beta_1X_i + \varepsilon_i = \mathbf{X}_i^T \boldsymbol{\beta} +
 <ol start="2" type="a">
 <li>Brain size data set</li>
 </ol>
-<p>Download and load the <code>brain_size.csv</code> data set from STiNE. The dataset contains a small sample of observations of features (like gender, weight, height and three different IQ-measures) for different individuals.</p>
+<p>Download and load the <code>brain_size.csv</code> data set. The dataset contains a small sample of observations of features (like gender, weight, height and three different IQ-measures) for different individuals.</p>
 <p>Before we perform some analysis, we will do some preprocessing.</p>
 <ul>
 <li><p>Load the data set and drop the column <code>Unnamed: 0</code>.</p></li>
@@ -418,14 +418,14 @@ y_i = \beta_0 + \beta_1X_i + \varepsilon_i = \mathbf{X}_i^T \boldsymbol{\beta} +
 </section>
 <section id="exercise-2-times-university-ranking-data" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-2-times-university-ranking-data">Exercise 2: Times University Ranking Data</h2>
-<p>Load the Times University Ranking Data, which collects data on a ranking of international universities. You can download a zip archive with the data from STiNE. Download and unpack the zip file and load the file <code>timesData.csv</code>.</p>
+<p>Download and load the Times University Ranking Data (file <code>timesData.csv</code>), which collects data on a ranking of international universities.</p>
 <ul>
 <li><p>Open the data set with <code>pandas</code> and have a look at the very first rows. What do you see?</p></li>
 <li><p>What has been the best university from Germany in 2016? What is its rank?</p></li>
 <li><p>How has the university’s ranking changed over time? Create a scatter plot that shows the development of the university’s ranking over time.</p></li>
 <li><p>Create a graphic that shows the changes in terms of the variables <code>international</code>, <code>research</code>, <code>citation</code>, <code>income</code> and <code>total_score</code> for this university over time.</p></li>
-<li><p>Modify the graphics in a way you like. Can you make them interactive with <code>plotly</code> or <code>bokeh</code>? Create your own visualization as based on the Times Data set.</p></li>
 </ul>
+<!-- * Modify the graphics in a way you like. Can you make them interactive with `plotly` or `bokeh`? Create your own visualization as based on the Times Data set. -->
 </section>
 </section>
 
