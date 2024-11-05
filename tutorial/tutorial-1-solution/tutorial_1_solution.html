@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -68,8 +68,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="tutorial_1_solution_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="tutorial_1_solution_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -87,6 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#exercise-2-user-input-and-integers" id="toc-exercise-2-user-input-and-integers" class="nav-link" data-scroll-target="#exercise-2-user-input-and-integers">Exercise 2: User Input and Integers</a></li>
   <li><a href="#exercise-3-tuples-lists-and-dictionaries" id="toc-exercise-3-tuples-lists-and-dictionaries" class="nav-link" data-scroll-target="#exercise-3-tuples-lists-and-dictionaries">Exercise 3: Tuples, Lists and Dictionaries</a></li>
   <li><a href="#exercise-4-lists" id="toc-exercise-4-lists" class="nav-link" data-scroll-target="#exercise-4-lists">Exercise 4: Lists</a></li>
+  <li><a href="#exercise-5-functions" id="toc-exercise-5-functions" class="nav-link" data-scroll-target="#exercise-5-functions">Exercise 5: Functions</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -108,7 +136,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <section id="general-note" class="level4">
 <h4 class="anchored" data-anchor-id="general-note">General Note</h4>
@@ -166,7 +196,7 @@ The agenda of tutorial one is close the structure of lecture 1.
 <ul>
 <li><strong>Hint</strong>: Use the Python function <code>input()</code> and f-strings.</li>
 </ul>
-<div class="cell" data-execution_count="1">
+<div id="74c7a543" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># If input() does not work, you can replace it by a string of your choice</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>first_name <span class="op">=</span> <span class="bu">input</span>(<span class="st">"What is your first name? "</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>last_name <span class="op">=</span> <span class="bu">input</span>(<span class="st">"What is your last name? "</span>)</span>
@@ -186,7 +216,7 @@ The agenda of tutorial one is close the structure of lecture 1.
 <li><p>… shows the very first occurence of the substring <code>"a"</code> excluding the first and the last letter.</p></li>
 </ul></li>
 </ol>
-<div class="cell" data-execution_count="2">
+<div id="818b86b7" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>string_input <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Please provide a string: "</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(string_input[<span class="dv">0</span>:<span class="dv">3</span>])</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(string_input[<span class="op">-</span><span class="dv">3</span>:])</span>
@@ -233,7 +263,7 @@ The agenda of tutorial one is close the structure of lecture 1.
 <li><p>… if you test them with <code>in</code> and <code>not</code>,</p></li>
 </ul></li>
 </ol>
-<div class="cell" data-execution_count="3">
+<div id="c0be1ae7" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>string1 <span class="op">=</span> <span class="st">"stringabc"</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>string2 <span class="op">=</span> <span class="st">"stringabcd"</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(string1 <span class="op">&gt;</span> string2)</span>
@@ -247,7 +277,7 @@ True
 False</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="4">
+<div id="4c543b7f" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>string1 <span class="op">=</span> <span class="st">"stringabc"</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>string2 <span class="op">=</span> <span class="st">"stringabc"</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(string1 <span class="op">&gt;</span> string2)</span>
@@ -261,7 +291,7 @@ True
 True</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="5">
+<div id="735831d4" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>string1 <span class="op">=</span> <span class="st">"stringabc"</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>string2 <span class="op">=</span> <span class="st">"stri"</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(string1 <span class="kw">in</span> string2)</span>
@@ -280,17 +310,17 @@ True</code></pre>
 <li><p>… the letters that are vowels.</p></li>
 </ul></li>
 </ol>
-<div class="cell" data-execution_count="6">
+<div id="381b1124" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>string_input <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Please provide a string: "</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="bu">len</span>(string_input)):</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i<span class="op">%</span><span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(string_input[i])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="7">
+<div id="6b03708a" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>string_input <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Please provide a string: "</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(string_input[::<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="8">
+<div id="6ddacfe4" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>string_input <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Please provide a string: "</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>vowels <span class="op">=</span> [<span class="st">"a"</span>, <span class="st">"e"</span>, <span class="st">"i"</span>, <span class="st">"o"</span>, <span class="st">"u"</span>]</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -305,7 +335,7 @@ True</code></pre>
 <ul>
 <li><strong>Hint</strong>: <code>isnumeric()</code>.</li>
 </ul>
-<div class="cell" data-execution_count="9">
+<div id="2c040e10" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>n1 <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Please provide an integer number: "</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>n2 <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Please provide another integer number: "</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> n1.isnumeric() <span class="op">==</span> <span class="va">False</span> <span class="kw">or</span> n2.isnumeric() <span class="op">==</span> <span class="va">False</span>:</span>
@@ -318,7 +348,7 @@ True</code></pre>
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
 <span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(n1<span class="op">*</span>n2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="10">
+<div id="b950d833" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span><span class="st">"4"</span> <span class="co"># if you only want to accept integers as input</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>a.isnumeric()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
@@ -328,11 +358,15 @@ True</code></pre>
 </section>
 <section id="exercise-3-tuples-lists-and-dictionaries" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-3-tuples-lists-and-dictionaries">Exercise 3: Tuples, Lists and Dictionaries</h2>
-<p>Consider the screenhot in <a href="#fig-wiki-list">Figure&nbsp;1</a> taken from <a href="https://en.wikipedia.org/wiki/List_of_heaviest_land_mammals">wikipedia.org</a>.</p>
-<div id="fig-wiki-list" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="figures/wiki_list.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;1: List of heaviest land mammals.</figcaption>
+<p>Consider the screenhot in <a href="#fig-wiki-list" class="quarto-xref">Figure&nbsp;1</a> taken from <a href="https://en.wikipedia.org/wiki/List_of_heaviest_land_mammals">wikipedia.org</a>.</p>
+<div id="fig-wiki-list" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-wiki-list-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/wiki_list.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-wiki-list-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: List of heaviest land mammals.
+</figcaption>
 </figure>
 </div>
 <ol type="a">
@@ -342,7 +376,7 @@ True</code></pre>
 <li><p>… the names <em>and</em> the (maximum) mass of the mammals? Again, implement it in every possible data type and write a program that outputs the name and the maximum mass of the first, the second and the fifth heaviest mammal</p></li>
 </ul></li>
 </ol>
-<div class="cell" data-execution_count="11">
+<div id="38382094" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>mammals_names1 <span class="op">=</span> (<span class="st">"African bush elephant"</span>, <span class="st">"Asian elephant"</span>, <span class="st">"African forest elephant"</span>, <span class="st">"White rhinoceros"</span>, <span class="st">"Indian rhinoceros"</span>)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>mammals_names2 <span class="op">=</span> [<span class="st">"African bush elephant"</span>, <span class="st">"Asian elephant"</span>, <span class="st">"African forest elephant"</span>, <span class="st">"White rhinoceros"</span>, <span class="st">"Indian rhinoceros"</span>]</span>
@@ -376,7 +410,7 @@ Indian rhinoceros
 ['African bush elephant', 'Asian elephant', 'Indian rhinoceros']</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="12">
+<div id="2902f77b" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>mammals_mass1 <span class="op">=</span> (<span class="dv">8000</span>, <span class="dv">5000</span>, <span class="dv">4000</span>, <span class="dv">3600</span>, <span class="dv">3000</span>)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>mammals_mass2 <span class="op">=</span> [<span class="dv">8000</span>, <span class="dv">5000</span>, <span class="dv">4000</span>, <span class="dv">3600</span>, <span class="dv">3000</span>]</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -461,7 +495,7 @@ Indian rhinoceros
 <li><p>Now, consider the list of the mammals’ name <em>and</em> mass. A new study reports that an African bush elephant with a mass of 10000 kg has been observed. Update the list of heaviest mammals in the solutions from Part a) (if possible).</p></li>
 </ul></li>
 </ol>
-<div class="cell" data-execution_count="13">
+<div id="29fe549e" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>mammals_names_sorted <span class="op">=</span> mammals_names2.copy()</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>mammals_names_sorted.sort()</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mammals_names_sorted)</span>
@@ -471,7 +505,7 @@ Indian rhinoceros
 ['African bush elephant', 'Asian elephant', 'African forest elephant', 'White rhinoceros', 'Indian rhinoceros']</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="14">
+<div id="1a3b2e63" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort lists and tuples with sorted()</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>mammals_names_sorted <span class="op">=</span> <span class="bu">sorted</span>(mammals_names2)</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mammals_names_sorted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -479,14 +513,14 @@ Indian rhinoceros
 <pre><code>['African bush elephant', 'African forest elephant', 'Asian elephant', 'Indian rhinoceros', 'White rhinoceros']</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="15">
+<div id="ac255f19" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>mammals_names2.insert(<span class="dv">1</span>, <span class="st">"Giant Australian hamster"</span>)</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mammals_names2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['African bush elephant', 'Giant Australian hamster', 'Asian elephant', 'African forest elephant', 'White rhinoceros', 'Indian rhinoceros']</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="16">
+<div id="eb5d82c0" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>mammals2[<span class="dv">0</span>][<span class="dv">1</span>] <span class="op">=</span> <span class="dv">10000</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mammals2)</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -504,7 +538,7 @@ Indian rhinoceros
 <ol type="a">
 <li>Given a list of integers (which you define in your code), output <code>“True”</code> if the first and last number of the list are the same (else output <code>“False”</code>).</li>
 </ol>
-<div class="cell" data-execution_count="17">
+<div id="67d97253" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>list1 <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">23</span>,<span class="dv">4</span>,<span class="dv">123</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">2</span>]</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (list1[<span class="dv">0</span>] <span class="op">==</span> list1[<span class="op">-</span><span class="dv">1</span>]):</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"True"</span>)</span>
@@ -517,7 +551,7 @@ Indian rhinoceros
 <ol start="2" type="a">
 <li>Given a list of numbers (which you define in your code), print only those numbers that can be divided by 5 without residual.</li>
 </ol>
-<div class="cell" data-execution_count="18">
+<div id="3c58100a" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>list2 <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">23</span>,<span class="dv">4</span>,<span class="dv">123</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">10</span>]</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> list2:</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i<span class="op">%</span><span class="dv">5</span> <span class="op">==</span> <span class="dv">0</span>:</span>
@@ -530,7 +564,7 @@ Indian rhinoceros
 <ol start="3" type="a">
 <li>Write a program that combines two lists by alternatingly taking elements, e.g.&nbsp;<code>["a","b","c"], [1,2,3] → ["a",1,"b",2,"c",3]</code></li>
 </ol>
-<div class="cell" data-execution_count="19">
+<div id="fabe0966" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>list4 <span class="op">=</span> [<span class="st">'a'</span>,<span class="st">'b'</span>,<span class="st">'c'</span>]</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>list5 <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>list6 <span class="op">=</span> []</span>
@@ -555,7 +589,7 @@ Indian rhinoceros
 <li>Enter these numbers into a list <code>x_list</code>.</li>
 <li>Find the square of each number and enter these numbers into a list <code>x_square</code>.</li>
 </ul>
-<div class="cell" data-execution_count="20">
+<div id="4d77aced" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>x_list <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">11</span>, <span class="dv">19</span>, <span class="dv">6</span>]</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># empty list</span></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>x_square <span class="op">=</span> [<span class="dv">0</span>]<span class="op">*</span><span class="bu">len</span>(x_list)</span>
@@ -572,6 +606,90 @@ Indian rhinoceros
 <div class="cell-output cell-output-stdout">
 <pre><code>[25, 4, 121, 361, 36]</code></pre>
 </div>
+</div>
+</section>
+<section id="exercise-5-functions" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-5-functions">Exercise 5: Functions</h2>
+<ol type="a">
+<li>Write a function <code>compare</code> that returns the value
+<ul>
+<li>1 if <span class="math inline">\(x&gt;y\)</span>,</li>
+<li>0 if <span class="math inline">\(x=y\)</span> and</li>
+<li>-1 if <span class="math inline">\(x&lt;y\)</span>.</li>
+</ul></li>
+</ol>
+<p>The following program counts the number of times the letter “a” appears in a string</p>
+<div id="816c514b" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>word<span class="op">=</span><span class="st">"banana"</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>count<span class="op">=</span><span class="dv">0</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> letter <span class="kw">in</span> word:</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> letter <span class="op">==</span> <span class="st">"a"</span>:</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>        count<span class="op">=</span>count<span class="op">+</span><span class="dv">1</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(count) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>3</code></pre>
+</div>
+</div>
+<ol start="2" type="a">
+<li><p>Encapsulate the code above in a function named <code>count(w,l,s)</code> that counts the number of times a letter <code>l</code> appears in a word <code>w</code>. Additionally, <code>s</code> gives the index in <code>w</code> where it should start the search.</p></li>
+<li><p>Generate a random integer between 1 and 10. Write a guessing game where the user has to guess the secret number. After every guess, the program tells the user whether their number was too large or too small. At the end the number of tries needed should be printed.</p></li>
+</ol>
+<ul>
+<li><strong>Hint</strong>: Use the function <code>randint()</code> provided in the <code>random</code> module to randomly draw integers. Also use <code>input()</code>.</li>
+</ul>
+<div id="b0bf5203" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compare(x,y):</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x<span class="op">&gt;</span>y:</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> x<span class="op">==</span>y:</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">0</span> </span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>compare(<span class="dv">2</span>,<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<pre><code>-1</code></pre>
+</div>
+</div>
+<div id="d4acf43d" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> count(w,l,s):</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    count<span class="op">=</span><span class="dv">0</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> letter <span class="kw">in</span> w[(s):<span class="bu">len</span>(w)]:</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> letter <span class="op">==</span> l:</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>            count<span class="op">=</span>count<span class="op">+</span><span class="dv">1</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(count)</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Example</span></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>count(<span class="st">'hello'</span>, <span class="st">'l'</span>, <span class="dv">0</span>)      </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>2</code></pre>
+</div>
+</div>
+<div id="bcc23647" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example for random integer with random</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>random.randint(<span class="dv">1</span>,<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<pre><code>8</code></pre>
+</div>
+</div>
+<div id="9fd4fe15" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>guess <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> random.randint(<span class="dv">1</span>,<span class="dv">10</span>)</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>attempts <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> guess <span class="op">!=</span> r:</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>    guess <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Please guess!"</span>)</span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>    guess <span class="op">=</span> <span class="bu">int</span>(guess)</span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> guess <span class="op">&gt;</span> r:</span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span> (<span class="st">"Smaller!"</span>)</span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>        attempts<span class="op">+=</span><span class="dv">1</span></span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> guess <span class="op">&lt;</span> r:</span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Bigger!"</span>)</span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>        attempts<span class="op">+=</span><span class="dv">1</span></span>
+<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (<span class="ss">f"Great, you found the number (</span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">) in </span><span class="sc">{</span>attempts<span class="sc">}</span><span class="ss"> tries!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -613,18 +731,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -656,11 +763,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -670,8 +816,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -683,7 +838,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -727,6 +1005,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -752,6 +1031,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -812,6 +1117,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 
