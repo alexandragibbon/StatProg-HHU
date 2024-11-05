@@ -8,6 +8,8 @@
 ### Tutorials 
 - [Tutorial 1](./tutorial/tutorial-1/tutorial_1.html)
 - [Tutorial 2](./tutorial/tutorial-2/tutorial_2.html)
+- [Tutorial 3](./tutorial/tutorial-3/tutorial_3.html)
 
 ### Solutions 
 - [Solution Tutorial 1](./tutorial/tutorial-1-solution/tutorial_1_solution.html)
+- [Solution Tutorial 2./tutorial/tutorial-2-solution/tutorial_2_solution.html)
