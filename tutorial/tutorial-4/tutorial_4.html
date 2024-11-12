@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Topics in Econometrics and Data Science: Tutorial 3</title>
+<title>Topics in Econometrics and Data Science: Tutorial 4</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,53 +20,19 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="tutorial_3_files/libs/clipboard/clipboard.min.js"></script>
-<script src="tutorial_3_files/libs/quarto-html/quarto.js"></script>
-<script src="tutorial_3_files/libs/quarto-html/popper.min.js"></script>
-<script src="tutorial_3_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="tutorial_3_files/libs/quarto-html/anchor.min.js"></script>
-<link href="tutorial_3_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="tutorial_3_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="tutorial_3_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="tutorial_3_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="tutorial_3_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="tutorial_4_files/libs/clipboard/clipboard.min.js"></script>
+<script src="tutorial_4_files/libs/quarto-html/quarto.js"></script>
+<script src="tutorial_4_files/libs/quarto-html/popper.min.js"></script>
+<script src="tutorial_4_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="tutorial_4_files/libs/quarto-html/anchor.min.js"></script>
+<link href="tutorial_4_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="tutorial_4_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="tutorial_4_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="tutorial_4_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="tutorial_4_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
@@ -84,14 +50,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#section-1-math" id="toc-section-1-math" class="nav-link active" data-scroll-target="#section-1-math">Section 1: <code>math</code></a>
+  <li><a href="#section-1-pandas" id="toc-section-1-pandas" class="nav-link active" data-scroll-target="#section-1-pandas">Section 1: <code>Pandas</code></a>
   <ul class="collapse">
-  <li><a href="#exercise-1-basic-calculations-with-the-math-module" id="toc-exercise-1-basic-calculations-with-the-math-module" class="nav-link" data-scroll-target="#exercise-1-basic-calculations-with-the-math-module">Exercise 1: Basic Calculations with the <code>math</code> module</a></li>
+  <li><a href="#exercise-1-pandas-dataframes" id="toc-exercise-1-pandas-dataframes" class="nav-link" data-scroll-target="#exercise-1-pandas-dataframes">Exercise 1: Pandas DataFrames</a></li>
   </ul></li>
-  <li><a href="#section-2-numpy" id="toc-section-2-numpy" class="nav-link" data-scroll-target="#section-2-numpy">Section 2: <code>NumPy</code></a>
+  <li><a href="#section-2-data-visualization" id="toc-section-2-data-visualization" class="nav-link" data-scroll-target="#section-2-data-visualization">Section 2: Data Visualization</a>
   <ul class="collapse">
-  <li><a href="#exercise-1-working-with-numpy-arrays" id="toc-exercise-1-working-with-numpy-arrays" class="nav-link" data-scroll-target="#exercise-1-working-with-numpy-arrays">Exercise 1: Working with <code>NumPy</code> Arrays</a></li>
-  <li><a href="#exercise-2-linear-regression-with-numpy" id="toc-exercise-2-linear-regression-with-numpy" class="nav-link" data-scroll-target="#exercise-2-linear-regression-with-numpy">Exercise 2: Linear Regression with <code>NumPy</code></a></li>
+  <li><a href="#exercise-1-basic-visualization-with-matplotlib-and-seaborn" id="toc-exercise-1-basic-visualization-with-matplotlib-and-seaborn" class="nav-link" data-scroll-target="#exercise-1-basic-visualization-with-matplotlib-and-seaborn">Exercise 1: Basic visualization with <code>matplotlib</code> and <code>seaborn</code></a></li>
+  </ul></li>
+  <li><a href="#section-3-basics-of-statistics" id="toc-section-3-basics-of-statistics" class="nav-link" data-scroll-target="#section-3-basics-of-statistics">Section 3: Basics of Statistics</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1-normal-distribution" id="toc-exercise-1-normal-distribution" class="nav-link" data-scroll-target="#exercise-1-normal-distribution">Exercise 1: Normal distribution</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -100,7 +69,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Topics in Econometrics and Data Science: Tutorial 3</h1>
+<h1 class="title">Topics in Econometrics and Data Science: Tutorial 4</h1>
 </div>
 
 
@@ -160,111 +129,12 @@ The agenda of tutorial one is close the structure of lecture 1.
     - `plotly`
 -->
 </section>
-<section id="section-1-math" class="level1">
-<h1>Section 1: <code>math</code></h1>
-<section id="exercise-1-basic-calculations-with-the-math-module" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-1-basic-calculations-with-the-math-module">Exercise 1: Basic Calculations with the <code>math</code> module</h2>
-<p>Import the <em>math</em> module by</p>
-<div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Use Python as you would a calculator to find the numeric answers</p>
-<ol type="1">
-<li><span class="math inline">\(1+2(3+4)\)</span></li>
-<li><span class="math inline">\(4^3+3^{2+1}\)</span></li>
-<li><span class="math inline">\(\frac{1+2}{3+4}\)</span></li>
-<li><span class="math inline">\(\sqrt{(4+3)(2+1)}\)</span></li>
-<li><span class="math inline">\(\sin(\pi)+\cos(\pi)\)</span></li>
-<li><span class="math inline">\(\exp(0) \log(2)\)</span></li>
-</ol>
-</section>
-</section>
-<section id="section-2-numpy" class="level1">
-<h1>Section 2: <code>NumPy</code></h1>
-<section id="exercise-1-working-with-numpy-arrays" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-1-working-with-numpy-arrays">Exercise 1: Working with <code>NumPy</code> Arrays</h2>
-<!--
-
-### a) Let a small data set be
-$$5\ 2\ 11\ 19\ 6.$$
-
-* Enter these numbers into an array *x_array*.
-
-* Calculate the median of *x_array*.
-
-* Find the square of each number and enter these numbers into an array *x_square*. 
-
-* Calculate the sum of *x_square*.
-
-
--->
-<!-- 
-a) You recorded your car's mileage at your last six fill-ups as
-
-$$ 34332\ 34604\ 34828\ 35019\ 35273\ 35513$$
-
-* Enter these numbers into the array `m_age`. Calculate the amount of miles that was driven after each fill up and enter these numbers into the variable *miles*. How many values does this variable include? What is the average amount of miles?
-    * **Hint**: `np.diff()`
-
-
-a) 
- -->
-<p>Your cell-phone bill varied the last year from month to month the following way</p>
-<p><span class="math display">\[ 22\ 31\ 18\ 35\ 29 \ 32\ 19\ 23\ 23\ 25\ 20\ 33\]</span></p>
-<ul>
-<li><p>What is the largest amount you spent in a month? What is the smallest?</p></li>
-<li><p>Find the total amount and the average amount per month that you spent in the last year!</p></li>
-<li><p>How many months was the amount greater than 30$?</p></li>
-<li><p>Is it worth to enter into a flatrate (25$ per month) for the next year expecting on average the same bills?</p></li>
-</ul>
-</section>
-<section id="exercise-2-linear-regression-with-numpy" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-2-linear-regression-with-numpy">Exercise 2: Linear Regression with <code>NumPy</code></h2>
-<p>The linear regression (see lecture 2) is a basic concept in statistics. Consider the linear regression model <span class="math display">\[
-y_i = \beta_0 + \beta_1X_i + \varepsilon_i
-\]</span> One can estimate the coefficients <span class="math inline">\(\mathbf{\hat{\beta}}\)</span> by solving the following matrix equation: <span class="math display">\[
-\boldsymbol{\hat{\beta}}=(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{y}
-\]</span> Calculate <span class="math inline">\(\boldsymbol{\hat{\beta}}\)</span> and the residuals <span class="math inline">\(\boldsymbol{\varepsilon} = \mathbf{y} - \mathbf{\hat{y}}\)</span> using <code>NumPy</code> for the following small dataset.</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th>Shoe Size (<span class="math inline">\(X\)</span>)</th>
-<th>Height (<span class="math inline">\(y\)</span>)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>36</td>
-<td>170</td>
-</tr>
-<tr class="even">
-<td>37</td>
-<td>175</td>
-</tr>
-<tr class="odd">
-<td>38</td>
-<td>180</td>
-</tr>
-<tr class="even">
-<td>38</td>
-<td>169</td>
-</tr>
-<tr class="odd">
-<td>40</td>
-<td>190</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><strong>Hint</strong>: To have an intercept <span class="math inline">\(\hat{\beta}_0\)</span> in the model, just add a full column of <span class="math inline">\(1\)</span>s to your independent variable <span class="math inline">\(X\)</span> to get your design matrix <span class="math inline">\(\mathbf{X}\)</span> with <code>np.ones()</code>.</li>
-</ul>
+<section id="section-1-pandas" class="level1">
+<h1>Section 1: <code>Pandas</code></h1>
+<section id="exercise-1-pandas-dataframes" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-1-pandas-dataframes">Exercise 1: Pandas DataFrames</h2>
 
 <!--
-# Section 3: `Pandas`
-
-
-## Exercise 1: Pandas DataFrames
-
  a) M and M's Example
 
 A bag of the candy M and M's has many different colors. The table in @fig-mandms contains the targeted color distribution in a bag of M and M's as percentages for various types of packaging. 
@@ -291,61 +161,35 @@ Enter this table into a `pandas.DataFrame` called `mandms`. Use `pandas` to answ
 
 
 a) Brain size data set
-
-
-
-Download and load the `brain_size.csv` data set. The dataset contains a small sample of observations of features (like gender, weight, height and three different IQ-measures) for different individuals.
-
-
-Before we perform some analysis, we will do some preprocessing.
-
-* Load the data set and drop the column `Unnamed: 0`. 
-
-* Use `DataFrame.dropna()` to clean your data from entries containing `NaN` values. How many observations are left after the data cleaning?
-
-Calculate the following descriptive statistics.
-
-* How many observations/individuals do we have?
-
-* Calculate the means and standard deviations for VIQ, Weight and Height. What is the median of Weight? 
-
-* What is the percentage of women in the data set?
-
-* As a primitive approach to determine whether there are differences based on gender, calculate the means of the features above, again conditioned on gender.
-
-
-
-
-
-
-
-
-# Section 4: Data Visualization
-
-## Exercise 1: Basic visualization with `matplotlib` and `seaborn`
-
-
-In this exercise, we will visualize data from a cosinus function. To do so, set up data for a variable `x` with `np.linspace`, on which you apply the cosinus function. 
-
-* Create a **scatter** plot with `matplotlib`.
-
-* Create a **line** plot with `seaborn`.
-
-* Add a sinus function to the graph in `matplotlib`.
-
-* Add a sinus function to the graph in `seaborn` via a dashed line.
-
-* Create a random variable that simulates a coin flip. Use the information according to the coin flip to provide a color argument to the scatter plot in `matplotlib`.
-
-* Put the four different figures as subfigures into one major figure. Save the figure in a file `my_plot.png`.
-
-
-
-
-
-
-
-
+-->
+<p>Download and load the <code>brain_size.csv</code> data set. The dataset contains a small sample of observations of features (like gender, weight, height and three different IQ-measures) for different individuals.</p>
+<p>Before we perform some analysis, we will do some preprocessing.</p>
+<ul>
+<li><p>Load the data set and drop the column <code>Unnamed: 0</code>.</p></li>
+<li><p>Use <code>DataFrame.dropna()</code> to clean your data from entries containing <code>NaN</code> values. How many observations are left after the data cleaning?</p></li>
+</ul>
+<p>Calculate the following descriptive statistics.</p>
+<ul>
+<li><p>How many observations/individuals do we have?</p></li>
+<li><p>Calculate the means and standard deviations for VIQ, Weight and Height. What is the median of Weight?</p></li>
+<li><p>What is the percentage of women in the data set?</p></li>
+<li><p>As a primitive approach to determine whether there are differences based on gender, calculate the means of the features above, again conditioned on gender.</p></li>
+</ul>
+</section>
+</section>
+<section id="section-2-data-visualization" class="level1">
+<h1>Section 2: Data Visualization</h1>
+<section id="exercise-1-basic-visualization-with-matplotlib-and-seaborn" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-1-basic-visualization-with-matplotlib-and-seaborn">Exercise 1: Basic visualization with <code>matplotlib</code> and <code>seaborn</code></h2>
+<p>In this exercise, we will visualize data from a cosinus function. To do so, set up data for a variable <code>x</code> with <code>np.linspace</code>, on which you apply the cosinus function.</p>
+<ul>
+<li><p>Create a <strong>scatter</strong> plot with <code>matplotlib</code>.</p></li>
+<li><p>Create a <strong>line</strong> plot with <code>seaborn</code>.</p></li>
+<li><p>Add a sinus function to the graph in <code>matplotlib</code>.</p></li>
+<li><p>Add a sinus function to the graph in <code>seaborn</code> via a dashed line.</p></li>
+<li><p>Create a random variable that simulates a coin flip. Use the information according to the coin flip to provide a color argument to the scatter plot in <code>matplotlib</code>.</p></li>
+<li><p>Put the four different figures as subfigures into one major figure. Save the figure in a file <code>my_plot.png</code>.</p></li>
+</ul>
 <!-- 
 ## Exercise 2: Times University Ranking Data
 
@@ -365,7 +209,56 @@ Download and load the Times University Ranking Data (file `timesData.csv`), whic
 
 
 -->
-<p><!-- * Modify the graphics in a way you like. Can you make them interactive with `plotly` or `bokeh`? Create your own visualization as based on the Times Data set. --></p>
+<p><!-- * Modify the graphics in a way you like. Can you make them interactive with `plotly` or `bokeh`? Create your own visualization as based on the Times Data set.  --></p>
+</section>
+</section>
+<section id="section-3-basics-of-statistics" class="level1">
+<h1>Section 3: Basics of Statistics</h1>
+<!--
+## Exercise 1: Binomial distribution (no programming required)
+
+1. Find $80\%$ and $90\%$ asymptotic confidence intervals for the expected value $E[X]$ based on  a survey with $n=100$ and $\hat{p}=\frac{1}{n}\sum_{i=1}^n X_i=0.45$.
+
+2. A student wishes to find the proportion of left-handed people. She surveys $100$ fellow students and finds that only $5$ are left-handed. Does a $95\%$ confidence interval contain the value of $p = 0.1$?
+
+3. A survey is taken with $250$ participants, and a $\hat{p}$ of $0.45$. The same survey is repeated with $1000$ participants and the same $\hat{p}$ value is found. Compare the two $95\%$ confidence intervals. What is the relationship? Is the margin of error for the second one four times smaller? 
+-->
+<!-- 
+### Solution:
+1. $$\hat{p}\pm \frac{\hat{\sigma}_n}{\sqrt{n}}q_z(0.90) =  (0.3862436, 0.5137564) $$
+and
+$$\hat{p}\pm \frac{\hat{\sigma}_n}{\sqrt{n}}q_z(0.95) =  (0.3681696, 0.5318304)$$
+with $\hat{\sigma}_n^2 = \hat{p}(1-\hat{p})=0.2475$. We pay for the increased confidence with a bigger interval.
+
+2. We have $\hat{p}=0.05$ this implies the $95\%$ confidence interval
+$$\hat{p}\pm \frac{\hat{\sigma}_n}{\sqrt{n}}q_z(0.975) = (0.007283575, 0.092716425)$$
+with $\hat{\sigma}_n^2 = \hat{p}(1-\hat{p})=0.0475$.
+
+3. $$\hat{p}\pm \frac{\hat{\sigma}_n}{\sqrt{250}}q_z(0.975) =  (0.3883312, 0.5116688) $$
+and
+$$\hat{p}\pm \frac{\hat{\sigma}_n}{\sqrt{1000}}q_z(0.975) =  (0.4191656, 0.4808344) $$
+with $\hat{\sigma}_n^2 = \hat{p}(1-\hat{p})=0.2475$.
+The margin of error is 
+$$\frac{\hat{\sigma}_n}{\sqrt{1000}}q_z(0.975)=\frac{1}{\sqrt{4}}\frac{\hat{\sigma}_n}{\sqrt{250}}q_z(0.975)= \frac{1}{2}0.06166883$$
+only halved.
+If the sample size is increased by a factor $c$ the margin of error is decreased by the coefficient $1/\sqrt{c}$ which explains that at some point the cost of accumulating new samples is not very efficient. -->
+<section id="exercise-1-normal-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-1-normal-distribution">Exercise 1: Normal distribution</h2>
+<ol type="1">
+<li><p>A hard-drive manufacturer would like to ensure that the mean time between failures (MTBF) for its new hard drive is <span class="math inline">\(1\)</span> million hours. A stress test is designed that can simulate the workload at a much faster pace. The testers assume that a test lasting <span class="math inline">\(10\)</span> days correlates with the failure time exceeding the <span class="math inline">\(1\)</span>- million-hour mark. In stress tests of <span class="math inline">\(15\)</span> hard drives they found an average of <span class="math inline">\(9.5\)</span> days, with a standard deviation of <span class="math inline">\(1\)</span> day. Does a <span class="math inline">\(90\%\)</span> confidence level include <span class="math inline">\(10\)</span> days?</p></li>
+<li><p>Let <span class="math inline">\(X\sim \mathcal{N}(\mu,\sigma^2)\)</span>. We have seen that <span class="math display">\[\sqrt{n}\frac{\bar{X}_n-\mu}{\sigma}\sim \mathcal{N}(0,1)\]</span> and that by replacing the unknown parameter <span class="math inline">\(\sigma^2\)</span> by <span class="math inline">\(\hat{S}^2=\frac{1}{n-1}\sum_{i=1}^n(X_i-\bar{X}_n)^2\)</span> we obtain <span class="math display">\[Z_n:=\sqrt{n}\frac{\bar{X}_n-\mu}{\hat{S}} \xrightarrow[]{\mathcal{D}} Z\sim \mathcal{N}(0,1).\]</span> Therefore we can construct asymptotic confidence intervals for <span class="math inline">\(\mu\)</span>. This means that the confidence interval satisfies the confidence level when <span class="math inline">\(n\)</span> is ‘large’. But what happens when <span class="math inline">\(n\)</span> is ‘small’ and what do we mean by ‘large’? The distribution of <span class="math inline">\(Z_n\)</span> is called <span class="math inline">\(t\)</span>-distribution with <span class="math inline">\(n-1\)</span> degrees of freedom. Compare the densities of the <span class="math inline">\(t\)</span>-distribution and the normal distribution for <span class="math inline">\(n=3,10,25\)</span> and <span class="math inline">\(50\)</span>. What value of <span class="math inline">\(n\)</span> seems ‘large’ enough to say that the two distributions are essentially the same? (Hint: You can use <code>scipy.stats.t</code>)</p></li>
+<li><p>In the setting of Exercise 1.2 use a simulation to compare the resulting confidence intervals for <span class="math inline">\(\mu=0\)</span> (choose <span class="math inline">\(\sigma^2=5\)</span>) with confidence level <span class="math inline">\(95\%\)</span>. For each <span class="math inline">\(n\)</span> calculate <span class="math inline">\(1000\)</span> independent samples and count how often the true parameter <span class="math inline">\(\mu\)</span> is contained in the confidence interval.<br> <span class="math inline">\(\Big(\)</span>Hint: Remark that <code>np.var()</code> calculates <span class="math inline">\(\frac{1}{n}\sum_{i=1}^n(X_i-\bar{X}_n)^2\)</span>.<span class="math inline">\(\Big)\)</span></p></li>
+</ol>
+<!-- 
+### Solution:
+1. $$9.5 \pm \frac{1}{\sqrt{15}}q_z(0.95) =  (9.075301, 9.924699) $$
+or one-sided
+$$9.5 + \frac{1}{\sqrt{15}}q_z(0.9) =  (-\infty, 9.830895) $$
+
+2. We have -->
+<!-- 
+
+3.The confidence intervals are given by -->
 </section>
 </section>
 
