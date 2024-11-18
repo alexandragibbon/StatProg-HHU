@@ -8,7 +8,7 @@
 <link href="Lecture_2_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="Lecture_2_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="Lecture_2_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.433">
+  <meta name="generator" content="quarto-1.5.57">
 
   <title>Lecture 2: Basics of Statistics</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -30,7 +30,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -41,7 +41,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -99,6 +99,7 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
+      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -243,7 +244,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -419,15 +421,11 @@
 </div>
 
 </section>
-<section class="slide level2">
-
-<p><span class="math inline">\(\newcommand{\E}{{\mathbb{E}}}\)</span> <span class="math inline">\(\newcommand{\N}{{\mathbb{N}}}\)</span> <span class="math inline">\(\newcommand{\R}{{\mathbb{R}}}\)</span></p>
-<p><span class="math inline">\(\newcommand{\nto}{\xrightarrow[n\to\infty]{}}\)</span> <span class="math inline">\(\newcommand{\Dto}{\xrightarrow[]{d}}\)</span> <span class="math inline">\(\newcommand{\Pto}{\xrightarrow[]{P}}\)</span> <span class="math inline">\(\newcommand{\asto}{\xrightarrow[]{a.s.}}\)</span> <span class="math inline">\(\newcommand{\Lto}{\xrightarrow[]{\mathcal{L}_2}}\)</span></p>
-</section>
 <section>
 <section id="part-ii-basics-of-statistics" class="title-slide slide level1 center">
 <h1>Part II: Basics of Statistics</h1>
-
+<p><span class="math inline">\(\newcommand{\E}{{\mathbb{E}}}\)</span> <span class="math inline">\(\newcommand{\N}{{\mathbb{N}}}\)</span> <span class="math inline">\(\newcommand{\R}{{\mathbb{R}}}\)</span></p>
+<p><span class="math inline">\(\newcommand{\nto}{\xrightarrow[n\to\infty]{}}\)</span> <span class="math inline">\(\newcommand{\Dto}{\xrightarrow[]{d}}\)</span> <span class="math inline">\(\newcommand{\Pto}{\xrightarrow[]{P}}\)</span> <span class="math inline">\(\newcommand{\asto}{\xrightarrow[]{a.s.}}\)</span> <span class="math inline">\(\newcommand{\Lto}{\xrightarrow[]{\mathcal{L}_2}}\)</span></p>
 </section>
 <section id="outlook" class="slide level2">
 <h2>Outlook</h2>
@@ -521,22 +519,22 @@ U\sim \mathcal{U}([0,1])\implies X:=F^{-1}(U)\sim F
 <p>We can generate random observations of an arbitrary distribution <span class="math inline">\(F\)</span> by simulating random numbers <span class="math inline">\(U_1,\dots,U_n\sim \mathcal{U}([0,1])\)</span>.</p>
 <p>The <code>random</code> module provides functions that generate pseudorandom numbers. Among others, <code>random</code> includes the function <code>random</code> that returns a random float between <span class="math inline">\(0.0\)</span> and <span class="math inline">\(1.0\)</span> (In fact, it returns an random observation of U):</p>
 <div class="fragment">
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> random</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
-<span id="cb1-3"><a href="#cb1-3"></a>    X<span class="op">=</span>random.random()</span>
-<span id="cb1-4"><a href="#cb1-4"></a>    <span class="bu">print</span>(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="7220acff" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a><span class="im">import</span> random</span>
+<span id="cb1-2"><a href=""></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb1-3"><a href=""></a>    X<span class="op">=</span>random.random()</span>
+<span id="cb1-4"><a href=""></a>    <span class="bu">print</span>(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0.9152949019822718
-0.08020395899785959
-0.6561996976012695
-0.7235724460815871
-0.06752088902122921
-0.491003309340016
-0.05857663489707554
-0.6492084549788051
-0.5484524803626224
-0.4961405538397724</code></pre>
+<pre><code>0.07633648856585551
+0.30363647176224595
+0.010812971961632223
+0.9855635239843908
+0.7801423417240376
+0.7253526370504962
+0.5064010768003373
+0.9569173129885026
+0.8275245723159493
+0.4477618618945436</code></pre>
 </div>
 </div>
 </div>
@@ -545,20 +543,20 @@ U\sim \mathcal{U}([0,1])\implies X:=F^{-1}(U)\sim F
 <h2>Random Numbers in Python</h2>
 <p>The function <code>randint</code> takes parameters <code>low</code> and <code>high</code> and returns an integer between them (including both!).</p>
 <div class="fragment">
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>random.randint(<span class="dv">1</span>,<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="ebd6cce0" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a>random.randint(<span class="dv">1</span>,<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>68</code></pre>
+<pre><code>23</code></pre>
 </div>
 </div>
 <p>To choose an element from a given set of values at random, you can use the function <code>choice</code></p>
 </div>
 <div class="fragment">
-<div class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>x<span class="op">=</span> [<span class="st">"a"</span>,<span class="st">"z"</span>,<span class="st">"e"</span>,<span class="st">"g"</span>]</span>
-<span id="cb5-2"><a href="#cb5-2"></a>random.choice(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="0978514a" class="cell" data-slideshow="{&quot;slide_type&quot;:&quot;fragment&quot;}" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a>x<span class="op">=</span> [<span class="st">"a"</span>,<span class="st">"z"</span>,<span class="st">"e"</span>,<span class="st">"g"</span>]</span>
+<span id="cb5-2"><a href=""></a>random.choice(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>'z'</code></pre>
+<pre><code>'e'</code></pre>
 </div>
 </div>
 </div>
@@ -585,22 +583,22 @@ P(X=x)=\begin{cases}\frac{1}{2}\ \text{if}\ x=0\\
 <section id="random-numbers-in-python-5" class="slide level2">
 <h2>Random Numbers in Python</h2>
 <h4 id="coin-flip-1">Coin flip</h4>
-<div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="co">## generating random numbers</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a></span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="co"># load module</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="im">import</span> random</span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="im">from</span> random <span class="im">import</span> randint</span>
-<span id="cb7-6"><a href="#cb7-6"></a></span>
-<span id="cb7-7"><a href="#cb7-7"></a><span class="co"># generate the random number</span></span>
-<span id="cb7-8"><a href="#cb7-8"></a>randomnumber <span class="op">=</span> randint(<span class="dv">0</span>, <span class="dv">1</span>)</span>
-<span id="cb7-9"><a href="#cb7-9"></a></span>
-<span id="cb7-10"><a href="#cb7-10"></a><span class="cf">if</span> randomnumber <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb7-11"><a href="#cb7-11"></a>    <span class="bu">print</span>(<span class="st">'Heads was flipped.'</span>)</span>
-<span id="cb7-12"><a href="#cb7-12"></a><span class="cf">else</span>:</span>
-<span id="cb7-13"><a href="#cb7-13"></a>    <span class="bu">print</span>(<span class="st">'Tails was flipped.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="4d9893ef" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href=""></a><span class="co">## generating random numbers</span></span>
+<span id="cb7-2"><a href=""></a></span>
+<span id="cb7-3"><a href=""></a><span class="co"># load module</span></span>
+<span id="cb7-4"><a href=""></a><span class="im">import</span> random</span>
+<span id="cb7-5"><a href=""></a><span class="im">from</span> random <span class="im">import</span> randint</span>
+<span id="cb7-6"><a href=""></a></span>
+<span id="cb7-7"><a href=""></a><span class="co"># generate the random number</span></span>
+<span id="cb7-8"><a href=""></a>randomnumber <span class="op">=</span> randint(<span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb7-9"><a href=""></a></span>
+<span id="cb7-10"><a href=""></a><span class="cf">if</span> randomnumber <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb7-11"><a href=""></a>    <span class="bu">print</span>(<span class="st">'Heads was flipped.'</span>)</span>
+<span id="cb7-12"><a href=""></a><span class="cf">else</span>:</span>
+<span id="cb7-13"><a href=""></a>    <span class="bu">print</span>(<span class="st">'Tails was flipped.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Tails was flipped.</code></pre>
+<pre><code>Heads was flipped.</code></pre>
 </div>
 </div>
 </section>
@@ -612,22 +610,22 @@ P(X=x)=\begin{cases}\frac{1}{2}\ \text{if}\ x=0\\
 <section id="random-numbers-in-python-7" class="slide level2">
 <h2>Random Numbers in Python</h2>
 <h4 id="roll-the-dice-1">“Roll the dice”</h4>
-<div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="co">## generating random numbers</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="co"># load modules</span></span>
-<span id="cb9-3"><a href="#cb9-3"></a><span class="im">import</span> random</span>
-<span id="cb9-4"><a href="#cb9-4"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb9-5"><a href="#cb9-5"></a></span>
-<span id="cb9-6"><a href="#cb9-6"></a><span class="co"># define the support of X</span></span>
-<span id="cb9-7"><a href="#cb9-7"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>])</span>
-<span id="cb9-8"><a href="#cb9-8"></a></span>
-<span id="cb9-9"><a href="#cb9-9"></a><span class="co"># for replicability</span></span>
-<span id="cb9-10"><a href="#cb9-10"></a><span class="co">#np.random.seed(222)</span></span>
-<span id="cb9-11"><a href="#cb9-11"></a></span>
-<span id="cb9-12"><a href="#cb9-12"></a><span class="co"># generate the random number</span></span>
-<span id="cb9-13"><a href="#cb9-13"></a>randomnumber <span class="op">=</span> random.choice(x)</span>
-<span id="cb9-14"><a href="#cb9-14"></a></span>
-<span id="cb9-15"><a href="#cb9-15"></a><span class="bu">print</span>(randomnumber)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="0262e6da" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href=""></a><span class="co">## generating random numbers</span></span>
+<span id="cb9-2"><a href=""></a><span class="co"># load modules</span></span>
+<span id="cb9-3"><a href=""></a><span class="im">import</span> random</span>
+<span id="cb9-4"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb9-5"><a href=""></a></span>
+<span id="cb9-6"><a href=""></a><span class="co"># define the support of X</span></span>
+<span id="cb9-7"><a href=""></a>x <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>])</span>
+<span id="cb9-8"><a href=""></a></span>
+<span id="cb9-9"><a href=""></a><span class="co"># for replicability</span></span>
+<span id="cb9-10"><a href=""></a><span class="co">#np.random.seed(222)</span></span>
+<span id="cb9-11"><a href=""></a></span>
+<span id="cb9-12"><a href=""></a><span class="co"># generate the random number</span></span>
+<span id="cb9-13"><a href=""></a>randomnumber <span class="op">=</span> random.choice(x)</span>
+<span id="cb9-14"><a href=""></a></span>
+<span id="cb9-15"><a href=""></a><span class="bu">print</span>(randomnumber)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>4</code></pre>
 </div>
@@ -636,25 +634,25 @@ P(X=x)=\begin{cases}\frac{1}{2}\ \text{if}\ x=0\\
 <section id="random-numbers-in-python-8" class="slide level2">
 <h2>Random Numbers in Python</h2>
 <h4 id="roll-the-dice-2">“Roll the dice”</h4>
-<div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="co">## Comparing the sample mean and the population mean</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb11-3"><a href="#cb11-3"></a>np.random.seed(<span class="dv">222</span>)</span>
-<span id="cb11-4"><a href="#cb11-4"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>])</span>
-<span id="cb11-5"><a href="#cb11-5"></a>sample <span class="op">=</span> [random.choice(x) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10000</span>)]</span>
-<span id="cb11-6"><a href="#cb11-6"></a><span class="bu">print</span>(sample[<span class="dv">0</span>:<span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="9c62a106" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href=""></a><span class="co">## Comparing the sample mean and the population mean</span></span>
+<span id="cb11-2"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb11-3"><a href=""></a>np.random.seed(<span class="dv">222</span>)</span>
+<span id="cb11-4"><a href=""></a>x <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>])</span>
+<span id="cb11-5"><a href=""></a>sample <span class="op">=</span> [random.choice(x) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10000</span>)]</span>
+<span id="cb11-6"><a href=""></a><span class="bu">print</span>(sample[<span class="dv">0</span>:<span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[5, 4, 4, 1, 1]</code></pre>
+<pre><code>[6, 1, 5, 2, 2]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>np.mean(sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cca4adfa" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href=""></a>np.mean(sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
-<pre><code>3.4914</code></pre>
+<pre><code>3.4955</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>np.median(sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e8b9e289" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href=""></a>np.median(sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>3.0</code></pre>
 </div>
@@ -664,13 +662,13 @@ P(X=x)=\begin{cases}\frac{1}{2}\ \text{if}\ x=0\\
 <h2>Random Numbers in Python</h2>
 <h4 id="normal-distribution">Normal distribution</h4>
 <p>Let <span class="math inline">\(X\sim\mathcal{N}(0,1)\)</span> be standard normal distributed.</p>
-<div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># generate 10000 random numbers</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a>random.seed(<span class="dv">222</span>)</span>
-<span id="cb17-3"><a href="#cb17-3"></a>mu<span class="op">=</span><span class="dv">0</span></span>
-<span id="cb17-4"><a href="#cb17-4"></a>sigma<span class="op">=</span><span class="dv">1</span></span>
-<span id="cb17-5"><a href="#cb17-5"></a>x <span class="op">=</span> [random.gauss(mu,sigma) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)]</span>
-<span id="cb17-6"><a href="#cb17-6"></a><span class="bu">print</span>(x[<span class="dv">0</span>:<span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="85b00845" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href=""></a><span class="co"># generate 10000 random numbers</span></span>
+<span id="cb17-2"><a href=""></a>random.seed(<span class="dv">222</span>)</span>
+<span id="cb17-3"><a href=""></a>mu<span class="op">=</span><span class="dv">0</span></span>
+<span id="cb17-4"><a href=""></a>sigma<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb17-5"><a href=""></a>x <span class="op">=</span> [random.gauss(mu,sigma) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)]</span>
+<span id="cb17-6"><a href=""></a><span class="bu">print</span>(x[<span class="dv">0</span>:<span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[0.13188312105621772, -0.7204216603172481, -0.08407597637324801, 0.2284440201545145, 0.27722404581149285]</code></pre>
 </div>
@@ -680,17 +678,17 @@ P(X=x)=\begin{cases}\frac{1}{2}\ \text{if}\ x=0\\
 <h2>Random Numbers in Python</h2>
 <h4 id="normal-distribution-1">Normal distribution</h4>
 <p>Note that <span class="math inline">\(F(0)=P(X\le 0)=1/2\)</span>.</p>
-<div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="co">## calculating the empirical distribution function</span></span>
-<span id="cb19-2"><a href="#cb19-2"></a>I<span class="op">=</span><span class="bu">range</span>(<span class="bu">len</span>(x))</span>
-<span id="cb19-3"><a href="#cb19-3"></a>a<span class="op">=</span><span class="dv">0</span></span>
-<span id="cb19-4"><a href="#cb19-4"></a>eval_value <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb19-5"><a href="#cb19-5"></a></span>
-<span id="cb19-6"><a href="#cb19-6"></a><span class="cf">for</span> i <span class="kw">in</span> I:</span>
-<span id="cb19-7"><a href="#cb19-7"></a>    <span class="cf">if</span> x[i]<span class="op">&lt;=</span> eval_value:</span>
-<span id="cb19-8"><a href="#cb19-8"></a>        a<span class="op">=</span>a<span class="op">+</span><span class="dv">1</span></span>
-<span id="cb19-9"><a href="#cb19-9"></a>f<span class="op">=</span>a<span class="op">/</span><span class="bu">len</span>(x)</span>
-<span id="cb19-10"><a href="#cb19-10"></a><span class="bu">print</span>(<span class="ss">f"The value of the empirical distribution function at </span><span class="sc">{</span>eval_value<span class="sc">}</span><span class="ss"> is </span><span class="sc">{</span>f<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="1f64fed0" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href=""></a><span class="co">## calculating the empirical distribution function</span></span>
+<span id="cb19-2"><a href=""></a>I<span class="op">=</span><span class="bu">range</span>(<span class="bu">len</span>(x))</span>
+<span id="cb19-3"><a href=""></a>a<span class="op">=</span><span class="dv">0</span></span>
+<span id="cb19-4"><a href=""></a>eval_value <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb19-5"><a href=""></a></span>
+<span id="cb19-6"><a href=""></a><span class="cf">for</span> i <span class="kw">in</span> I:</span>
+<span id="cb19-7"><a href=""></a>    <span class="cf">if</span> x[i]<span class="op">&lt;=</span> eval_value:</span>
+<span id="cb19-8"><a href=""></a>        a<span class="op">=</span>a<span class="op">+</span><span class="dv">1</span></span>
+<span id="cb19-9"><a href=""></a>f<span class="op">=</span>a<span class="op">/</span><span class="bu">len</span>(x)</span>
+<span id="cb19-10"><a href=""></a><span class="bu">print</span>(<span class="ss">f"The value of the empirical distribution function at </span><span class="sc">{</span>eval_value<span class="sc">}</span><span class="ss"> is </span><span class="sc">{</span>f<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>The value of the empirical distribution function at 0 is 0.496</code></pre>
 </div>
@@ -699,49 +697,57 @@ P(X=x)=\begin{cases}\frac{1}{2}\ \text{if}\ x=0\\
 <section id="random-numbers-in-python-11" class="slide level2">
 <h2>Random Numbers in Python</h2>
 <h4 id="normal-distribution-2">Normal distribution</h4>
-<div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb21-2"><a href="#cb21-2"></a>fig <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">1</span>)[<span class="dv">1</span>] </span>
-<span id="cb21-3"><a href="#cb21-3"></a>fig.boxplot(x)</span>
-<span id="cb21-4"><a href="#cb21-4"></a><span class="bu">min</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e793a524" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href=""></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb21-2"><a href=""></a>fig <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">1</span>)[<span class="dv">1</span>] </span>
+<span id="cb21-3"><a href=""></a>fig.boxplot(x)</span>
+<span id="cb21-4"><a href=""></a><span class="bu">min</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>-3.046052601218861</code></pre>
 </div>
 <div class="cell-output cell-output-display">
+<div>
+<figure>
 <p><img data-src="Lecture_2_files/figure-revealjs/cell-12-output-2.png" width="792" height="411"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="random-numbers-in-python-12" class="slide level2">
 <h2>Random Numbers in Python</h2>
 <h4 id="normal-distribution-3">Normal distribution</h4>
-<div class="cell" data-execution_count="12">
-<details>
+<div id="b3081e0e" class="cell" data-execution_count="12">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb23-2"><a href="#cb23-2"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
-<span id="cb23-3"><a href="#cb23-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb23-4"><a href="#cb23-4"></a></span>
-<span id="cb23-5"><a href="#cb23-5"></a><span class="co"># Generate random data from standard normal distribution</span></span>
-<span id="cb23-6"><a href="#cb23-6"></a>data <span class="op">=</span> np.random.normal(loc<span class="op">=</span><span class="dv">0</span>, scale<span class="op">=</span><span class="dv">1</span>, size<span class="op">=</span><span class="dv">1000</span>)</span>
-<span id="cb23-7"><a href="#cb23-7"></a></span>
-<span id="cb23-8"><a href="#cb23-8"></a><span class="co"># Create density plot</span></span>
-<span id="cb23-9"><a href="#cb23-9"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">3</span>))</span>
-<span id="cb23-10"><a href="#cb23-10"></a>plt.hist(data, bins<span class="op">=</span><span class="dv">30</span>, density<span class="op">=</span><span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.6</span>, color<span class="op">=</span><span class="st">'g'</span>)</span>
-<span id="cb23-11"><a href="#cb23-11"></a></span>
-<span id="cb23-12"><a href="#cb23-12"></a><span class="co"># Plot the probability density function (PDF) of the standard normal distribution</span></span>
-<span id="cb23-13"><a href="#cb23-13"></a>xmin, xmax <span class="op">=</span> plt.xlim()</span>
-<span id="cb23-14"><a href="#cb23-14"></a>x <span class="op">=</span> np.linspace(xmin, xmax, <span class="dv">100</span>)</span>
-<span id="cb23-15"><a href="#cb23-15"></a>p <span class="op">=</span> stats.norm.pdf(x)</span>
-<span id="cb23-16"><a href="#cb23-16"></a>plt.plot(x, p, <span class="st">'k'</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb23-17"><a href="#cb23-17"></a></span>
-<span id="cb23-18"><a href="#cb23-18"></a>plt.title(<span class="st">'Density Plot of Standard Normal Distribution'</span>)</span>
-<span id="cb23-19"><a href="#cb23-19"></a>plt.xlabel(<span class="st">'Values'</span>)</span>
-<span id="cb23-20"><a href="#cb23-20"></a>plt.ylabel(<span class="st">'Density'</span>)</span>
-<span id="cb23-21"><a href="#cb23-21"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb23-2"><a href=""></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
+<span id="cb23-3"><a href=""></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb23-4"><a href=""></a></span>
+<span id="cb23-5"><a href=""></a><span class="co"># Generate random data from standard normal distribution</span></span>
+<span id="cb23-6"><a href=""></a>data <span class="op">=</span> np.random.normal(loc<span class="op">=</span><span class="dv">0</span>, scale<span class="op">=</span><span class="dv">1</span>, size<span class="op">=</span><span class="dv">1000</span>)</span>
+<span id="cb23-7"><a href=""></a></span>
+<span id="cb23-8"><a href=""></a><span class="co"># Create density plot</span></span>
+<span id="cb23-9"><a href=""></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">3</span>))</span>
+<span id="cb23-10"><a href=""></a>plt.hist(data, bins<span class="op">=</span><span class="dv">30</span>, density<span class="op">=</span><span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.6</span>, color<span class="op">=</span><span class="st">'g'</span>)</span>
+<span id="cb23-11"><a href=""></a></span>
+<span id="cb23-12"><a href=""></a><span class="co"># Plot the probability density function (PDF) of the standard normal distribution</span></span>
+<span id="cb23-13"><a href=""></a>xmin, xmax <span class="op">=</span> plt.xlim()</span>
+<span id="cb23-14"><a href=""></a>x <span class="op">=</span> np.linspace(xmin, xmax, <span class="dv">100</span>)</span>
+<span id="cb23-15"><a href=""></a>p <span class="op">=</span> stats.norm.pdf(x)</span>
+<span id="cb23-16"><a href=""></a>plt.plot(x, p, <span class="st">'k'</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb23-17"><a href=""></a></span>
+<span id="cb23-18"><a href=""></a>plt.title(<span class="st">'Density Plot of Standard Normal Distribution'</span>)</span>
+<span id="cb23-19"><a href=""></a>plt.xlabel(<span class="st">'Values'</span>)</span>
+<span id="cb23-20"><a href=""></a>plt.ylabel(<span class="st">'Density'</span>)</span>
+<span id="cb23-21"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
+<div>
+<figure>
 <p><img data-src="Lecture_2_files/figure-revealjs/cell-13-output-1.png" width="395" height="302"></p>
+</figure>
+</div>
 </div>
 </div>
 </section></section>
@@ -778,89 +784,97 @@ P(X=x)=\begin{cases}\frac{1}{2}\ \text{if}\ x=0\\
 <section id="example-1" class="slide level2">
 <h2>Example</h2>
 <h4 id="normal-distribution-5">Normal distribution</h4>
-<div class="cell" data-execution_count="13">
-<details>
+<div id="7809a952" class="cell" data-execution_count="13">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb24-2"><a href="#cb24-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb24-3"><a href="#cb24-3"></a><span class="im">import</span> math</span>
-<span id="cb24-4"><a href="#cb24-4"></a>np.random.seed(<span class="dv">0</span>)</span>
-<span id="cb24-5"><a href="#cb24-5"></a></span>
-<span id="cb24-6"><a href="#cb24-6"></a>mu <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb24-7"><a href="#cb24-7"></a>sigma1 <span class="op">=</span> math.sqrt(<span class="dv">1</span>)</span>
-<span id="cb24-8"><a href="#cb24-8"></a>sigma2 <span class="op">=</span> math.sqrt(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>)</span>
-<span id="cb24-9"><a href="#cb24-9"></a>sigma3 <span class="op">=</span> math.sqrt(<span class="dv">1</span><span class="op">/</span><span class="dv">10</span>)</span>
-<span id="cb24-10"><a href="#cb24-10"></a>sigma4 <span class="op">=</span> math.sqrt(<span class="dv">1</span><span class="op">/</span><span class="dv">100</span>)</span>
-<span id="cb24-11"><a href="#cb24-11"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">201</span>)</span>
-<span id="cb24-12"><a href="#cb24-12"></a></span>
-<span id="cb24-13"><a href="#cb24-13"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">4</span>))</span>
-<span id="cb24-14"><a href="#cb24-14"></a>ax <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="cb24-15"><a href="#cb24-15"></a></span>
-<span id="cb24-16"><a href="#cb24-16"></a><span class="co"># Add the density function</span></span>
-<span id="cb24-17"><a href="#cb24-17"></a>y1 <span class="op">=</span> stats.norm.pdf(x, mu, sigma1)</span>
-<span id="cb24-18"><a href="#cb24-18"></a>y2 <span class="op">=</span> stats.norm.pdf(x,mu, sigma2)</span>
-<span id="cb24-19"><a href="#cb24-19"></a>y3 <span class="op">=</span> stats.norm.pdf(x, mu, sigma3)</span>
-<span id="cb24-20"><a href="#cb24-20"></a>y4 <span class="op">=</span> stats.norm.pdf(x, mu, sigma4)</span>
-<span id="cb24-21"><a href="#cb24-21"></a></span>
-<span id="cb24-22"><a href="#cb24-22"></a>ax.plot(x, y1, <span class="st">'-'</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>, label<span class="op">=</span><span class="st">'F_1'</span>)</span>
-<span id="cb24-23"><a href="#cb24-23"></a>ax.plot(x, y2, <span class="st">'-'</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>, label<span class="op">=</span><span class="st">'F_3'</span>)</span>
-<span id="cb24-24"><a href="#cb24-24"></a>ax.plot(x, y3, <span class="st">'-'</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>, label<span class="op">=</span><span class="st">'F_10'</span>)</span>
-<span id="cb24-25"><a href="#cb24-25"></a>ax.plot(x, y4, <span class="st">'-'</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>, label<span class="op">=</span><span class="st">'F_100'</span>)</span>
-<span id="cb24-26"><a href="#cb24-26"></a><span class="co"># layout</span></span>
-<span id="cb24-27"><a href="#cb24-27"></a>ax.grid(<span class="va">False</span>)</span>
-<span id="cb24-28"><a href="#cb24-28"></a>ax.legend(loc<span class="op">=</span><span class="st">'right'</span>)</span>
-<span id="cb24-29"><a href="#cb24-29"></a>ax.set_title(<span class="st">'Density functions'</span>)</span>
-<span id="cb24-30"><a href="#cb24-30"></a>ax.set_xlabel(<span class="st">'x'</span>)</span>
-<span id="cb24-31"><a href="#cb24-31"></a>ax.set_ylabel(<span class="st">'f(x)'</span>)</span>
-<span id="cb24-32"><a href="#cb24-32"></a></span>
-<span id="cb24-33"><a href="#cb24-33"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb24-2"><a href=""></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb24-3"><a href=""></a><span class="im">import</span> math</span>
+<span id="cb24-4"><a href=""></a>np.random.seed(<span class="dv">0</span>)</span>
+<span id="cb24-5"><a href=""></a></span>
+<span id="cb24-6"><a href=""></a>mu <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb24-7"><a href=""></a>sigma1 <span class="op">=</span> math.sqrt(<span class="dv">1</span>)</span>
+<span id="cb24-8"><a href=""></a>sigma2 <span class="op">=</span> math.sqrt(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>)</span>
+<span id="cb24-9"><a href=""></a>sigma3 <span class="op">=</span> math.sqrt(<span class="dv">1</span><span class="op">/</span><span class="dv">10</span>)</span>
+<span id="cb24-10"><a href=""></a>sigma4 <span class="op">=</span> math.sqrt(<span class="dv">1</span><span class="op">/</span><span class="dv">100</span>)</span>
+<span id="cb24-11"><a href=""></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">201</span>)</span>
+<span id="cb24-12"><a href=""></a></span>
+<span id="cb24-13"><a href=""></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">4</span>))</span>
+<span id="cb24-14"><a href=""></a>ax <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb24-15"><a href=""></a></span>
+<span id="cb24-16"><a href=""></a><span class="co"># Add the density function</span></span>
+<span id="cb24-17"><a href=""></a>y1 <span class="op">=</span> stats.norm.pdf(x, mu, sigma1)</span>
+<span id="cb24-18"><a href=""></a>y2 <span class="op">=</span> stats.norm.pdf(x,mu, sigma2)</span>
+<span id="cb24-19"><a href=""></a>y3 <span class="op">=</span> stats.norm.pdf(x, mu, sigma3)</span>
+<span id="cb24-20"><a href=""></a>y4 <span class="op">=</span> stats.norm.pdf(x, mu, sigma4)</span>
+<span id="cb24-21"><a href=""></a></span>
+<span id="cb24-22"><a href=""></a>ax.plot(x, y1, <span class="st">'-'</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>, label<span class="op">=</span><span class="st">'F_1'</span>)</span>
+<span id="cb24-23"><a href=""></a>ax.plot(x, y2, <span class="st">'-'</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>, label<span class="op">=</span><span class="st">'F_3'</span>)</span>
+<span id="cb24-24"><a href=""></a>ax.plot(x, y3, <span class="st">'-'</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>, label<span class="op">=</span><span class="st">'F_10'</span>)</span>
+<span id="cb24-25"><a href=""></a>ax.plot(x, y4, <span class="st">'-'</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>, label<span class="op">=</span><span class="st">'F_100'</span>)</span>
+<span id="cb24-26"><a href=""></a><span class="co"># layout</span></span>
+<span id="cb24-27"><a href=""></a>ax.grid(<span class="va">False</span>)</span>
+<span id="cb24-28"><a href=""></a>ax.legend(loc<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb24-29"><a href=""></a>ax.set_title(<span class="st">'Density functions'</span>)</span>
+<span id="cb24-30"><a href=""></a>ax.set_xlabel(<span class="st">'x'</span>)</span>
+<span id="cb24-31"><a href=""></a>ax.set_ylabel(<span class="st">'f(x)'</span>)</span>
+<span id="cb24-32"><a href=""></a></span>
+<span id="cb24-33"><a href=""></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
+<div>
+<figure>
 <p><img data-src="Lecture_2_files/figure-revealjs/cell-14-output-1.png" width="589" height="376"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="example-2" class="slide level2">
 <h2>Example</h2>
 <h4 id="normal-distribution-6">Normal distribution</h4>
-<div class="cell" data-execution_count="14">
-<details>
+<div id="85af0509" class="cell" data-execution_count="14">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb25-2"><a href="#cb25-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb25-3"><a href="#cb25-3"></a>np.random.seed(<span class="dv">0</span>)</span>
-<span id="cb25-4"><a href="#cb25-4"></a></span>
-<span id="cb25-5"><a href="#cb25-5"></a>mu <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb25-6"><a href="#cb25-6"></a>sigma1 <span class="op">=</span> math.sqrt(<span class="dv">1</span>)</span>
-<span id="cb25-7"><a href="#cb25-7"></a>sigma2 <span class="op">=</span> math.sqrt(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>)</span>
-<span id="cb25-8"><a href="#cb25-8"></a>sigma3 <span class="op">=</span> math.sqrt(<span class="dv">1</span><span class="op">/</span><span class="dv">10</span>)</span>
-<span id="cb25-9"><a href="#cb25-9"></a>sigma4 <span class="op">=</span> math.sqrt(<span class="dv">1</span><span class="op">/</span><span class="dv">100</span>)</span>
-<span id="cb25-10"><a href="#cb25-10"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">201</span>)</span>
-<span id="cb25-11"><a href="#cb25-11"></a></span>
-<span id="cb25-12"><a href="#cb25-12"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">4</span>))</span>
-<span id="cb25-13"><a href="#cb25-13"></a>ax <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="cb25-14"><a href="#cb25-14"></a></span>
-<span id="cb25-15"><a href="#cb25-15"></a><span class="co"># Add the distribution function</span></span>
-<span id="cb25-16"><a href="#cb25-16"></a>y1 <span class="op">=</span> stats.norm.cdf(x,mu, sigma1)</span>
-<span id="cb25-17"><a href="#cb25-17"></a>y2 <span class="op">=</span> stats.norm.cdf(x,mu, sigma2)</span>
-<span id="cb25-18"><a href="#cb25-18"></a>y3 <span class="op">=</span> stats.norm.cdf(x,mu, sigma3)</span>
-<span id="cb25-19"><a href="#cb25-19"></a>y4 <span class="op">=</span> stats.norm.cdf(x,mu, sigma4)</span>
-<span id="cb25-20"><a href="#cb25-20"></a></span>
-<span id="cb25-21"><a href="#cb25-21"></a>ax.plot(x, y1, <span class="st">'-'</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>, label<span class="op">=</span><span class="st">'F_1'</span>)</span>
-<span id="cb25-22"><a href="#cb25-22"></a>ax.plot(x, y2, <span class="st">'-'</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>, label<span class="op">=</span><span class="st">'F_3'</span>)</span>
-<span id="cb25-23"><a href="#cb25-23"></a>ax.plot(x, y3, <span class="st">'-'</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>, label<span class="op">=</span><span class="st">'F_10'</span>)</span>
-<span id="cb25-24"><a href="#cb25-24"></a>ax.plot(x, y4, <span class="st">'-'</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>, label<span class="op">=</span><span class="st">'F_100'</span>)</span>
-<span id="cb25-25"><a href="#cb25-25"></a><span class="co"># layout</span></span>
-<span id="cb25-26"><a href="#cb25-26"></a>ax.grid(<span class="va">False</span>)</span>
-<span id="cb25-27"><a href="#cb25-27"></a>ax.legend(loc<span class="op">=</span><span class="st">'right'</span>)</span>
-<span id="cb25-28"><a href="#cb25-28"></a>ax.set_title(<span class="st">'Distribution functions'</span>)</span>
-<span id="cb25-29"><a href="#cb25-29"></a>ax.set_xlabel(<span class="st">'x'</span>)</span>
-<span id="cb25-30"><a href="#cb25-30"></a>ax.set_ylabel(<span class="st">'F(x)'</span>)</span>
-<span id="cb25-31"><a href="#cb25-31"></a></span>
-<span id="cb25-32"><a href="#cb25-32"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb25-2"><a href=""></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb25-3"><a href=""></a>np.random.seed(<span class="dv">0</span>)</span>
+<span id="cb25-4"><a href=""></a></span>
+<span id="cb25-5"><a href=""></a>mu <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb25-6"><a href=""></a>sigma1 <span class="op">=</span> math.sqrt(<span class="dv">1</span>)</span>
+<span id="cb25-7"><a href=""></a>sigma2 <span class="op">=</span> math.sqrt(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>)</span>
+<span id="cb25-8"><a href=""></a>sigma3 <span class="op">=</span> math.sqrt(<span class="dv">1</span><span class="op">/</span><span class="dv">10</span>)</span>
+<span id="cb25-9"><a href=""></a>sigma4 <span class="op">=</span> math.sqrt(<span class="dv">1</span><span class="op">/</span><span class="dv">100</span>)</span>
+<span id="cb25-10"><a href=""></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">201</span>)</span>
+<span id="cb25-11"><a href=""></a></span>
+<span id="cb25-12"><a href=""></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">4</span>))</span>
+<span id="cb25-13"><a href=""></a>ax <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb25-14"><a href=""></a></span>
+<span id="cb25-15"><a href=""></a><span class="co"># Add the distribution function</span></span>
+<span id="cb25-16"><a href=""></a>y1 <span class="op">=</span> stats.norm.cdf(x,mu, sigma1)</span>
+<span id="cb25-17"><a href=""></a>y2 <span class="op">=</span> stats.norm.cdf(x,mu, sigma2)</span>
+<span id="cb25-18"><a href=""></a>y3 <span class="op">=</span> stats.norm.cdf(x,mu, sigma3)</span>
+<span id="cb25-19"><a href=""></a>y4 <span class="op">=</span> stats.norm.cdf(x,mu, sigma4)</span>
+<span id="cb25-20"><a href=""></a></span>
+<span id="cb25-21"><a href=""></a>ax.plot(x, y1, <span class="st">'-'</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>, label<span class="op">=</span><span class="st">'F_1'</span>)</span>
+<span id="cb25-22"><a href=""></a>ax.plot(x, y2, <span class="st">'-'</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>, label<span class="op">=</span><span class="st">'F_3'</span>)</span>
+<span id="cb25-23"><a href=""></a>ax.plot(x, y3, <span class="st">'-'</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>, label<span class="op">=</span><span class="st">'F_10'</span>)</span>
+<span id="cb25-24"><a href=""></a>ax.plot(x, y4, <span class="st">'-'</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>, label<span class="op">=</span><span class="st">'F_100'</span>)</span>
+<span id="cb25-25"><a href=""></a><span class="co"># layout</span></span>
+<span id="cb25-26"><a href=""></a>ax.grid(<span class="va">False</span>)</span>
+<span id="cb25-27"><a href=""></a>ax.legend(loc<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb25-28"><a href=""></a>ax.set_title(<span class="st">'Distribution functions'</span>)</span>
+<span id="cb25-29"><a href=""></a>ax.set_xlabel(<span class="st">'x'</span>)</span>
+<span id="cb25-30"><a href=""></a>ax.set_ylabel(<span class="st">'F(x)'</span>)</span>
+<span id="cb25-31"><a href=""></a></span>
+<span id="cb25-32"><a href=""></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
+<div>
+<figure>
 <p><img data-src="Lecture_2_files/figure-revealjs/cell-15-output-1.png" width="589" height="376"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -897,34 +911,38 @@ P(X=x)=\begin{cases}\frac{1}{2}\ \text{if}\ x=0\\
 <section id="central-limit-theorem-clt-2" class="slide level2">
 <h2>Central Limit Theorem (CLT)</h2>
 <h4 id="example-4">Example</h4>
-<div class="cell" data-execution_count="15">
-<details>
+<div id="d3212816" class="cell" data-execution_count="15">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb26-2"><a href="#cb26-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb26-3"><a href="#cb26-3"></a></span>
-<span id="cb26-4"><a href="#cb26-4"></a>n, p <span class="op">=</span> <span class="dv">1000</span>, <span class="fl">0.1</span></span>
-<span id="cb26-5"><a href="#cb26-5"></a></span>
-<span id="cb26-6"><a href="#cb26-6"></a>mu <span class="op">=</span> n<span class="op">*</span>p</span>
-<span id="cb26-7"><a href="#cb26-7"></a>sigma <span class="op">=</span> np.sqrt(n<span class="op">*</span>p<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>p))</span>
-<span id="cb26-8"><a href="#cb26-8"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span><span class="op">*</span>sigma<span class="op">+</span>mu, <span class="dv">2</span><span class="op">*</span>sigma<span class="op">+</span>mu, <span class="dv">10001</span>)</span>
-<span id="cb26-9"><a href="#cb26-9"></a></span>
-<span id="cb26-10"><a href="#cb26-10"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">4</span>))</span>
-<span id="cb26-11"><a href="#cb26-11"></a>ax <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="cb26-12"><a href="#cb26-12"></a></span>
-<span id="cb26-13"><a href="#cb26-13"></a>ax.plot(x, stats.norm.cdf(x,mu,sigma), <span class="st">'-'</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>, label<span class="op">=</span><span class="st">'F_Normal'</span>)</span>
-<span id="cb26-14"><a href="#cb26-14"></a>ax.plot(x, stats.binom.cdf(x, n, p), <span class="st">'-'</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>, label<span class="op">=</span><span class="st">'F_Binomial_1000'</span>)</span>
-<span id="cb26-15"><a href="#cb26-15"></a><span class="co"># layout</span></span>
-<span id="cb26-16"><a href="#cb26-16"></a>ax.grid(<span class="va">False</span>)</span>
-<span id="cb26-17"><a href="#cb26-17"></a>ax.legend(loc<span class="op">=</span><span class="st">'right'</span>)</span>
-<span id="cb26-18"><a href="#cb26-18"></a>ax.set_title(<span class="st">'Distribution functions'</span>)</span>
-<span id="cb26-19"><a href="#cb26-19"></a>ax.set_xlabel(<span class="st">'x'</span>)</span>
-<span id="cb26-20"><a href="#cb26-20"></a>ax.set_ylabel(<span class="st">'F(x)'</span>)</span>
-<span id="cb26-21"><a href="#cb26-21"></a></span>
-<span id="cb26-22"><a href="#cb26-22"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb26-2"><a href=""></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb26-3"><a href=""></a></span>
+<span id="cb26-4"><a href=""></a>n, p <span class="op">=</span> <span class="dv">1000</span>, <span class="fl">0.1</span></span>
+<span id="cb26-5"><a href=""></a></span>
+<span id="cb26-6"><a href=""></a>mu <span class="op">=</span> n<span class="op">*</span>p</span>
+<span id="cb26-7"><a href=""></a>sigma <span class="op">=</span> np.sqrt(n<span class="op">*</span>p<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>p))</span>
+<span id="cb26-8"><a href=""></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span><span class="op">*</span>sigma<span class="op">+</span>mu, <span class="dv">2</span><span class="op">*</span>sigma<span class="op">+</span>mu, <span class="dv">10001</span>)</span>
+<span id="cb26-9"><a href=""></a></span>
+<span id="cb26-10"><a href=""></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">4</span>))</span>
+<span id="cb26-11"><a href=""></a>ax <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb26-12"><a href=""></a></span>
+<span id="cb26-13"><a href=""></a>ax.plot(x, stats.norm.cdf(x,mu,sigma), <span class="st">'-'</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>, label<span class="op">=</span><span class="st">'F_Normal'</span>)</span>
+<span id="cb26-14"><a href=""></a>ax.plot(x, stats.binom.cdf(x, n, p), <span class="st">'-'</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>, label<span class="op">=</span><span class="st">'F_Binomial_1000'</span>)</span>
+<span id="cb26-15"><a href=""></a><span class="co"># layout</span></span>
+<span id="cb26-16"><a href=""></a>ax.grid(<span class="va">False</span>)</span>
+<span id="cb26-17"><a href=""></a>ax.legend(loc<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb26-18"><a href=""></a>ax.set_title(<span class="st">'Distribution functions'</span>)</span>
+<span id="cb26-19"><a href=""></a>ax.set_xlabel(<span class="st">'x'</span>)</span>
+<span id="cb26-20"><a href=""></a>ax.set_ylabel(<span class="st">'F(x)'</span>)</span>
+<span id="cb26-21"><a href=""></a></span>
+<span id="cb26-22"><a href=""></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
+<div>
+<figure>
 <p><img data-src="Lecture_2_files/figure-revealjs/cell-16-output-1.png" width="591" height="376"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -949,8 +967,7 @@ P(X=x)=\begin{cases}\frac{1}{2}\ \text{if}\ x=0\\
 <figcaption>Source: <span class="citation" data-cites="datasciencebook">Timbers, Campbell, and Lee (<a href="#/references-1" role="doc-biblioref" onclick="">2022</a>)</span></figcaption>
 </figure>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="point-estimation" class="slide level2">
 <h2>Point Estimation</h2>
@@ -973,43 +990,47 @@ P(X=x)=\begin{cases}\frac{1}{2}\ \text{if}\ x=0\\
 <h2>Point Estimation</h2>
 <h3 id="example-6">Example</h3>
 <p>Since sums of normal distributions are normal distributed again we can even write <span class="math display">\[\bar{X}_n\sim\mathcal{N}(\mu,\frac{\sigma^2}{n}).\]</span></p>
-<div class="cell" data-execution_count="16">
-<details>
+<div id="5360f42c" class="cell" data-execution_count="16">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb27-2"><a href="#cb27-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb27-3"><a href="#cb27-3"></a></span>
-<span id="cb27-4"><a href="#cb27-4"></a>np.random.seed(<span class="dv">0</span>)  </span>
-<span id="cb27-5"><a href="#cb27-5"></a>mu <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb27-6"><a href="#cb27-6"></a>sigma1 <span class="op">=</span> math.sqrt(<span class="dv">1</span>)</span>
-<span id="cb27-7"><a href="#cb27-7"></a>sigma2 <span class="op">=</span> math.sqrt(<span class="dv">1</span><span class="op">/</span><span class="dv">5</span>)</span>
-<span id="cb27-8"><a href="#cb27-8"></a>sigma3 <span class="op">=</span> math.sqrt(<span class="dv">1</span><span class="op">/</span><span class="dv">20</span>)</span>
-<span id="cb27-9"><a href="#cb27-9"></a>sigma4 <span class="op">=</span> math.sqrt(<span class="dv">1</span><span class="op">/</span><span class="dv">100</span>)</span>
-<span id="cb27-10"><a href="#cb27-10"></a>x <span class="op">=</span> np.linspace(<span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">201</span>)</span>
-<span id="cb27-11"><a href="#cb27-11"></a></span>
-<span id="cb27-12"><a href="#cb27-12"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">4</span>))</span>
-<span id="cb27-13"><a href="#cb27-13"></a>ax <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="cb27-14"><a href="#cb27-14"></a></span>
-<span id="cb27-15"><a href="#cb27-15"></a><span class="co"># Add the density function</span></span>
-<span id="cb27-16"><a href="#cb27-16"></a>y1 <span class="op">=</span> stats.norm.pdf(x, mu, sigma1)</span>
-<span id="cb27-17"><a href="#cb27-17"></a>y2 <span class="op">=</span> stats.norm.pdf(x, mu, sigma2)</span>
-<span id="cb27-18"><a href="#cb27-18"></a>y3 <span class="op">=</span> stats.norm.pdf(x, mu, sigma3)</span>
-<span id="cb27-19"><a href="#cb27-19"></a>y4 <span class="op">=</span> stats.norm.pdf(x, mu, sigma4)</span>
-<span id="cb27-20"><a href="#cb27-20"></a></span>
-<span id="cb27-21"><a href="#cb27-21"></a>ax.plot(x, y1, <span class="st">'-'</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>, label<span class="op">=</span><span class="st">'F_1'</span>)</span>
-<span id="cb27-22"><a href="#cb27-22"></a>ax.plot(x, y2, <span class="st">'-'</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>, label<span class="op">=</span><span class="st">'F_5'</span>)</span>
-<span id="cb27-23"><a href="#cb27-23"></a>ax.plot(x, y3, <span class="st">'-'</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>, label<span class="op">=</span><span class="st">'F_10'</span>)</span>
-<span id="cb27-24"><a href="#cb27-24"></a>ax.plot(x, y4, <span class="st">'-'</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>, label<span class="op">=</span><span class="st">'F_100'</span>)</span>
-<span id="cb27-25"><a href="#cb27-25"></a><span class="co"># layout</span></span>
-<span id="cb27-26"><a href="#cb27-26"></a>ax.grid(<span class="va">False</span>)</span>
-<span id="cb27-27"><a href="#cb27-27"></a>ax.legend(loc<span class="op">=</span><span class="st">'right'</span>)</span>
-<span id="cb27-28"><a href="#cb27-28"></a>ax.set_title(<span class="st">'Density functions'</span>)</span>
-<span id="cb27-29"><a href="#cb27-29"></a>ax.set_xlabel(<span class="st">'x'</span>)</span>
-<span id="cb27-30"><a href="#cb27-30"></a>ax.set_ylabel(<span class="st">'f(x)'</span>)</span>
-<span id="cb27-31"><a href="#cb27-31"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb27-2"><a href=""></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb27-3"><a href=""></a></span>
+<span id="cb27-4"><a href=""></a>np.random.seed(<span class="dv">0</span>)  </span>
+<span id="cb27-5"><a href=""></a>mu <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb27-6"><a href=""></a>sigma1 <span class="op">=</span> math.sqrt(<span class="dv">1</span>)</span>
+<span id="cb27-7"><a href=""></a>sigma2 <span class="op">=</span> math.sqrt(<span class="dv">1</span><span class="op">/</span><span class="dv">5</span>)</span>
+<span id="cb27-8"><a href=""></a>sigma3 <span class="op">=</span> math.sqrt(<span class="dv">1</span><span class="op">/</span><span class="dv">20</span>)</span>
+<span id="cb27-9"><a href=""></a>sigma4 <span class="op">=</span> math.sqrt(<span class="dv">1</span><span class="op">/</span><span class="dv">100</span>)</span>
+<span id="cb27-10"><a href=""></a>x <span class="op">=</span> np.linspace(<span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">201</span>)</span>
+<span id="cb27-11"><a href=""></a></span>
+<span id="cb27-12"><a href=""></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">4</span>))</span>
+<span id="cb27-13"><a href=""></a>ax <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb27-14"><a href=""></a></span>
+<span id="cb27-15"><a href=""></a><span class="co"># Add the density function</span></span>
+<span id="cb27-16"><a href=""></a>y1 <span class="op">=</span> stats.norm.pdf(x, mu, sigma1)</span>
+<span id="cb27-17"><a href=""></a>y2 <span class="op">=</span> stats.norm.pdf(x, mu, sigma2)</span>
+<span id="cb27-18"><a href=""></a>y3 <span class="op">=</span> stats.norm.pdf(x, mu, sigma3)</span>
+<span id="cb27-19"><a href=""></a>y4 <span class="op">=</span> stats.norm.pdf(x, mu, sigma4)</span>
+<span id="cb27-20"><a href=""></a></span>
+<span id="cb27-21"><a href=""></a>ax.plot(x, y1, <span class="st">'-'</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>, label<span class="op">=</span><span class="st">'F_1'</span>)</span>
+<span id="cb27-22"><a href=""></a>ax.plot(x, y2, <span class="st">'-'</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>, label<span class="op">=</span><span class="st">'F_5'</span>)</span>
+<span id="cb27-23"><a href=""></a>ax.plot(x, y3, <span class="st">'-'</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>, label<span class="op">=</span><span class="st">'F_10'</span>)</span>
+<span id="cb27-24"><a href=""></a>ax.plot(x, y4, <span class="st">'-'</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>, label<span class="op">=</span><span class="st">'F_100'</span>)</span>
+<span id="cb27-25"><a href=""></a><span class="co"># layout</span></span>
+<span id="cb27-26"><a href=""></a>ax.grid(<span class="va">False</span>)</span>
+<span id="cb27-27"><a href=""></a>ax.legend(loc<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb27-28"><a href=""></a>ax.set_title(<span class="st">'Density functions'</span>)</span>
+<span id="cb27-29"><a href=""></a>ax.set_xlabel(<span class="st">'x'</span>)</span>
+<span id="cb27-30"><a href=""></a>ax.set_ylabel(<span class="st">'f(x)'</span>)</span>
+<span id="cb27-31"><a href=""></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
+<div>
+<figure>
 <p><img data-src="Lecture_2_files/figure-revealjs/cell-17-output-1.png" width="589" height="376"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1040,32 +1061,32 @@ P(a &lt; \mu &lt; b)&amp;=P\Big(\bar{X}_n - \frac{\sigma}{\sqrt{n}}q_Z(0.975)&lt
 <section id="confidence-intervals-3" class="slide level2">
 <h2>Confidence Intervals</h2>
 <h4 id="example-exact-ci-2">Example: Exact CI</h4>
-<div class="cell" data-execution_count="17">
-<details>
+<div id="42a13cd0" class="cell" data-execution_count="17">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb28-2"><a href="#cb28-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb28-3"><a href="#cb28-3"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
-<span id="cb28-4"><a href="#cb28-4"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb28-5"><a href="#cb28-5"></a><span class="im">import</span> random</span>
-<span id="cb28-6"><a href="#cb28-6"></a><span class="im">import</span> math</span>
-<span id="cb28-7"><a href="#cb28-7"></a></span>
-<span id="cb28-8"><a href="#cb28-8"></a>np.random.seed(<span class="dv">0</span>)</span>
-<span id="cb28-9"><a href="#cb28-9"></a></span>
-<span id="cb28-10"><a href="#cb28-10"></a>mu <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb28-11"><a href="#cb28-11"></a>sigma <span class="op">=</span> math.sqrt(<span class="dv">1</span>)</span>
-<span id="cb28-12"><a href="#cb28-12"></a>alpha <span class="op">=</span> <span class="fl">0.05</span></span>
-<span id="cb28-13"><a href="#cb28-13"></a>sample_size <span class="op">=</span> <span class="dv">1000</span></span>
-<span id="cb28-14"><a href="#cb28-14"></a>sample <span class="op">=</span> np.random.normal(mu, sigma, sample_size)</span>
-<span id="cb28-15"><a href="#cb28-15"></a>sample_mean <span class="op">=</span> sample.mean()</span>
-<span id="cb28-16"><a href="#cb28-16"></a></span>
-<span id="cb28-17"><a href="#cb28-17"></a><span class="bu">print</span>(<span class="st">"Sample Mean:"</span>, sample_mean)</span>
-<span id="cb28-18"><a href="#cb28-18"></a>quantile <span class="op">=</span> stats.norm.ppf(q <span class="op">=</span> <span class="dv">1</span><span class="op">-</span>alpha<span class="op">/</span><span class="dv">2</span>)</span>
-<span id="cb28-19"><a href="#cb28-19"></a><span class="bu">print</span>(<span class="st">"Quantile:"</span>, quantile)              <span class="co"># Check the quantile                        </span></span>
-<span id="cb28-20"><a href="#cb28-20"></a></span>
-<span id="cb28-21"><a href="#cb28-21"></a>confidence_interval <span class="op">=</span> (sample_mean <span class="op">-</span> (sigma<span class="op">/</span>math.sqrt(sample_size))<span class="op">*</span>quantile,</span>
-<span id="cb28-22"><a href="#cb28-22"></a>                                      sample_mean <span class="op">+</span> (sigma<span class="op">/</span>math.sqrt(sample_size))<span class="op">*</span>quantile)</span>
-<span id="cb28-23"><a href="#cb28-23"></a><span class="bu">print</span>(<span class="st">"Confidence interval:"</span>, confidence_interval)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb28-2"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb28-3"><a href=""></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
+<span id="cb28-4"><a href=""></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb28-5"><a href=""></a><span class="im">import</span> random</span>
+<span id="cb28-6"><a href=""></a><span class="im">import</span> math</span>
+<span id="cb28-7"><a href=""></a></span>
+<span id="cb28-8"><a href=""></a>np.random.seed(<span class="dv">0</span>)</span>
+<span id="cb28-9"><a href=""></a></span>
+<span id="cb28-10"><a href=""></a>mu <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb28-11"><a href=""></a>sigma <span class="op">=</span> math.sqrt(<span class="dv">1</span>)</span>
+<span id="cb28-12"><a href=""></a>alpha <span class="op">=</span> <span class="fl">0.05</span></span>
+<span id="cb28-13"><a href=""></a>sample_size <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb28-14"><a href=""></a>sample <span class="op">=</span> np.random.normal(mu, sigma, sample_size)</span>
+<span id="cb28-15"><a href=""></a>sample_mean <span class="op">=</span> sample.mean()</span>
+<span id="cb28-16"><a href=""></a></span>
+<span id="cb28-17"><a href=""></a><span class="bu">print</span>(<span class="st">"Sample Mean:"</span>, sample_mean)</span>
+<span id="cb28-18"><a href=""></a>quantile <span class="op">=</span> stats.norm.ppf(q <span class="op">=</span> <span class="dv">1</span><span class="op">-</span>alpha<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb28-19"><a href=""></a><span class="bu">print</span>(<span class="st">"Quantile:"</span>, quantile)              <span class="co"># Check the quantile                        </span></span>
+<span id="cb28-20"><a href=""></a></span>
+<span id="cb28-21"><a href=""></a>confidence_interval <span class="op">=</span> (sample_mean <span class="op">-</span> (sigma<span class="op">/</span>math.sqrt(sample_size))<span class="op">*</span>quantile,</span>
+<span id="cb28-22"><a href=""></a>                                      sample_mean <span class="op">+</span> (sigma<span class="op">/</span>math.sqrt(sample_size))<span class="op">*</span>quantile)</span>
+<span id="cb28-23"><a href=""></a><span class="bu">print</span>(<span class="st">"Confidence interval:"</span>, confidence_interval)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Sample Mean: 4.9547432925098045
@@ -1077,47 +1098,51 @@ Confidence interval: (4.892763789279348, 5.016722795740261)</code></pre>
 <section id="confidence-intervals-4" class="slide level2">
 <h2>Confidence Intervals</h2>
 <h4 id="example-exact-ci-3">Example: Exact CI</h4>
-<div class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>intervals <span class="op">=</span> []</span>
-<span id="cb30-2"><a href="#cb30-2"></a>sample_means <span class="op">=</span> []</span>
-<span id="cb30-3"><a href="#cb30-3"></a></span>
-<span id="cb30-4"><a href="#cb30-4"></a>k <span class="op">=</span> <span class="dv">40</span></span>
-<span id="cb30-5"><a href="#cb30-5"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(k):</span>
-<span id="cb30-6"><a href="#cb30-6"></a>    sample <span class="op">=</span> np.random.normal(mu, sigma, sample_size)</span>
-<span id="cb30-7"><a href="#cb30-7"></a>    sample_mean <span class="op">=</span> sample.mean()</span>
-<span id="cb30-8"><a href="#cb30-8"></a>    sample_means.append(sample_mean)</span>
-<span id="cb30-9"><a href="#cb30-9"></a></span>
-<span id="cb30-10"><a href="#cb30-10"></a>    confidence_interval <span class="op">=</span> (sample_mean <span class="op">-</span> (sigma<span class="op">/</span>math.sqrt(sample_size))<span class="op">*</span>quantile,</span>
-<span id="cb30-11"><a href="#cb30-11"></a>                           sample_mean <span class="op">+</span> (sigma<span class="op">/</span>math.sqrt(sample_size))<span class="op">*</span>quantile) </span>
-<span id="cb30-12"><a href="#cb30-12"></a>    </span>
-<span id="cb30-13"><a href="#cb30-13"></a>    intervals.append(confidence_interval)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e9674f26" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href=""></a>intervals <span class="op">=</span> []</span>
+<span id="cb30-2"><a href=""></a>sample_means <span class="op">=</span> []</span>
+<span id="cb30-3"><a href=""></a></span>
+<span id="cb30-4"><a href=""></a>k <span class="op">=</span> <span class="dv">40</span></span>
+<span id="cb30-5"><a href=""></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(k):</span>
+<span id="cb30-6"><a href=""></a>    sample <span class="op">=</span> np.random.normal(mu, sigma, sample_size)</span>
+<span id="cb30-7"><a href=""></a>    sample_mean <span class="op">=</span> sample.mean()</span>
+<span id="cb30-8"><a href=""></a>    sample_means.append(sample_mean)</span>
+<span id="cb30-9"><a href=""></a></span>
+<span id="cb30-10"><a href=""></a>    confidence_interval <span class="op">=</span> (sample_mean <span class="op">-</span> (sigma<span class="op">/</span>math.sqrt(sample_size))<span class="op">*</span>quantile,</span>
+<span id="cb30-11"><a href=""></a>                           sample_mean <span class="op">+</span> (sigma<span class="op">/</span>math.sqrt(sample_size))<span class="op">*</span>quantile) </span>
+<span id="cb30-12"><a href=""></a>    </span>
+<span id="cb30-13"><a href=""></a>    intervals.append(confidence_interval)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="confidence-intervals-5" class="slide level2">
 <h2>Confidence Intervals</h2>
 <h4 id="example-exact-ci-4">Example: Exact CI</h4>
-<div class="cell" data-execution_count="19">
-<details>
+<div id="6be12383" class="cell" data-execution_count="19">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">4</span>))</span>
-<span id="cb31-2"><a href="#cb31-2"></a></span>
-<span id="cb31-3"><a href="#cb31-3"></a>lower_limits <span class="op">=</span> np.array([interv[<span class="dv">0</span>] <span class="cf">for</span> interv <span class="kw">in</span> intervals])</span>
-<span id="cb31-4"><a href="#cb31-4"></a>upper_limits <span class="op">=</span> np.array([interv[<span class="dv">1</span>] <span class="cf">for</span> interv <span class="kw">in</span> intervals])</span>
-<span id="cb31-5"><a href="#cb31-5"></a></span>
-<span id="cb31-6"><a href="#cb31-6"></a>plt.errorbar(x<span class="op">=</span>np.arange(<span class="fl">0.1</span>, k, <span class="dv">1</span>), </span>
-<span id="cb31-7"><a href="#cb31-7"></a>             y<span class="op">=</span>sample_means, </span>
-<span id="cb31-8"><a href="#cb31-8"></a>             yerr<span class="op">=</span> (upper_limits <span class="op">-</span> lower_limits)<span class="op">/</span><span class="dv">2</span> ,</span>
-<span id="cb31-9"><a href="#cb31-9"></a>             fmt<span class="op">=</span><span class="st">'o'</span>)</span>
-<span id="cb31-10"><a href="#cb31-10"></a></span>
-<span id="cb31-11"><a href="#cb31-11"></a>plt.hlines(xmin<span class="op">=</span><span class="dv">0</span>, xmax<span class="op">=</span>k,</span>
-<span id="cb31-12"><a href="#cb31-12"></a>           y<span class="op">=</span>mu, </span>
-<span id="cb31-13"><a href="#cb31-13"></a>           linewidth<span class="op">=</span><span class="fl">2.0</span>,</span>
-<span id="cb31-14"><a href="#cb31-14"></a>           color<span class="op">=</span><span class="st">"red"</span>)</span>
-<span id="cb31-15"><a href="#cb31-15"></a></span>
-<span id="cb31-16"><a href="#cb31-16"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href=""></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">4</span>))</span>
+<span id="cb31-2"><a href=""></a></span>
+<span id="cb31-3"><a href=""></a>lower_limits <span class="op">=</span> np.array([interv[<span class="dv">0</span>] <span class="cf">for</span> interv <span class="kw">in</span> intervals])</span>
+<span id="cb31-4"><a href=""></a>upper_limits <span class="op">=</span> np.array([interv[<span class="dv">1</span>] <span class="cf">for</span> interv <span class="kw">in</span> intervals])</span>
+<span id="cb31-5"><a href=""></a></span>
+<span id="cb31-6"><a href=""></a>plt.errorbar(x<span class="op">=</span>np.arange(<span class="fl">0.1</span>, k, <span class="dv">1</span>), </span>
+<span id="cb31-7"><a href=""></a>             y<span class="op">=</span>sample_means, </span>
+<span id="cb31-8"><a href=""></a>             yerr<span class="op">=</span> (upper_limits <span class="op">-</span> lower_limits)<span class="op">/</span><span class="dv">2</span> ,</span>
+<span id="cb31-9"><a href=""></a>             fmt<span class="op">=</span><span class="st">'o'</span>)</span>
+<span id="cb31-10"><a href=""></a></span>
+<span id="cb31-11"><a href=""></a>plt.hlines(xmin<span class="op">=</span><span class="dv">0</span>, xmax<span class="op">=</span>k,</span>
+<span id="cb31-12"><a href=""></a>           y<span class="op">=</span>mu, </span>
+<span id="cb31-13"><a href=""></a>           linewidth<span class="op">=</span><span class="fl">2.0</span>,</span>
+<span id="cb31-14"><a href=""></a>           color<span class="op">=</span><span class="st">"red"</span>)</span>
+<span id="cb31-15"><a href=""></a></span>
+<span id="cb31-16"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
+<div>
+<figure>
 <p><img data-src="Lecture_2_files/figure-revealjs/cell-20-output-1.png" width="653" height="337"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1150,33 +1175,33 @@ P(a &lt; \theta &lt; b)&amp;=P\Big(\hat{\theta}_n - \sqrt{Var(\hat{\theta}_n)}q_
 <section id="confidence-intervals-9" class="slide level2">
 <h2>Confidence Intervals</h2>
 <h4 id="example-asymptotic-ci-1-1">Example: Asymptotic CI (1)</h4>
-<div class="cell" data-execution_count="20">
-<details>
+<div id="545b8f35" class="cell" data-execution_count="20">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb32-2"><a href="#cb32-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb32-3"><a href="#cb32-3"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
-<span id="cb32-4"><a href="#cb32-4"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb32-5"><a href="#cb32-5"></a><span class="im">import</span> random</span>
-<span id="cb32-6"><a href="#cb32-6"></a><span class="im">import</span> math</span>
-<span id="cb32-7"><a href="#cb32-7"></a></span>
-<span id="cb32-8"><a href="#cb32-8"></a>np.random.seed(<span class="dv">0</span>)</span>
-<span id="cb32-9"><a href="#cb32-9"></a></span>
-<span id="cb32-10"><a href="#cb32-10"></a>n <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb32-11"><a href="#cb32-11"></a>p <span class="op">=</span> <span class="fl">0.1</span></span>
-<span id="cb32-12"><a href="#cb32-12"></a>sigma <span class="op">=</span> math.sqrt(n<span class="op">*</span>p<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>p))</span>
-<span id="cb32-13"><a href="#cb32-13"></a>alpha <span class="op">=</span> <span class="fl">0.05</span></span>
-<span id="cb32-14"><a href="#cb32-14"></a>sample_size <span class="op">=</span> <span class="dv">1000</span></span>
-<span id="cb32-15"><a href="#cb32-15"></a>sample <span class="op">=</span> np.random.binomial(n, p, sample_size)</span>
-<span id="cb32-16"><a href="#cb32-16"></a>sample_mean <span class="op">=</span> sample.mean()</span>
-<span id="cb32-17"><a href="#cb32-17"></a></span>
-<span id="cb32-18"><a href="#cb32-18"></a>quantile <span class="op">=</span> stats.norm.ppf(q <span class="op">=</span> <span class="dv">1</span><span class="op">-</span>alpha<span class="op">/</span><span class="dv">2</span>)</span>
-<span id="cb32-19"><a href="#cb32-19"></a><span class="bu">print</span>(sample_mean)</span>
-<span id="cb32-20"><a href="#cb32-20"></a><span class="bu">print</span>(<span class="st">"Quantile:"</span>, quantile) <span class="co"># Check the quantile                      </span></span>
-<span id="cb32-21"><a href="#cb32-21"></a></span>
-<span id="cb32-22"><a href="#cb32-22"></a>confidence_interval <span class="op">=</span> (sample_mean <span class="op">-</span> (sigma<span class="op">/</span>math.sqrt(sample_size))<span class="op">*</span>quantile,</span>
-<span id="cb32-23"><a href="#cb32-23"></a>                                      sample_mean <span class="op">+</span> (sigma<span class="op">/</span>math.sqrt(sample_size))<span class="op">*</span>quantile)</span>
-<span id="cb32-24"><a href="#cb32-24"></a><span class="bu">print</span>(<span class="st">"Confidence interval:"</span>, confidence_interval)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb32-2"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb32-3"><a href=""></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
+<span id="cb32-4"><a href=""></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb32-5"><a href=""></a><span class="im">import</span> random</span>
+<span id="cb32-6"><a href=""></a><span class="im">import</span> math</span>
+<span id="cb32-7"><a href=""></a></span>
+<span id="cb32-8"><a href=""></a>np.random.seed(<span class="dv">0</span>)</span>
+<span id="cb32-9"><a href=""></a></span>
+<span id="cb32-10"><a href=""></a>n <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb32-11"><a href=""></a>p <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb32-12"><a href=""></a>sigma <span class="op">=</span> math.sqrt(n<span class="op">*</span>p<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>p))</span>
+<span id="cb32-13"><a href=""></a>alpha <span class="op">=</span> <span class="fl">0.05</span></span>
+<span id="cb32-14"><a href=""></a>sample_size <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb32-15"><a href=""></a>sample <span class="op">=</span> np.random.binomial(n, p, sample_size)</span>
+<span id="cb32-16"><a href=""></a>sample_mean <span class="op">=</span> sample.mean()</span>
+<span id="cb32-17"><a href=""></a></span>
+<span id="cb32-18"><a href=""></a>quantile <span class="op">=</span> stats.norm.ppf(q <span class="op">=</span> <span class="dv">1</span><span class="op">-</span>alpha<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb32-19"><a href=""></a><span class="bu">print</span>(sample_mean)</span>
+<span id="cb32-20"><a href=""></a><span class="bu">print</span>(<span class="st">"Quantile:"</span>, quantile) <span class="co"># Check the quantile                      </span></span>
+<span id="cb32-21"><a href=""></a></span>
+<span id="cb32-22"><a href=""></a>confidence_interval <span class="op">=</span> (sample_mean <span class="op">-</span> (sigma<span class="op">/</span>math.sqrt(sample_size))<span class="op">*</span>quantile,</span>
+<span id="cb32-23"><a href=""></a>                                      sample_mean <span class="op">+</span> (sigma<span class="op">/</span>math.sqrt(sample_size))<span class="op">*</span>quantile)</span>
+<span id="cb32-24"><a href=""></a><span class="bu">print</span>(<span class="st">"Confidence interval:"</span>, confidence_interval)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>0.985
@@ -1188,47 +1213,51 @@ Confidence interval: (0.9262010804637983, 1.0437989195362016)</code></pre>
 <section id="confidence-intervals-10" class="slide level2">
 <h2>Confidence Intervals</h2>
 <h4 id="example-asymptotic-ci-1-2">Example: Asymptotic CI (1)</h4>
-<div class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>intervals <span class="op">=</span> []</span>
-<span id="cb34-2"><a href="#cb34-2"></a>sample_means <span class="op">=</span> []</span>
-<span id="cb34-3"><a href="#cb34-3"></a></span>
-<span id="cb34-4"><a href="#cb34-4"></a>k <span class="op">=</span> <span class="dv">40</span></span>
-<span id="cb34-5"><a href="#cb34-5"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(k):</span>
-<span id="cb34-6"><a href="#cb34-6"></a>    sample <span class="op">=</span>  np.random.binomial(n, p, sample_size)</span>
-<span id="cb34-7"><a href="#cb34-7"></a>    sample_mean <span class="op">=</span> sample.mean()</span>
-<span id="cb34-8"><a href="#cb34-8"></a>    sample_means.append(sample_mean)</span>
-<span id="cb34-9"><a href="#cb34-9"></a></span>
-<span id="cb34-10"><a href="#cb34-10"></a>    confidence_interval <span class="op">=</span> (sample_mean <span class="op">-</span> (sigma<span class="op">/</span>math.sqrt(sample_size))<span class="op">*</span>quantile,</span>
-<span id="cb34-11"><a href="#cb34-11"></a>                           sample_mean <span class="op">+</span> (sigma<span class="op">/</span>math.sqrt(sample_size))<span class="op">*</span>quantile) </span>
-<span id="cb34-12"><a href="#cb34-12"></a>    </span>
-<span id="cb34-13"><a href="#cb34-13"></a>    intervals.append(confidence_interval)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="adbac575" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href=""></a>intervals <span class="op">=</span> []</span>
+<span id="cb34-2"><a href=""></a>sample_means <span class="op">=</span> []</span>
+<span id="cb34-3"><a href=""></a></span>
+<span id="cb34-4"><a href=""></a>k <span class="op">=</span> <span class="dv">40</span></span>
+<span id="cb34-5"><a href=""></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(k):</span>
+<span id="cb34-6"><a href=""></a>    sample <span class="op">=</span>  np.random.binomial(n, p, sample_size)</span>
+<span id="cb34-7"><a href=""></a>    sample_mean <span class="op">=</span> sample.mean()</span>
+<span id="cb34-8"><a href=""></a>    sample_means.append(sample_mean)</span>
+<span id="cb34-9"><a href=""></a></span>
+<span id="cb34-10"><a href=""></a>    confidence_interval <span class="op">=</span> (sample_mean <span class="op">-</span> (sigma<span class="op">/</span>math.sqrt(sample_size))<span class="op">*</span>quantile,</span>
+<span id="cb34-11"><a href=""></a>                           sample_mean <span class="op">+</span> (sigma<span class="op">/</span>math.sqrt(sample_size))<span class="op">*</span>quantile) </span>
+<span id="cb34-12"><a href=""></a>    </span>
+<span id="cb34-13"><a href=""></a>    intervals.append(confidence_interval)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="confidence-intervals-11" class="slide level2">
 <h2>Confidence Intervals</h2>
 <h4 id="example-asymptotic-ci-1-3">Example: Asymptotic CI (1)</h4>
-<div class="cell" data-execution_count="22">
-<details>
+<div id="efa94c87" class="cell" data-execution_count="22">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">4</span>))</span>
-<span id="cb35-2"><a href="#cb35-2"></a></span>
-<span id="cb35-3"><a href="#cb35-3"></a>lower_limits <span class="op">=</span> np.array([interv[<span class="dv">0</span>] <span class="cf">for</span> interv <span class="kw">in</span> intervals])</span>
-<span id="cb35-4"><a href="#cb35-4"></a>upper_limits <span class="op">=</span> np.array([interv[<span class="dv">1</span>] <span class="cf">for</span> interv <span class="kw">in</span> intervals])</span>
-<span id="cb35-5"><a href="#cb35-5"></a></span>
-<span id="cb35-6"><a href="#cb35-6"></a>plt.errorbar(x<span class="op">=</span>np.arange(<span class="fl">0.1</span>, k, <span class="dv">1</span>), </span>
-<span id="cb35-7"><a href="#cb35-7"></a>             y<span class="op">=</span>sample_means, </span>
-<span id="cb35-8"><a href="#cb35-8"></a>             yerr<span class="op">=</span> (upper_limits <span class="op">-</span> lower_limits)<span class="op">/</span><span class="dv">2</span> ,</span>
-<span id="cb35-9"><a href="#cb35-9"></a>             fmt<span class="op">=</span><span class="st">'o'</span>)</span>
-<span id="cb35-10"><a href="#cb35-10"></a></span>
-<span id="cb35-11"><a href="#cb35-11"></a>plt.hlines(xmin<span class="op">=</span><span class="dv">0</span>, xmax<span class="op">=</span>k,</span>
-<span id="cb35-12"><a href="#cb35-12"></a>           y<span class="op">=</span>n<span class="op">*</span>p, </span>
-<span id="cb35-13"><a href="#cb35-13"></a>           linewidth<span class="op">=</span><span class="fl">2.0</span>,</span>
-<span id="cb35-14"><a href="#cb35-14"></a>           color<span class="op">=</span><span class="st">"red"</span>)</span>
-<span id="cb35-15"><a href="#cb35-15"></a></span>
-<span id="cb35-16"><a href="#cb35-16"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href=""></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">4</span>))</span>
+<span id="cb35-2"><a href=""></a></span>
+<span id="cb35-3"><a href=""></a>lower_limits <span class="op">=</span> np.array([interv[<span class="dv">0</span>] <span class="cf">for</span> interv <span class="kw">in</span> intervals])</span>
+<span id="cb35-4"><a href=""></a>upper_limits <span class="op">=</span> np.array([interv[<span class="dv">1</span>] <span class="cf">for</span> interv <span class="kw">in</span> intervals])</span>
+<span id="cb35-5"><a href=""></a></span>
+<span id="cb35-6"><a href=""></a>plt.errorbar(x<span class="op">=</span>np.arange(<span class="fl">0.1</span>, k, <span class="dv">1</span>), </span>
+<span id="cb35-7"><a href=""></a>             y<span class="op">=</span>sample_means, </span>
+<span id="cb35-8"><a href=""></a>             yerr<span class="op">=</span> (upper_limits <span class="op">-</span> lower_limits)<span class="op">/</span><span class="dv">2</span> ,</span>
+<span id="cb35-9"><a href=""></a>             fmt<span class="op">=</span><span class="st">'o'</span>)</span>
+<span id="cb35-10"><a href=""></a></span>
+<span id="cb35-11"><a href=""></a>plt.hlines(xmin<span class="op">=</span><span class="dv">0</span>, xmax<span class="op">=</span>k,</span>
+<span id="cb35-12"><a href=""></a>           y<span class="op">=</span>n<span class="op">*</span>p, </span>
+<span id="cb35-13"><a href=""></a>           linewidth<span class="op">=</span><span class="fl">2.0</span>,</span>
+<span id="cb35-14"><a href=""></a>           color<span class="op">=</span><span class="st">"red"</span>)</span>
+<span id="cb35-15"><a href=""></a></span>
+<span id="cb35-16"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
+<div>
+<figure>
 <p><img data-src="Lecture_2_files/figure-revealjs/cell-23-output-1.png" width="653" height="337"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1248,26 +1277,26 @@ Confidence interval: (0.9262010804637983, 1.0437989195362016)</code></pre>
 <section id="confidence-intervals-14" class="slide level2">
 <h2>Confidence Intervals</h2>
 <h4 id="example-asymptotic-ci-2-2">Example: Asymptotic CI (2)</h4>
-<div class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb36-2"><a href="#cb36-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb36-3"><a href="#cb36-3"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
-<span id="cb36-4"><a href="#cb36-4"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb36-5"><a href="#cb36-5"></a><span class="im">import</span> random</span>
-<span id="cb36-6"><a href="#cb36-6"></a><span class="im">import</span> math</span>
-<span id="cb36-7"><a href="#cb36-7"></a></span>
-<span id="cb36-8"><a href="#cb36-8"></a>np.random.seed(<span class="dv">0</span>)</span>
-<span id="cb36-9"><a href="#cb36-9"></a></span>
-<span id="cb36-10"><a href="#cb36-10"></a>n <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb36-11"><a href="#cb36-11"></a>p <span class="op">=</span> <span class="fl">0.1</span></span>
-<span id="cb36-12"><a href="#cb36-12"></a>sigma <span class="op">=</span> math.sqrt(n<span class="op">*</span>p<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>p))</span>
-<span id="cb36-13"><a href="#cb36-13"></a>alpha <span class="op">=</span> <span class="fl">0.05</span></span>
-<span id="cb36-14"><a href="#cb36-14"></a>quantile <span class="op">=</span> stats.norm.ppf(q <span class="op">=</span> <span class="dv">1</span><span class="op">-</span>alpha<span class="op">/</span><span class="dv">2</span>)</span>
-<span id="cb36-15"><a href="#cb36-15"></a>sample_size <span class="op">=</span> <span class="dv">1000</span></span>
-<span id="cb36-16"><a href="#cb36-16"></a>sample <span class="op">=</span> np.random.binomial(n, p, sample_size)</span>
-<span id="cb36-17"><a href="#cb36-17"></a>sample_variance<span class="op">=</span>np.var(sample)</span>
-<span id="cb36-18"><a href="#cb36-18"></a><span class="bu">print</span>(<span class="st">"Variance:"</span>, sigma<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb36-19"><a href="#cb36-19"></a><span class="bu">print</span>(<span class="st">"Sample variance:"</span>, sample_variance)             </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="50f0c937" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb36-2"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb36-3"><a href=""></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
+<span id="cb36-4"><a href=""></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb36-5"><a href=""></a><span class="im">import</span> random</span>
+<span id="cb36-6"><a href=""></a><span class="im">import</span> math</span>
+<span id="cb36-7"><a href=""></a></span>
+<span id="cb36-8"><a href=""></a>np.random.seed(<span class="dv">0</span>)</span>
+<span id="cb36-9"><a href=""></a></span>
+<span id="cb36-10"><a href=""></a>n <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb36-11"><a href=""></a>p <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb36-12"><a href=""></a>sigma <span class="op">=</span> math.sqrt(n<span class="op">*</span>p<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>p))</span>
+<span id="cb36-13"><a href=""></a>alpha <span class="op">=</span> <span class="fl">0.05</span></span>
+<span id="cb36-14"><a href=""></a>quantile <span class="op">=</span> stats.norm.ppf(q <span class="op">=</span> <span class="dv">1</span><span class="op">-</span>alpha<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb36-15"><a href=""></a>sample_size <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb36-16"><a href=""></a>sample <span class="op">=</span> np.random.binomial(n, p, sample_size)</span>
+<span id="cb36-17"><a href=""></a>sample_variance<span class="op">=</span>np.var(sample)</span>
+<span id="cb36-18"><a href=""></a><span class="bu">print</span>(<span class="st">"Variance:"</span>, sigma<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb36-19"><a href=""></a><span class="bu">print</span>(<span class="st">"Sample variance:"</span>, sample_variance)             </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Variance: 0.8999999999999999
 Sample variance: 0.9227750000000001</code></pre>
@@ -1277,50 +1306,54 @@ Sample variance: 0.9227750000000001</code></pre>
 <section id="confidence-intervals-15" class="slide level2">
 <h2>Confidence Intervals</h2>
 <h4 id="example-asymptotic-ci-2-3">Example: Asymptotic CI (2)</h4>
-<div class="cell" data-execution_count="24">
-<details>
+<div id="ff2a6605" class="cell" data-execution_count="24">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>intervals <span class="op">=</span> []</span>
-<span id="cb38-2"><a href="#cb38-2"></a>sample_means <span class="op">=</span> []</span>
-<span id="cb38-3"><a href="#cb38-3"></a>sample_vars <span class="op">=</span> []</span>
-<span id="cb38-4"><a href="#cb38-4"></a></span>
-<span id="cb38-5"><a href="#cb38-5"></a>k <span class="op">=</span> <span class="dv">40</span></span>
-<span id="cb38-6"><a href="#cb38-6"></a></span>
-<span id="cb38-7"><a href="#cb38-7"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(k):</span>
-<span id="cb38-8"><a href="#cb38-8"></a>    sample <span class="op">=</span>  np.random.binomial(n, p, sample_size)</span>
-<span id="cb38-9"><a href="#cb38-9"></a>    sample_mean <span class="op">=</span> sample.mean()</span>
-<span id="cb38-10"><a href="#cb38-10"></a>    sample_means.append(sample_mean)</span>
-<span id="cb38-11"><a href="#cb38-11"></a>    sample_variance <span class="op">=</span> np.var(sample)</span>
-<span id="cb38-12"><a href="#cb38-12"></a>    sample_vars.append(sample_variance)</span>
-<span id="cb38-13"><a href="#cb38-13"></a></span>
-<span id="cb38-14"><a href="#cb38-14"></a>    confidence_interval <span class="op">=</span> (sample_mean <span class="op">-</span> (math.sqrt(sample_variance)<span class="op">/</span>math.sqrt(sample_size))<span class="op">*</span>quantile,</span>
-<span id="cb38-15"><a href="#cb38-15"></a>                           sample_mean <span class="op">+</span> (math.sqrt(sample_variance)<span class="op">/</span>math.sqrt(sample_size))<span class="op">*</span>quantile) </span>
-<span id="cb38-16"><a href="#cb38-16"></a>    </span>
-<span id="cb38-17"><a href="#cb38-17"></a>    intervals.append(confidence_interval)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href=""></a>intervals <span class="op">=</span> []</span>
+<span id="cb38-2"><a href=""></a>sample_means <span class="op">=</span> []</span>
+<span id="cb38-3"><a href=""></a>sample_vars <span class="op">=</span> []</span>
+<span id="cb38-4"><a href=""></a></span>
+<span id="cb38-5"><a href=""></a>k <span class="op">=</span> <span class="dv">40</span></span>
+<span id="cb38-6"><a href=""></a></span>
+<span id="cb38-7"><a href=""></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(k):</span>
+<span id="cb38-8"><a href=""></a>    sample <span class="op">=</span>  np.random.binomial(n, p, sample_size)</span>
+<span id="cb38-9"><a href=""></a>    sample_mean <span class="op">=</span> sample.mean()</span>
+<span id="cb38-10"><a href=""></a>    sample_means.append(sample_mean)</span>
+<span id="cb38-11"><a href=""></a>    sample_variance <span class="op">=</span> np.var(sample)</span>
+<span id="cb38-12"><a href=""></a>    sample_vars.append(sample_variance)</span>
+<span id="cb38-13"><a href=""></a></span>
+<span id="cb38-14"><a href=""></a>    confidence_interval <span class="op">=</span> (sample_mean <span class="op">-</span> (math.sqrt(sample_variance)<span class="op">/</span>math.sqrt(sample_size))<span class="op">*</span>quantile,</span>
+<span id="cb38-15"><a href=""></a>                           sample_mean <span class="op">+</span> (math.sqrt(sample_variance)<span class="op">/</span>math.sqrt(sample_size))<span class="op">*</span>quantile) </span>
+<span id="cb38-16"><a href=""></a>    </span>
+<span id="cb38-17"><a href=""></a>    intervals.append(confidence_interval)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-execution_count="25">
-<details>
+<div id="a97bb6f2" class="cell" data-execution_count="25">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">4</span>))</span>
-<span id="cb39-2"><a href="#cb39-2"></a></span>
-<span id="cb39-3"><a href="#cb39-3"></a>lower_limits <span class="op">=</span> np.array([interv[<span class="dv">0</span>] <span class="cf">for</span> interv <span class="kw">in</span> intervals])</span>
-<span id="cb39-4"><a href="#cb39-4"></a>upper_limits <span class="op">=</span> np.array([interv[<span class="dv">1</span>] <span class="cf">for</span> interv <span class="kw">in</span> intervals])</span>
-<span id="cb39-5"><a href="#cb39-5"></a></span>
-<span id="cb39-6"><a href="#cb39-6"></a>plt.errorbar(x<span class="op">=</span>np.arange(<span class="fl">0.1</span>, k, <span class="dv">1</span>), </span>
-<span id="cb39-7"><a href="#cb39-7"></a>             y<span class="op">=</span>sample_means, </span>
-<span id="cb39-8"><a href="#cb39-8"></a>             yerr<span class="op">=</span> (upper_limits <span class="op">-</span> lower_limits)<span class="op">/</span><span class="dv">2</span> ,</span>
-<span id="cb39-9"><a href="#cb39-9"></a>             fmt<span class="op">=</span><span class="st">'o'</span>)</span>
-<span id="cb39-10"><a href="#cb39-10"></a></span>
-<span id="cb39-11"><a href="#cb39-11"></a>plt.hlines(xmin<span class="op">=</span><span class="dv">0</span>, xmax<span class="op">=</span>k,</span>
-<span id="cb39-12"><a href="#cb39-12"></a>           y<span class="op">=</span>n<span class="op">*</span>p, </span>
-<span id="cb39-13"><a href="#cb39-13"></a>           linewidth<span class="op">=</span><span class="fl">2.0</span>,</span>
-<span id="cb39-14"><a href="#cb39-14"></a>           color<span class="op">=</span><span class="st">"red"</span>)</span>
-<span id="cb39-15"><a href="#cb39-15"></a></span>
-<span id="cb39-16"><a href="#cb39-16"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href=""></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">4</span>))</span>
+<span id="cb39-2"><a href=""></a></span>
+<span id="cb39-3"><a href=""></a>lower_limits <span class="op">=</span> np.array([interv[<span class="dv">0</span>] <span class="cf">for</span> interv <span class="kw">in</span> intervals])</span>
+<span id="cb39-4"><a href=""></a>upper_limits <span class="op">=</span> np.array([interv[<span class="dv">1</span>] <span class="cf">for</span> interv <span class="kw">in</span> intervals])</span>
+<span id="cb39-5"><a href=""></a></span>
+<span id="cb39-6"><a href=""></a>plt.errorbar(x<span class="op">=</span>np.arange(<span class="fl">0.1</span>, k, <span class="dv">1</span>), </span>
+<span id="cb39-7"><a href=""></a>             y<span class="op">=</span>sample_means, </span>
+<span id="cb39-8"><a href=""></a>             yerr<span class="op">=</span> (upper_limits <span class="op">-</span> lower_limits)<span class="op">/</span><span class="dv">2</span> ,</span>
+<span id="cb39-9"><a href=""></a>             fmt<span class="op">=</span><span class="st">'o'</span>)</span>
+<span id="cb39-10"><a href=""></a></span>
+<span id="cb39-11"><a href=""></a>plt.hlines(xmin<span class="op">=</span><span class="dv">0</span>, xmax<span class="op">=</span>k,</span>
+<span id="cb39-12"><a href=""></a>           y<span class="op">=</span>n<span class="op">*</span>p, </span>
+<span id="cb39-13"><a href=""></a>           linewidth<span class="op">=</span><span class="fl">2.0</span>,</span>
+<span id="cb39-14"><a href=""></a>           color<span class="op">=</span><span class="st">"red"</span>)</span>
+<span id="cb39-15"><a href=""></a></span>
+<span id="cb39-16"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
+<div>
+<figure>
 <p><img data-src="Lecture_2_files/figure-revealjs/cell-26-output-1.png" width="653" height="337"></p>
+</figure>
+</div>
 </div>
 </div>
 </section></section>
@@ -1345,7 +1378,6 @@ Sample variance: 0.9227750000000001</code></pre>
 <p><em>How do we measure the quality of a test?</em></p>
 <p>Our aim is to restrict the probability of making a <strong>type I error</strong>.</p>
 </div><div class="column" style="width:50%;">
-
 <table style="width:90%">
 <caption>
 Error types
@@ -1384,10 +1416,8 @@ Right decision
 </tr>
 <tr>
 </tr>
-
 </tbody></table>
-</div>
-</div>
+</div></div>
 </section>
 <section id="hypothesis-testing-3" class="slide level2">
 <h2>Hypothesis Testing</h2>
@@ -1429,7 +1459,6 @@ P(T(X)&gt;c_\alpha)&amp;=P\left(\Big|\sqrt{n}\frac{\bar{X}_n-\mu}{\hat{\sigma}^2
 <h2><span class="math inline">\(p\)</span>-Value</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-
 <table style="width:90%">
 <caption>
 Interpretation of <span class="math inline">\(p\)</span>-values
@@ -1474,7 +1503,6 @@ weakly significant
 not significant
 </td>
 </tr>
-
 </tbody></table>
 </div><div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
@@ -1483,34 +1511,33 @@ not significant
 <figcaption>Source: <a href="https://www.reddit.com/r/datascience/comments/oeg6nl/the_pain_and_excitement/">Reddit, r/datascience</a></figcaption>
 </figure>
 </div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="specific-tests" class="slide level2">
 <h2>Specific Tests</h2>
 <h4 id="one-sample-t-test">One-sample t-test</h4>
 <p>The t-test example from above is implemented in python <code>scipy.stats</code>:</p>
-<div class="cell" data-execution_count="26">
-<details>
+<div id="2c668b40" class="cell" data-execution_count="26">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb40-2"><a href="#cb40-2"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
-<span id="cb40-3"><a href="#cb40-3"></a></span>
-<span id="cb40-4"><a href="#cb40-4"></a>np.random.seed(<span class="dv">0</span>)</span>
-<span id="cb40-5"><a href="#cb40-5"></a></span>
-<span id="cb40-6"><a href="#cb40-6"></a>mu <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb40-7"><a href="#cb40-7"></a>sigma <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb40-8"><a href="#cb40-8"></a>sample_size <span class="op">=</span> <span class="dv">100</span></span>
-<span id="cb40-9"><a href="#cb40-9"></a>sample <span class="op">=</span> np.random.normal(mu, sigma, sample_size)</span>
-<span id="cb40-10"><a href="#cb40-10"></a>stats.ttest_1samp(sample,<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb40-2"><a href=""></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
+<span id="cb40-3"><a href=""></a></span>
+<span id="cb40-4"><a href=""></a>np.random.seed(<span class="dv">0</span>)</span>
+<span id="cb40-5"><a href=""></a></span>
+<span id="cb40-6"><a href=""></a>mu <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb40-7"><a href=""></a>sigma <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb40-8"><a href=""></a>sample_size <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb40-9"><a href=""></a>sample <span class="op">=</span> np.random.normal(mu, sigma, sample_size)</span>
+<span id="cb40-10"><a href=""></a>stats.ttest_1samp(sample,<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <pre><code>TtestResult(statistic=0.5904283402851709, pvalue=0.5562489158694666, df=99)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a><span class="co"># Different H_0</span></span>
-<span id="cb42-2"><a href="#cb42-2"></a>stats.ttest_1samp(sample,<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="f4e489e3" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href=""></a><span class="co"># Different H_0</span></span>
+<span id="cb42-2"><a href=""></a>stats.ttest_1samp(sample,<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
 <pre><code>TtestResult(statistic=10.462488715616162, pvalue=1.0740810021885569e-17, df=99)</code></pre>
 </div>
@@ -1521,25 +1548,25 @@ not significant
 <h4 id="two-sample-t-test">Two-sample t-test</h4>
 <p>Let <span class="math inline">\(X_1,X_2,\dots,X_n\)</span> i.i.d. <span class="math inline">\(\sim \mathcal{N}(\mu_1,\sigma^2)\)</span> and <span class="math inline">\(Y_1,Y_2,\dots,Y_m\)</span> i.i.d. <span class="math inline">\(\sim \mathcal{N}(\mu_2,\sigma^2)\)</span> be independent samples. To test the null hypothesis <span class="math display">\[H_0:\mu_1=\mu_2\]</span></p>
 <p>we can use the two-sample t-test:</p>
-<div class="cell" data-execution_count="28">
-<details>
+<div id="1b89aa2a" class="cell" data-execution_count="28">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb44-2"><a href="#cb44-2"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
-<span id="cb44-3"><a href="#cb44-3"></a></span>
-<span id="cb44-4"><a href="#cb44-4"></a>np.random.seed(<span class="dv">0</span>)</span>
-<span id="cb44-5"><a href="#cb44-5"></a></span>
-<span id="cb44-6"><a href="#cb44-6"></a>mu_1 <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb44-7"><a href="#cb44-7"></a>mu_2 <span class="op">=</span> <span class="dv">4</span></span>
-<span id="cb44-8"><a href="#cb44-8"></a>sigma <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb44-9"><a href="#cb44-9"></a>sample_size_1 <span class="op">=</span> <span class="dv">100</span></span>
-<span id="cb44-10"><a href="#cb44-10"></a>sample_size_2 <span class="op">=</span> <span class="dv">50</span></span>
-<span id="cb44-11"><a href="#cb44-11"></a>sample1 <span class="op">=</span> np.random.normal(mu_1, sigma, sample_size_1)</span>
-<span id="cb44-12"><a href="#cb44-12"></a>sample2 <span class="op">=</span> np.random.normal(mu_2, sigma, sample_size_2)</span>
-<span id="cb44-13"><a href="#cb44-13"></a>stats.ttest_ind(sample1,sample2,equal_var<span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb44-2"><a href=""></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
+<span id="cb44-3"><a href=""></a></span>
+<span id="cb44-4"><a href=""></a>np.random.seed(<span class="dv">0</span>)</span>
+<span id="cb44-5"><a href=""></a></span>
+<span id="cb44-6"><a href=""></a>mu_1 <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb44-7"><a href=""></a>mu_2 <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb44-8"><a href=""></a>sigma <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb44-9"><a href=""></a>sample_size_1 <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb44-10"><a href=""></a>sample_size_2 <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb44-11"><a href=""></a>sample1 <span class="op">=</span> np.random.normal(mu_1, sigma, sample_size_1)</span>
+<span id="cb44-12"><a href=""></a>sample2 <span class="op">=</span> np.random.normal(mu_2, sigma, sample_size_2)</span>
+<span id="cb44-13"><a href=""></a>stats.ttest_ind(sample1,sample2,equal_var<span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="28">
-<pre><code>Ttest_indResult(statistic=4.533967878248862, pvalue=1.186546331661529e-05)</code></pre>
+<pre><code>TtestResult(statistic=4.533967878248862, pvalue=1.186546331661529e-05, df=148.0)</code></pre>
 </div>
 </div>
 </section>
@@ -1547,26 +1574,26 @@ not significant
 <h2>Specific Tests</h2>
 <h4 id="two-sample-t-test-1">Two-sample t-test</h4>
 <p>If we set <span class="math inline">\(equal\_var= False\)</span> the function performs a Welch’s t-test, which does not assume equal population variance.</p>
-<div class="cell" data-execution_count="29">
-<details>
+<div id="b570f31f" class="cell" data-execution_count="29">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb46-2"><a href="#cb46-2"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
-<span id="cb46-3"><a href="#cb46-3"></a></span>
-<span id="cb46-4"><a href="#cb46-4"></a>np.random.seed(<span class="dv">0</span>)</span>
-<span id="cb46-5"><a href="#cb46-5"></a></span>
-<span id="cb46-6"><a href="#cb46-6"></a>mu_1 <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb46-7"><a href="#cb46-7"></a>mu_2 <span class="op">=</span> <span class="dv">4</span></span>
-<span id="cb46-8"><a href="#cb46-8"></a>sigma1 <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb46-9"><a href="#cb46-9"></a>sigma2 <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb46-10"><a href="#cb46-10"></a>sample_size_1 <span class="op">=</span> <span class="dv">100</span></span>
-<span id="cb46-11"><a href="#cb46-11"></a>sample_size_2 <span class="op">=</span> <span class="dv">50</span></span>
-<span id="cb46-12"><a href="#cb46-12"></a>sample1 <span class="op">=</span> np.random.normal(mu_1, sigma1, sample_size_1)</span>
-<span id="cb46-13"><a href="#cb46-13"></a>sample2 <span class="op">=</span> np.random.normal(mu_2, sigma2, sample_size_2)</span>
-<span id="cb46-14"><a href="#cb46-14"></a>stats.ttest_ind(sample1,sample2,equal_var<span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb46-2"><a href=""></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
+<span id="cb46-3"><a href=""></a></span>
+<span id="cb46-4"><a href=""></a>np.random.seed(<span class="dv">0</span>)</span>
+<span id="cb46-5"><a href=""></a></span>
+<span id="cb46-6"><a href=""></a>mu_1 <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb46-7"><a href=""></a>mu_2 <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb46-8"><a href=""></a>sigma1 <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb46-9"><a href=""></a>sigma2 <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb46-10"><a href=""></a>sample_size_1 <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb46-11"><a href=""></a>sample_size_2 <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb46-12"><a href=""></a>sample1 <span class="op">=</span> np.random.normal(mu_1, sigma1, sample_size_1)</span>
+<span id="cb46-13"><a href=""></a>sample2 <span class="op">=</span> np.random.normal(mu_2, sigma2, sample_size_2)</span>
+<span id="cb46-14"><a href=""></a>stats.ttest_ind(sample1,sample2,equal_var<span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="29">
-<pre><code>Ttest_indResult(statistic=1.7534176452961188, pvalue=0.08456826167226446)</code></pre>
+<pre><code>TtestResult(statistic=1.7534176452961188, pvalue=0.08456826167226446, df=60.825711896844076)</code></pre>
 </div>
 </div>
 </section>
@@ -1576,22 +1603,22 @@ not significant
 <p>Let <span class="math inline">\(X_1,X_2,\dots,X_n\)</span> i.i.d. <span class="math inline">\(\sim G\)</span>. To test the null hypothesis</p>
 <p><span class="math display">\[H_0:G(x)=F(x),\]</span></p>
 <p>where <span class="math inline">\(F(x)\)</span> is the cdf of a normal distributed random variable, we can use the Shapiro-Wilk t-test:</p>
-<div class="cell" data-execution_count="30">
-<details>
+<div id="d5ff7d9e" class="cell" data-execution_count="30">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb48-2"><a href="#cb48-2"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
-<span id="cb48-3"><a href="#cb48-3"></a></span>
-<span id="cb48-4"><a href="#cb48-4"></a>np.random.seed(<span class="dv">0</span>)</span>
-<span id="cb48-5"><a href="#cb48-5"></a></span>
-<span id="cb48-6"><a href="#cb48-6"></a>mu <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb48-7"><a href="#cb48-7"></a>sigma <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb48-8"><a href="#cb48-8"></a>sample_size <span class="op">=</span> <span class="dv">100</span></span>
-<span id="cb48-9"><a href="#cb48-9"></a>sample <span class="op">=</span> np.random.normal(mu, sigma, sample_size)</span>
-<span id="cb48-10"><a href="#cb48-10"></a>stats.shapiro(sample) <span class="co"># output: (test statistic, p-value)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb48-2"><a href=""></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
+<span id="cb48-3"><a href=""></a></span>
+<span id="cb48-4"><a href=""></a>np.random.seed(<span class="dv">0</span>)</span>
+<span id="cb48-5"><a href=""></a></span>
+<span id="cb48-6"><a href=""></a>mu <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb48-7"><a href=""></a>sigma <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb48-8"><a href=""></a>sample_size <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb48-9"><a href=""></a>sample <span class="op">=</span> np.random.normal(mu, sigma, sample_size)</span>
+<span id="cb48-10"><a href=""></a>stats.shapiro(sample) <span class="co"># output: (test statistic, p-value)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="30">
-<pre><code>ShapiroResult(statistic=0.9926937818527222, pvalue=0.8689165711402893)</code></pre>
+<pre><code>ShapiroResult(statistic=0.9926940818747485, pvalue=0.8689366682774677)</code></pre>
 </div>
 </div>
 </section>
@@ -1599,23 +1626,23 @@ not significant
 <h2>Specific Tests</h2>
 <h4 id="wilcoxon-signed-rank-test">Wilcoxon signed-rank test</h4>
 <p>Let <span class="math inline">\((X_1,Y_1),(X_2,Y_2),\dots,(X_n,Y_n)\)</span> be i.i.d. samples with cdfs <span class="math inline">\(F_X(x)\)</span> and <span class="math inline">\(F_Y(x)\)</span>.<br> The Wilcoxon signed-rank test tests the null hypothesis <span class="math inline">\(H_0:F_X(x)-F_Y(x)\)</span> is symmetric about zero.</p>
-<div class="cell" data-execution_count="31">
-<details>
+<div id="23bd6e41" class="cell" data-execution_count="31">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb50-2"><a href="#cb50-2"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
-<span id="cb50-3"><a href="#cb50-3"></a></span>
-<span id="cb50-4"><a href="#cb50-4"></a>np.random.seed(<span class="dv">0</span>)</span>
-<span id="cb50-5"><a href="#cb50-5"></a></span>
-<span id="cb50-6"><a href="#cb50-6"></a>mu_1 <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb50-7"><a href="#cb50-7"></a>mu_2 <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb50-8"><a href="#cb50-8"></a>sigma_1 <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb50-9"><a href="#cb50-9"></a>sigma_2 <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb50-10"><a href="#cb50-10"></a>sample_size_1 <span class="op">=</span> <span class="dv">100</span></span>
-<span id="cb50-11"><a href="#cb50-11"></a>sample_size_2 <span class="op">=</span> <span class="dv">100</span></span>
-<span id="cb50-12"><a href="#cb50-12"></a>sample1 <span class="op">=</span> np.random.normal(mu_1, sigma_1, sample_size_1)</span>
-<span id="cb50-13"><a href="#cb50-13"></a>sample2 <span class="op">=</span> np.random.normal(mu_2, sigma_2, sample_size_2)</span>
-<span id="cb50-14"><a href="#cb50-14"></a>stats.wilcoxon(sample1,sample2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb50-2"><a href=""></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
+<span id="cb50-3"><a href=""></a></span>
+<span id="cb50-4"><a href=""></a>np.random.seed(<span class="dv">0</span>)</span>
+<span id="cb50-5"><a href=""></a></span>
+<span id="cb50-6"><a href=""></a>mu_1 <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb50-7"><a href=""></a>mu_2 <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb50-8"><a href=""></a>sigma_1 <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb50-9"><a href=""></a>sigma_2 <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb50-10"><a href=""></a>sample_size_1 <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb50-11"><a href=""></a>sample_size_2 <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb50-12"><a href=""></a>sample1 <span class="op">=</span> np.random.normal(mu_1, sigma_1, sample_size_1)</span>
+<span id="cb50-13"><a href=""></a>sample2 <span class="op">=</span> np.random.normal(mu_2, sigma_2, sample_size_2)</span>
+<span id="cb50-14"><a href=""></a>stats.wilcoxon(sample1,sample2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="31">
 <pre><code>WilcoxonResult(statistic=2397.0, pvalue=0.6598606407090197)</code></pre>
@@ -1627,8 +1654,8 @@ not significant
 <h4 id="kolmogorov-smirnov-test-one-sample">Kolmogorov-Smirnov test (one sample)</h4>
 <p>Let <span class="math inline">\((X_1,\dots,X_n)\)</span> be i.i.d. sample with cdf <span class="math inline">\(F_X(x)\)</span>.</p>
 <p>The Kolmogorov-Smirnov test tests the null hypothesis <span class="math display">\[H_0:F_X(x)=F_0(x)\]</span></p>
-<div class="cell" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a>stats.kstest(sample1,<span class="st">'norm'</span>, args<span class="op">=</span> [<span class="dv">5</span>,<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="261f27ae" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href=""></a>stats.kstest(sample1,<span class="st">'norm'</span>, args<span class="op">=</span> [<span class="dv">5</span>,<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
 <pre><code>KstestResult(statistic=0.05824863872383251, pvalue=0.8667717341286234, statistic_location=5.045758517301446, statistic_sign=-1)</code></pre>
 </div>
@@ -1639,8 +1666,8 @@ not significant
 <h4 id="kolmogorov-smirnov-test-two-sample">Kolmogorov-Smirnov test (two sample)</h4>
 <p>Let <span class="math inline">\((X_1,\dots,X_n),(Y_1,\dots,Y_m)\)</span> be i.i.d. samples with cdfs <span class="math inline">\(F_X(x)\)</span> and <span class="math inline">\(F_Y(x)\)</span>.</p>
 <p>The Kolmogorov-Smirnov test tests the null hypothesis <span class="math display">\[H_0:F_X(x)=F_Y(x)\]</span></p>
-<div class="cell" data-execution_count="33">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a>stats.ks_2samp(sample1, sample2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8b325ad4" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href=""></a>stats.ks_2samp(sample1, sample2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="33">
 <pre><code>KstestResult(statistic=0.39, pvalue=3.5690338557186834e-07, statistic_location=6.95077539523179, statistic_sign=1)</code></pre>
 </div>
@@ -1649,26 +1676,26 @@ not significant
 <section id="simulations" class="slide level2">
 <h2>Simulations</h2>
 <p>With simulations we are able to test empirically whether a hypothesis test satisfies some level <span class="math inline">\(\alpha\)</span>:</p>
-<div class="cell" data-execution_count="34">
-<details>
+<div id="0e30c481" class="cell" data-execution_count="34">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb56-2"><a href="#cb56-2"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
-<span id="cb56-3"><a href="#cb56-3"></a></span>
-<span id="cb56-4"><a href="#cb56-4"></a>np.random.seed(<span class="dv">0</span>)</span>
-<span id="cb56-5"><a href="#cb56-5"></a></span>
-<span id="cb56-6"><a href="#cb56-6"></a>mu <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb56-7"><a href="#cb56-7"></a>sigma <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb56-8"><a href="#cb56-8"></a>sample_size <span class="op">=</span> <span class="dv">100</span></span>
-<span id="cb56-9"><a href="#cb56-9"></a></span>
-<span id="cb56-10"><a href="#cb56-10"></a>l <span class="op">=</span> <span class="dv">10000</span></span>
-<span id="cb56-11"><a href="#cb56-11"></a>alpha <span class="op">=</span> <span class="fl">0.05</span></span>
-<span id="cb56-12"><a href="#cb56-12"></a>count <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb56-13"><a href="#cb56-13"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, l):</span>
-<span id="cb56-14"><a href="#cb56-14"></a>    sample <span class="op">=</span> np.random.normal(mu, sigma, sample_size)</span>
-<span id="cb56-15"><a href="#cb56-15"></a>    <span class="cf">if</span> stats.shapiro(sample)[<span class="dv">1</span>]<span class="op">&lt;=</span> alpha:</span>
-<span id="cb56-16"><a href="#cb56-16"></a>        count <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb56-17"><a href="#cb56-17"></a><span class="bu">print</span>(<span class="st">"percentage of rejected null hypothesis:"</span>, count<span class="op">/</span>l<span class="op">*</span><span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb56-2"><a href=""></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
+<span id="cb56-3"><a href=""></a></span>
+<span id="cb56-4"><a href=""></a>np.random.seed(<span class="dv">0</span>)</span>
+<span id="cb56-5"><a href=""></a></span>
+<span id="cb56-6"><a href=""></a>mu <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb56-7"><a href=""></a>sigma <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb56-8"><a href=""></a>sample_size <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb56-9"><a href=""></a></span>
+<span id="cb56-10"><a href=""></a>l <span class="op">=</span> <span class="dv">10000</span></span>
+<span id="cb56-11"><a href=""></a>alpha <span class="op">=</span> <span class="fl">0.05</span></span>
+<span id="cb56-12"><a href=""></a>count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb56-13"><a href=""></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, l):</span>
+<span id="cb56-14"><a href=""></a>    sample <span class="op">=</span> np.random.normal(mu, sigma, sample_size)</span>
+<span id="cb56-15"><a href=""></a>    <span class="cf">if</span> stats.shapiro(sample)[<span class="dv">1</span>]<span class="op">&lt;=</span> alpha:</span>
+<span id="cb56-16"><a href=""></a>        count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb56-17"><a href=""></a><span class="bu">print</span>(<span class="st">"percentage of rejected null hypothesis:"</span>, count<span class="op">/</span>l<span class="op">*</span><span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>percentage of rejected null hypothesis: 5.04</code></pre>
@@ -1721,10 +1748,12 @@ not significant
 </section>
 <section id="references-1" class="slide level2 smaller scrollable">
 <h2>References</h2>
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <p><a href="https://alexandragibbon.github.io/StatProg-HHU/">Topics in Econometrics and Data Science</a></p>
 </div>
-<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-datasciencebook" class="csl-entry" role="listitem">
 Timbers, Tiffany, Trevor Campbell, and Melissa Lee. 2022. <em>Data Science: A First Introduction</em>. CRC Press.
 </div>
@@ -1757,7 +1786,6 @@ Timbers, Tiffany, Trevor Campbell, and Melissa Lee. 2022. <em>Data Science: A Fi
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1975,18 +2003,7 @@ Timbers, Tiffany, Trevor Campbell, and Melissa Lee. 2022. <em>Data Science: A Fi
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -2018,11 +2035,50 @@ Timbers, Tiffany, Trevor Campbell, and Melissa Lee. 2022. <em>Data Science: A Fi
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
-      function tippyHover(el, contentFn) {
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -2032,8 +2088,17 @@ Timbers, Tiffany, Trevor Campbell, and Melissa Lee. 2022. <em>Data Science: A Fi
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -2047,7 +2112,11 @@ Timbers, Tiffany, Trevor Campbell, and Melissa Lee. 2022. <em>Data Science: A Fi
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {
