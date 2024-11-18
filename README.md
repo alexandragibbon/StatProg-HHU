@@ -4,11 +4,6 @@
 * [Lecture 1](./lecture/l1/Lecture_1.html)
     - Dataset: [ict.csv](./data/ict.csv)
 * [Lecture 2](./lecture/l2/Lecture_2.html)
-[comment]: <> (This is a comment, it will not be included)
-[comment]: <> (in  the output file unless you use it in)
-[comment]: <> (a reference style link.)
-[//]: <> (This is also a comment.)
-[//]: # (This may be the most platform independent comment)
 
 ## Course 2: Tutorials
 ### Tutorials 
