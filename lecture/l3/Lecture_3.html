@@ -1,0 +1,2303 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="Lecture_3_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Lecture_3_files/libs/quarto-html/tabby.min.js"></script>
+<script src="Lecture_3_files/libs/quarto-html/popper.min.js"></script>
+<script src="Lecture_3_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="Lecture_3_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Lecture_3_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="Lecture_3_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="Lecture_3_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.5.57">
+
+  <title>Lecture 3: Regression</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="Lecture_3_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="Lecture_3_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        background-color: #232629;
+        color: #7a7c7d;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #7a7c7d;  padding-left: 4px; }
+    div.sourceCode
+      { color: #cfcfc2; background-color: #232629; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #cfcfc2; } /* Normal */
+    code span.al { color: #95da4c; background-color: #4d1f24; font-weight: bold; } /* Alert */
+    code span.an { color: #3f8058; } /* Annotation */
+    code span.at { color: #2980b9; } /* Attribute */
+    code span.bn { color: #f67400; } /* BaseN */
+    code span.bu { color: #7f8c8d; } /* BuiltIn */
+    code span.cf { color: #fdbc4b; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #3daee9; } /* Char */
+    code span.cn { color: #27aeae; font-weight: bold; } /* Constant */
+    code span.co { color: #7a7c7d; } /* Comment */
+    code span.cv { color: #7f8c8d; } /* CommentVar */
+    code span.do { color: #a43340; } /* Documentation */
+    code span.dt { color: #2980b9; } /* DataType */
+    code span.dv { color: #f67400; } /* DecVal */
+    code span.er { color: #da4453; text-decoration: underline; } /* Error */
+    code span.ex { color: #0099ff; font-weight: bold; } /* Extension */
+    code span.fl { color: #f67400; } /* Float */
+    code span.fu { color: #8e44ad; } /* Function */
+    code span.im { color: #27ae60; } /* Import */
+    code span.in { color: #c45b00; } /* Information */
+    code span.kw { color: #cfcfc2; font-weight: bold; } /* Keyword */
+    code span.op { color: #cfcfc2; } /* Operator */
+    code span.ot { color: #27ae60; } /* Other */
+    code span.pp { color: #27ae60; } /* Preprocessor */
+    code span.re { color: #2980b9; background-color: #153042; } /* RegionMarker */
+    code span.sc { color: #3daee9; } /* SpecialChar */
+    code span.ss { color: #da4453; } /* SpecialString */
+    code span.st { color: #f44f4f; } /* String */
+    code span.va { color: #27aeae; } /* Variable */
+    code span.vs { color: #da4453; } /* VerbatimString */
+    code span.wa { color: #da4453; } /* Warning */
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <link rel="stylesheet" href="Lecture_3_files/libs/revealjs/dist/theme/quarto.css">
+  <link href="Lecture_3_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="Lecture_3_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="Lecture_3_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="Lecture_3_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="Lecture_3_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="Lecture_3_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+  
+  <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-image="../shared_files/statprog_logo.jpg" data-background-position="98% 2%" data-background-size="15%" class="quarto-title-block center">
+  <h1 class="title">Lecture 3: Regression</h1>
+  <p class="subtitle">Topics in Econometrics and Data Science <br> Prof.&nbsp;Dr.&nbsp;Jannis Kück</p>
+
+<div class="quarto-title-authors">
+</div>
+
+</section>
+<section class="slide level2">
+
+<p><span class="math inline">\(\newcommand{\E}{{\mathbb{E}}}\)</span> <span class="math inline">\(\newcommand{\N}{{\mathbb{N}}}\)</span> <span class="math inline">\(\newcommand{\R}{{\mathbb{R}}}\)</span></p>
+<p><span class="math inline">\(\newcommand{\nto}{\xrightarrow[n\to\infty]{}}\)</span> <span class="math inline">\(\newcommand{\Dto}{\xrightarrow[]{\mathcal{D}}}\)</span> <span class="math inline">\(\newcommand{\Pto}{\xrightarrow[]{P}}\)</span> <span class="math inline">\(\newcommand{\asto}{\xrightarrow[]{a.s.}}\)</span> <span class="math inline">\(\newcommand{\Lto}{\xrightarrow[]{\mathcal{L}_2}}\)</span> <span class="math inline">\(\DeclareMathOperator{\rank}{rank}\)</span> <span class="math inline">\(\DeclareMathOperator{\sign}{sign}\)</span></p>
+</section>
+<section>
+<section id="part-iii-machine-learning-regression" class="title-slide slide level1 center">
+<h1>Part III: Machine Learning, Regression</h1>
+
+</section>
+<section id="machine-learning" class="slide level2">
+<h2>Machine Learning</h2>
+<h5 id="regression">Regression</h5>
+<ol type="1">
+<li>Introduction</li>
+<li>Ordinary Least Squares</li>
+<li>Quantile Regression</li>
+<li>Linear Machine Learning Methods</li>
+</ol>
+</section>
+<section id="introduction-to-regression-methods" class="slide level2">
+<h2>Introduction to Regression Methods</h2>
+<ul>
+<li><p>Setting: Observe a sample <span class="math inline">\((Y_1,X_1),\dots,(Y_n,X_n)\)</span> with <span class="math display">\[ Y_i = X_i\beta+\varepsilon_i=\sum\limits_{j=1}^p \beta_j X_{i,j}+\varepsilon_i\]</span> where <span class="math inline">\(X_i=(X_{i,1},\dots,X_{i,p})\in\R^{p}\)</span> is a <span class="math inline">\(p\)</span>-dimensional vector of regressors and <span class="math inline">\(\beta\)</span> a <span class="math inline">\(p\)</span>-dimensional vector of regression coefficients.</p></li>
+<li><p>The vector/matrix <span class="math inline">\(X_i\)</span> contains the information on individual <span class="math inline">\(i\)</span> in terms of the <span class="math inline">\(p\)</span> observable characteristics, e.g., a person’s age, educational background, region/city of residence, etc.</p></li>
+<li><p><span class="math inline">\(\varepsilon_i\)</span> is an error term that emerges naturally due to unobserved characteristics. We assume <span class="math inline">\(\E\left[\varepsilon_i \vert X_{1i}, ..., X_{pi}\right] = 0.\)</span></p></li>
+</ul>
+</section>
+<section id="definition-regression-vs.-classification" class="slide level2">
+<h2>Definition: Regression vs.&nbsp;Classification</h2>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Regression</strong>:</p>
+<ul>
+<li><p>Regression problems are concerned with estimation of the relationship between a <em>quantitative</em> output <span class="math inline">\(Y\)</span> and covariates <span class="math inline">\(X\)</span></p></li>
+<li><p>Examples: Wage equations (Mincer equation), estimation of demand functions, ….</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>Classification</strong></p>
+<ul>
+<li><p>Classification deals with <em>qualitative</em> outcomes <span class="math inline">\(Y\)</span> (e.g.&nbsp;coded as 0/1, -1/+1).</p></li>
+<li><p>Examples: Fraud detection (fraud vs.&nbsp;no fraud), image recognition, ….</p></li>
+</ul>
+</div></div>
+</section>
+<section id="concepts-prediction-vs.-inference" class="slide level2">
+<h2>Concepts: Prediction vs.&nbsp;Inference</h2>
+<p>Regression methods can be used for two purposes:</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>1. Prediction</strong></p>
+<ul>
+<li>Given an estimated regression model with estimators <span class="math inline">\(\hat\beta\)</span>, what value of <span class="math inline">\(Y_i\)</span> is to be expected for a person with individual characteristics <span class="math inline">\(X_i\)</span>? How accurate is the prediction?</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>2. Inference</strong></p>
+<ul>
+<li>What can we say about the relationship of <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span>? Does a change in variable <span class="math inline">\(X_k\)</span> <strong>cause</strong> an increase/decrease of the outcome variable <span class="math inline">\(Y\)</span>?</li>
+<li>Is the effect meaningful under statistical considerations, i.e., <strong>significant</strong>?</li>
+<li>Is the relationship linear or nonlinear? Is the magnitude of the effect the same for every individual?</li>
+</ul>
+</div></div>
+</section>
+<section id="concepts-prediction-vs.-inference-1" class="slide level2">
+<h2>Concepts: Prediction vs.&nbsp;Inference</h2>
+<ul>
+<li><p>Typically, there is a <strong>trade-off</strong> between nceaccuracy and interpretability of the model, i.e., often complicated models are associated with good predictive quality but they are hard to interpret.</p></li>
+<li><p>We will get to know traditional and modern regression methods and see how they compare in terms of predictive quality and interpretability.</p></li>
+</ul>
+</section>
+<section id="ordinary-least-squares-regression" class="slide level2">
+<h2>Ordinary Least Squares Regression</h2>
+<h4 id="prediction">Prediction</h4>
+<ul>
+<li><p>Setting: We want to model the relationship of the <strong>dependent</strong> variable <span class="math inline">\(Y\)</span> and the <strong>features</strong> <span class="math inline">\(X\)</span>.</p></li>
+<li><p>Our goal is to generate an <strong>optimal linear prediction rule</strong> for the outcome <span class="math inline">\(Y\)</span> given the explanatory variables <span class="math inline">\(X\)</span>. We consider <span class="math display">\[ X\beta = \sum_{j=1}^{p}  \beta_j X_j.\]</span></p></li>
+<li><p>It can be shown that, among all linear prediction rules, <span class="math inline">\(X\beta\)</span> minimizes <span class="math display">\[\min_{b \in\R^{p}} \E[(Y-Xb)^2].\]</span></p></li>
+</ul>
+</section>
+<section id="ordinary-least-squares-regression-1" class="slide level2">
+<h2>Ordinary Least Squares Regression</h2>
+<h4 id="prediction-1">Prediction</h4>
+<ul>
+<li><p>Hence, <span class="math inline">\(X\beta = \E(Y|X)\)</span> is called the <em>best linear prediction rule</em> for <span class="math inline">\(Y\)</span> given <span class="math inline">\(X\)</span>.</p></li>
+<li><p><span class="math inline">\(X\beta\)</span> is the <em>best linear prediction rule</em> for <span class="math inline">\(Y\)</span> given <span class="math inline">\(X\)</span>. However, <span class="math inline">\(X\beta\)</span> is defined in terms of <strong>population quantities</strong> and, hence, generally not available.</p></li>
+<li><p>Thus, we use samples, e.g.&nbsp;random draws of <span class="math inline">\((Y_1,X_1),\dots,(Y_n,X_n)\)</span>, to estimate something similar to <span class="math inline">\(X\beta\)</span>, i.e., an optimal prediction rule for <span class="math inline">\(Y\)</span> given <span class="math inline">\(X\)</span> that is based on a random sample:</p></li>
+<li><p>We replace population quantities by sample quantities to obtain an estimate - this is called the “<em>analog principle</em>”.</p></li>
+</ul>
+</section>
+<section id="ordinary-least-squares-regression-2" class="slide level2">
+<h2>Ordinary Least Squares Regression</h2>
+<h4 id="prediction-2">Prediction</h4>
+<ul>
+<li><p>Given a random sample, <span class="math inline">\((Y_1,X_1),\dots,(Y_n,X_n)\)</span>, we estimate the coefficients <span class="math inline">\(\beta\)</span> of the <em>ordinary least squares</em> (OLS) model by minimizing the mean squared error: <span class="math display">\[ \min_{b \in\R^{p}} \E_n[(Y-Xb)^2].\]</span></p></li>
+<li><p>We obtain the OLS estimates as <span class="math display">\[\hat{\beta}=\arg\min\limits_{\beta\in\R^p} \frac{1}{n}\sum\limits_{i=1}^n\big(Y_i-X_i\beta\big)^2=(X^TX)^{-1}X^TY\]</span></p></li>
+<li><p>We assume that the <span class="math inline">\((p \times p)\)</span> matrix <span class="math inline">\(X^{T}X\)</span> is of full rank and, hence, invertible.</p></li>
+</ul>
+</section>
+<section id="ordinary-least-squares-regression-3" class="slide level2">
+<h2>Ordinary Least Squares Regression</h2>
+<h4 id="prediction-3">Prediction</h4>
+<ul>
+<li><p>We know that <span class="math inline">\(X\beta\)</span> is the best linear prediction rule. What can we say about <span class="math inline">\(X\hat{\beta}\)</span>? Does it approximate <span class="math inline">\(X\beta\)</span> well?</p></li>
+<li><p>It can be shown that <span class="math inline">\(X\hat{\beta}\)</span> approximates the unknown population regression <span class="math inline">\(X\beta\)</span> if <span class="math inline">\(n\)</span> is large as compared to <span class="math inline">\(p\)</span>, i.e., if <span class="math inline">\(\frac{n}{p} \rightarrow \infty\)</span>.</p></li>
+<li><p>What if the population model is <strong>not linear</strong> in <span class="math inline">\(X\)</span>?</p></li>
+</ul>
+</section>
+<section id="ordinary-least-squares-regression-4" class="slide level2">
+<h2>Ordinary Least Squares Regression</h2>
+<h4 id="example-california-housing-data">Example: California Housing Data</h4>
+<div id="dc433bb4" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a><span class="co">## Example: Californ Housing Data</span></span>
+<span id="cb1-2"><a href=""></a><span class="co"># Import data </span></span>
+<span id="cb1-3"><a href=""></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> fetch_california_housing</span>
+<span id="cb1-4"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-5"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-6"><a href=""></a></span>
+<span id="cb1-7"><a href=""></a>california_housing <span class="op">=</span> fetch_california_housing(as_frame<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Description of data set</li>
+</ul>
+<div id="2624d943" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href=""></a><span class="bu">print</span>(california_housing.DESCR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="ordinary-least-squares-regression-5" class="slide level2">
+<h2>Ordinary Least Squares Regression</h2>
+<h4 id="example-california-housing-data-1">Example: California Housing Data</h4>
+<ul>
+<li>Inspect data</li>
+</ul>
+<div id="0e5567cc" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a>california_housing.data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">MedInc</th>
+<th data-quarto-table-cell-role="th">HouseAge</th>
+<th data-quarto-table-cell-role="th">AveRooms</th>
+<th data-quarto-table-cell-role="th">AveBedrms</th>
+<th data-quarto-table-cell-role="th">Population</th>
+<th data-quarto-table-cell-role="th">AveOccup</th>
+<th data-quarto-table-cell-role="th">Latitude</th>
+<th data-quarto-table-cell-role="th">Longitude</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>8.3252</td>
+<td>41.0</td>
+<td>6.984127</td>
+<td>1.023810</td>
+<td>322.0</td>
+<td>2.555556</td>
+<td>37.88</td>
+<td>-122.23</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>8.3014</td>
+<td>21.0</td>
+<td>6.238137</td>
+<td>0.971880</td>
+<td>2401.0</td>
+<td>2.109842</td>
+<td>37.86</td>
+<td>-122.22</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>7.2574</td>
+<td>52.0</td>
+<td>8.288136</td>
+<td>1.073446</td>
+<td>496.0</td>
+<td>2.802260</td>
+<td>37.85</td>
+<td>-122.24</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>5.6431</td>
+<td>52.0</td>
+<td>5.817352</td>
+<td>1.073059</td>
+<td>558.0</td>
+<td>2.547945</td>
+<td>37.85</td>
+<td>-122.25</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>3.8462</td>
+<td>52.0</td>
+<td>6.281853</td>
+<td>1.081081</td>
+<td>565.0</td>
+<td>2.181467</td>
+<td>37.85</td>
+<td>-122.25</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="ordinary-least-squares-regression-6" class="slide level2">
+<h2>Ordinary Least Squares Regression</h2>
+<h4 id="example-california-housing-data-2">Example: California Housing Data</h4>
+<ul>
+<li>Inspect data</li>
+</ul>
+<div id="a06e69aa" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a>california_housing.data.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">MedInc</th>
+<th data-quarto-table-cell-role="th">HouseAge</th>
+<th data-quarto-table-cell-role="th">AveRooms</th>
+<th data-quarto-table-cell-role="th">AveBedrms</th>
+<th data-quarto-table-cell-role="th">Population</th>
+<th data-quarto-table-cell-role="th">AveOccup</th>
+<th data-quarto-table-cell-role="th">Latitude</th>
+<th data-quarto-table-cell-role="th">Longitude</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">count</td>
+<td>20640.000000</td>
+<td>20640.000000</td>
+<td>20640.000000</td>
+<td>20640.000000</td>
+<td>20640.000000</td>
+<td>20640.000000</td>
+<td>20640.000000</td>
+<td>20640.000000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">mean</td>
+<td>3.870671</td>
+<td>28.639486</td>
+<td>5.429000</td>
+<td>1.096675</td>
+<td>1425.476744</td>
+<td>3.070655</td>
+<td>35.631861</td>
+<td>-119.569704</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">std</td>
+<td>1.899822</td>
+<td>12.585558</td>
+<td>2.474173</td>
+<td>0.473911</td>
+<td>1132.462122</td>
+<td>10.386050</td>
+<td>2.135952</td>
+<td>2.003532</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">min</td>
+<td>0.499900</td>
+<td>1.000000</td>
+<td>0.846154</td>
+<td>0.333333</td>
+<td>3.000000</td>
+<td>0.692308</td>
+<td>32.540000</td>
+<td>-124.350000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">25%</td>
+<td>2.563400</td>
+<td>18.000000</td>
+<td>4.440716</td>
+<td>1.006079</td>
+<td>787.000000</td>
+<td>2.429741</td>
+<td>33.930000</td>
+<td>-121.800000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">50%</td>
+<td>3.534800</td>
+<td>29.000000</td>
+<td>5.229129</td>
+<td>1.048780</td>
+<td>1166.000000</td>
+<td>2.818116</td>
+<td>34.260000</td>
+<td>-118.490000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">75%</td>
+<td>4.743250</td>
+<td>37.000000</td>
+<td>6.052381</td>
+<td>1.099526</td>
+<td>1725.000000</td>
+<td>3.282261</td>
+<td>37.710000</td>
+<td>-118.010000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">max</td>
+<td>15.000100</td>
+<td>52.000000</td>
+<td>141.909091</td>
+<td>34.066667</td>
+<td>35682.000000</td>
+<td>1243.333333</td>
+<td>41.950000</td>
+<td>-114.310000</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="ordinary-least-squares-regression-7" class="slide level2">
+<h2>Ordinary Least Squares Regression</h2>
+<h4 id="example-california-housing-data-3">Example: California Housing Data</h4>
+<ul>
+<li>Inspect the <strong>target</strong> variable, i.e., the median of the house value for each district</li>
+</ul>
+<div id="bd4b201e" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a>california_housing.target.head()</span>
+<span id="cb5-2"><a href=""></a>california_housing.target.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>count    20640.000000
+mean         2.068558
+std          1.153956
+min          0.149990
+25%          1.196000
+50%          1.797000
+75%          2.647250
+max          5.000010
+Name: MedHouseVal, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="ordinary-least-squares-regression-8" class="slide level2">
+<h2>Ordinary Least Squares Regression</h2>
+<h4 id="example-california-housing-data-4">Example: California Housing Data</h4>
+<div id="ef17d5dd" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href=""></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb7-2"><a href=""></a></span>
+<span id="cb7-3"><a href=""></a>california_housing.frame.hist(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">5</span>), bins<span class="op">=</span><span class="dv">30</span>, edgecolor<span class="op">=</span><span class="st">"black"</span>)</span>
+<span id="cb7-4"><a href=""></a>plt.subplots_adjust(hspace<span class="op">=</span><span class="fl">0.7</span>, wspace<span class="op">=</span><span class="fl">0.4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="Lecture_3_files/figure-revealjs/cell-7-output-1.png" width="517" height="431"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="ordinary-least-squares-regression-9" class="slide level2">
+<h2>Ordinary Least Squares Regression</h2>
+<h4 id="example-california-housing-data-5">Example: California Housing Data</h4>
+<div id="261bef6e" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href=""></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb8-2"><a href=""></a></span>
+<span id="cb8-3"><a href=""></a>california_housing.target.hist(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">5</span>), bins<span class="op">=</span><span class="dv">30</span>, edgecolor<span class="op">=</span><span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="Lecture_3_files/figure-revealjs/cell-8-output-1.png" width="509" height="411"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="ordinary-least-squares-regression-10" class="slide level2">
+<h2>Ordinary Least Squares Regression</h2>
+<h4 id="example-1a---univariate-regression">Example 1a - Univariate Regression</h4>
+<ul>
+<li><p>First, we will run a simple example with only one explanatory variable</p></li>
+<li><p>Look at the relationship between <code>MedInc</code> (avg. income) and housing prices</p></li>
+</ul>
+<div id="3a3b6ace" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href=""></a><span class="co"># Features</span></span>
+<span id="cb9-2"><a href=""></a>df <span class="op">=</span> pd.DataFrame(california_housing.data, columns<span class="op">=</span>california_housing.feature_names)</span>
+<span id="cb9-3"><a href=""></a></span>
+<span id="cb9-4"><a href=""></a>X <span class="op">=</span> df[<span class="st">"MedInc"</span>].to_numpy().reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb9-5"><a href=""></a>y <span class="op">=</span> california_housing.target.values[:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="3d455664" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href=""></a><span class="im">import</span> sklearn</span>
+<span id="cb10-2"><a href=""></a><span class="co"># Initiate linear regression model</span></span>
+<span id="cb10-3"><a href=""></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb10-4"><a href=""></a>model <span class="op">=</span> LinearRegression()</span>
+<span id="cb10-5"><a href=""></a></span>
+<span id="cb10-6"><a href=""></a>model.fit(X, y)</span>
+<span id="cb10-7"><a href=""></a><span class="bu">print</span>(<span class="st">"Coefficient: "</span>, model.coef_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Coefficient:  [0.41793849]</code></pre>
+</div>
+</div>
+</section>
+<section id="ordinary-least-squares-regression-11" class="slide level2">
+<h2>Ordinary Least Squares Regression</h2>
+<h4 id="example-1a---univariate-regression-1">Example 1a - Univariate Regression</h4>
+<ul>
+<li>We can also compute the <span class="math inline">\(R^2\)</span> of the model</li>
+</ul>
+<div id="0c582904" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href=""></a><span class="bu">print</span>(<span class="st">"R^2: "</span>, np.<span class="bu">round</span>(model.score(X, y),<span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>R^2:  0.4734</code></pre>
+</div>
+</div>
+</section>
+<section id="ordinary-least-squares-regression-12" class="slide level2">
+<h2>Ordinary Least Squares Regression</h2>
+<h4 id="example-1a---univariate-regression-2">Example 1a - Univariate Regression</h4>
+<ul>
+<li>Let us plot the housing prices against the income variable and add the predictions obtained from the regression model.</li>
+</ul>
+<div id="91a0dcc5" class="cell" data-execution_count="11">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href=""></a><span class="co"># We generate predictions from the regression model </span></span>
+<span id="cb14-2"><a href=""></a>pred <span class="op">=</span> model.predict(X)</span>
+<span id="cb14-3"><a href=""></a></span>
+<span id="cb14-4"><a href=""></a>plt.figure(<span class="dv">1</span>,figsize<span class="op">=</span>(<span class="fl">7.5</span>,<span class="dv">3</span>))</span>
+<span id="cb14-5"><a href=""></a>plt.scatter(X, y, color <span class="op">=</span> <span class="st">"blue"</span>, label <span class="op">=</span> <span class="st">"Y observed"</span>)</span>
+<span id="cb14-6"><a href=""></a>plt.scatter(X, pred, color <span class="op">=</span> <span class="st">"r"</span>, label <span class="op">=</span> <span class="st">"Y predicted (OLS)"</span>)</span>
+<span id="cb14-7"><a href=""></a>plt.xlabel(<span class="st">"MedInc"</span>)</span>
+<span id="cb14-8"><a href=""></a>plt.ylabel(<span class="st">"Housing Price"</span>)</span>
+<span id="cb14-9"><a href=""></a>plt.title(<span class="st">"Scatterplot, Housing Price vs. MedInc"</span>)</span>
+<span id="cb14-10"><a href=""></a>plt.legend()</span>
+<span id="cb14-11"><a href=""></a><span class="co"># Let's generate a scatter plot for the simple regression model</span></span>
+<span id="cb14-12"><a href=""></a></span>
+<span id="cb14-13"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="Lecture_3_files/figure-revealjs/cell-12-output-1.png" width="613" height="302"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="ordinary-least-squares-regression-13" class="slide level2">
+<h2>Ordinary Least Squares Regression</h2>
+<h4 id="example-1b---multivariate-regression">Example 1b - Multivariate Regression</h4>
+<ul>
+<li>What if we include more covariates in the regression, say all available in the data? How does the coefficient on MedInc change?</li>
+</ul>
+<div id="f9e8ba88" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href=""></a>X1b <span class="op">=</span> df.to_numpy()</span>
+<span id="cb15-2"><a href=""></a>model1b <span class="op">=</span> LinearRegression()</span>
+<span id="cb15-3"><a href=""></a>model1b.fit(X1b, y)</span>
+<span id="cb15-4"><a href=""></a><span class="co"># All coefficients: </span></span>
+<span id="cb15-5"><a href=""></a><span class="bu">print</span>(np.<span class="bu">round</span>(model1b.coef_,<span class="dv">4</span>))</span>
+<span id="cb15-6"><a href=""></a><span class="co"># And R^2</span></span>
+<span id="cb15-7"><a href=""></a><span class="bu">print</span>(<span class="st">"R^2: "</span>, np.<span class="bu">round</span>(model1b.score(X1b,y),<span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[ 0.4367  0.0094 -0.1073  0.6451 -0.     -0.0038 -0.4213 -0.4345]
+R^2:  0.6062</code></pre>
+</div>
+</div>
+</section>
+<section id="ordinary-least-squares-regression-14" class="slide level2">
+<h2>Ordinary Least Squares Regression</h2>
+<h4 id="example-1b---multivariate-regression-1">Example 1b - Multivariate Regression</h4>
+<ul>
+<li>Let us plot the housing prices against the avg. income and add the predictions as obtained from the multivariate regression model (Example 1b).</li>
+</ul>
+<div id="e317266b" class="cell" data-execution_count="13">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href=""></a><span class="co"># We generate predictions from the regression model </span></span>
+<span id="cb17-2"><a href=""></a>pred1b <span class="op">=</span> model1b.predict(X1b)</span>
+<span id="cb17-3"><a href=""></a>plt.figure(<span class="dv">1</span>,figsize<span class="op">=</span>(<span class="dv">15</span>,<span class="dv">5</span>))</span>
+<span id="cb17-4"><a href=""></a>plt.scatter(df[<span class="st">"MedInc"</span>], y, color <span class="op">=</span> <span class="st">"blue"</span>, label <span class="op">=</span> <span class="st">"Y observed"</span>)</span>
+<span id="cb17-5"><a href=""></a>plt.scatter(df[<span class="st">"MedInc"</span>], pred1b, color <span class="op">=</span> <span class="st">"r"</span>, label <span class="op">=</span> <span class="st">"Y predicted (OLS)"</span>)</span>
+<span id="cb17-6"><a href=""></a>plt.xlabel(<span class="st">"MedInc"</span>)</span>
+<span id="cb17-7"><a href=""></a>plt.ylabel(<span class="st">"Housing Price"</span>)</span>
+<span id="cb17-8"><a href=""></a>plt.title(<span class="st">"Scatterplot, Housing Price vs. MedInc"</span>)</span>
+<span id="cb17-9"><a href=""></a>plt.legend()</span>
+<span id="cb17-10"><a href=""></a></span>
+<span id="cb17-11"><a href=""></a><span class="co"># Let's generate a scatter plot for the multivariate regression model</span></span>
+<span id="cb17-12"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="Lecture_3_files/figure-revealjs/cell-14-output-1.png" width="1171" height="449"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="short-digression-partialling-out" class="slide level2">
+<h2>Short Digression: Partialling Out</h2>
+<ul>
+<li><p>The linear model does not look as linear as it did in the one-dimensional model. <em>Is there something wrong?</em></p></li>
+<li><p>In the multivariate model we have more than one regressor and thus, we do not simply fit a line in a 2-dimensional space to minimize the residuals.</p></li>
+<li><p>Instead we are now in a higher-dimensional space and try to fit a hyperplane to minimize residuals.</p></li>
+<li><p>But the linearity can still be recognized using the <em>partialling out</em> result, known as the <strong>Frisch-Waugh-Lovell</strong> theorem. The reasoning is</p></li>
+</ul>
+</section>
+<section id="short-digression-partialling-out-1" class="slide level2">
+<h2>Short Digression: Partialling Out</h2>
+<ol type="1">
+<li>Regress <span class="math inline">\(Y\)</span> on <span class="math inline">\(W\)</span>, where <span class="math inline">\(W\)</span> is the matrix with all covariates <span class="math inline">\(X\)</span>’s <em>except</em> for <span class="math inline">\(X_j\)</span> (say <span class="math inline">\(X_{MedInc}\)</span>) and predict the <em>residuals</em> <span class="math inline">\(r_1\)</span>,</li>
+<li>Regress <span class="math inline">\(X_j\)</span> on <span class="math inline">\(W\)</span> and predict <em>residuals</em> <span class="math inline">\(r_2\)</span>,</li>
+<li>Regress <span class="math inline">\(r_1\)</span> on <span class="math inline">\(r_2\)</span> and obtain the regression coefficient <span class="math inline">\(\beta_j\)</span>.</li>
+</ol>
+<p>As a result, we can create a plot that looks again linear (in the <em>residuals</em>).</p>
+</section>
+<section id="short-digression-partialling-out-2" class="slide level2">
+<h2>Short Digression: Partialling Out</h2>
+<div id="9a7d96d0" class="cell" data-execution_count="14">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href=""></a>X1b_1ststage <span class="op">=</span> df.drop([<span class="st">"MedInc"</span>], axis <span class="op">=</span> <span class="dv">1</span>).to_numpy()</span>
+<span id="cb18-2"><a href=""></a></span>
+<span id="cb18-3"><a href=""></a>modelpout1 <span class="op">=</span> LinearRegression()</span>
+<span id="cb18-4"><a href=""></a>modelpout1.fit(X1b_1ststage, y)</span>
+<span id="cb18-5"><a href=""></a>yhat <span class="op">=</span> modelpout1.predict(X1b_1ststage)</span>
+<span id="cb18-6"><a href=""></a>resid1 <span class="op">=</span> y<span class="op">-</span>yhat</span>
+<span id="cb18-7"><a href=""></a></span>
+<span id="cb18-8"><a href=""></a>modelpout2 <span class="op">=</span> LinearRegression()</span>
+<span id="cb18-9"><a href=""></a>modelpout2.fit(X1b_1ststage, X)</span>
+<span id="cb18-10"><a href=""></a>Xhat <span class="op">=</span> modelpout2.predict(X1b_1ststage)</span>
+<span id="cb18-11"><a href=""></a>resid2 <span class="op">=</span> X<span class="op">-</span>Xhat</span>
+<span id="cb18-12"><a href=""></a></span>
+<span id="cb18-13"><a href=""></a>modelpout3 <span class="op">=</span> LinearRegression()</span>
+<span id="cb18-14"><a href=""></a>modelpout3.fit(resid2, resid1)</span>
+<span id="cb18-15"><a href=""></a>predpout <span class="op">=</span>  modelpout3.predict(resid2)</span>
+<span id="cb18-16"><a href=""></a></span>
+<span id="cb18-17"><a href=""></a><span class="bu">print</span>(<span class="st">"Coefficient: "</span>, modelpout3.coef_)</span>
+<span id="cb18-18"><a href=""></a></span>
+<span id="cb18-19"><a href=""></a>plt.figure(<span class="dv">1</span>,figsize<span class="op">=</span>(<span class="dv">15</span>,<span class="dv">5</span>))</span>
+<span id="cb18-20"><a href=""></a>plt.scatter(resid2, resid1, color <span class="op">=</span> <span class="st">"blue"</span>, label <span class="op">=</span> <span class="st">"Residuals 1"</span>)</span>
+<span id="cb18-21"><a href=""></a>plt.plot(resid2, predpout, color <span class="op">=</span> <span class="st">"r"</span>, label <span class="op">=</span> <span class="st">"Residuals predicted (OLS, partialling out)"</span>)</span>
+<span id="cb18-22"><a href=""></a>plt.xlabel(<span class="st">"Residuals from Regression MedInc~ W"</span>)</span>
+<span id="cb18-23"><a href=""></a>plt.ylabel(<span class="st">"Residuals from Regression Y ~ W"</span>)</span>
+<span id="cb18-24"><a href=""></a>plt.title(<span class="st">"Scatterplot, Partialling Out"</span>)</span>
+<span id="cb18-25"><a href=""></a>plt.legend()</span>
+<span id="cb18-26"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Coefficient:  [0.43669329]</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="Lecture_3_files/figure-revealjs/cell-15-output-2.png" width="1191" height="449"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="comparison-of-predictive-accuracy-of-the-models" class="slide level2">
+<h2>Comparison of Predictive Accuracy of the Models</h2>
+<ul>
+<li>Let us now consider how the two models compare in terms of their predictive accuracy using the <em>MSE</em> (Mean Squared Error) in prediction. <span class="math display">\[MSE(\hat{y}^{test}_n)=\frac{1}{n^{test}} \cdot \sum_{i=1}^{n^{test}}[(\hat{y}_i^{test}-y_i^{test})^2], \]</span> where we generate predictions for observations i in a test sample <span class="math inline">\(i = 1,...,n^{test}\)</span>, <span class="math inline">\(n = n^{train} + n^{test}\)</span>.</li>
+</ul>
+</section>
+<section id="comparison-of-predictive-accuracy-of-the-models-1" class="slide level2">
+<h2>Comparison of Predictive Accuracy of the Models</h2>
+<ul>
+<li>How we proceed
+<ul>
+<li>We split the data randomly into a training (70% of observations) and a test sample (30%),</li>
+<li>Estimate the model on the basis of the training sample, and</li>
+<li>Assess the predictive accuracy on the basis of the test sample</li>
+</ul></li>
+<li><em>Why do we do this?</em></li>
+</ul>
+</section>
+<section id="comparison-of-predictive-accuracy-of-the-models-2" class="slide level2">
+<h2>Comparison of Predictive Accuracy of the Models</h2>
+<div class="columns">
+<div class="column" style="width:90%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/tweet_molnar.png"></p>
+<figcaption>Source: <a href="https://twitter.com/ChristophMolnar/status/1750448927948599316">Twitter ChristophMolnar</a></figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:90%;">
+
+</div></div>
+</section>
+<section id="comparison-of-predictive-accuracy-of-the-models-3" class="slide level2">
+<h2>Comparison of Predictive Accuracy of the Models</h2>
+<div id="84db3fc6" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href=""></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb20-2"><a href=""></a></span>
+<span id="cb20-3"><a href=""></a><span class="co"># Basic Model (1 Regressor MedInc)</span></span>
+<span id="cb20-4"><a href=""></a>X_train, X_test, Y_train, Y_test <span class="op">=</span> train_test_split(X, y, test_size <span class="op">=</span> <span class="fl">0.3</span>, random_state <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb20-5"><a href=""></a><span class="bu">print</span>(<span class="st">"Univariate Model:"</span>)</span>
+<span id="cb20-6"><a href=""></a><span class="bu">print</span>(X_train.shape, X_test.shape, Y_train.shape, Y_test.shape)</span>
+<span id="cb20-7"><a href=""></a></span>
+<span id="cb20-8"><a href=""></a><span class="co"># Same sample splitting for the multivariate model </span></span>
+<span id="cb20-9"><a href=""></a>X1b_train, X1b_test, Y1b_train, Y1b_test <span class="op">=</span> train_test_split(X1b, y, test_size <span class="op">=</span> <span class="fl">0.3</span>, random_state <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb20-10"><a href=""></a><span class="bu">print</span>(<span class="st">"Multivariate Model:"</span>)</span>
+<span id="cb20-11"><a href=""></a><span class="bu">print</span>(X1b_train.shape, X1b_test.shape, Y1b_train.shape, Y1b_test.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Univariate Model:
+(14448, 1) (6192, 1) (14448,) (6192,)
+Multivariate Model:
+(14448, 8) (6192, 8) (14448,) (6192,)</code></pre>
+</div>
+</div>
+</section>
+<section id="comparison-of-predictive-accuracy-of-the-models-4" class="slide level2">
+<h2>Comparison of Predictive Accuracy of the Models</h2>
+<div id="711dff26" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href=""></a>model.fit(X_train, Y_train)</span>
+<span id="cb22-2"><a href=""></a>Y_pred <span class="op">=</span> model.predict(X_test)</span>
+<span id="cb22-3"><a href=""></a>MSE <span class="op">=</span> np.mean((Y_pred <span class="op">-</span> Y_test)<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb22-4"><a href=""></a></span>
+<span id="cb22-5"><a href=""></a>model1b.fit(X1b_train, Y1b_train)</span>
+<span id="cb22-6"><a href=""></a>Y1b_pred <span class="op">=</span> model1b.predict(X1b_test)</span>
+<span id="cb22-7"><a href=""></a>MSE1b <span class="op">=</span> np.mean((Y1b_pred <span class="op">-</span> Y1b_test)<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb22-8"><a href=""></a></span>
+<span id="cb22-9"><a href=""></a><span class="bu">print</span>(<span class="st">"MSE univ Model: "</span>, MSE)</span>
+<span id="cb22-10"><a href=""></a><span class="bu">print</span>(<span class="st">"MSE multiv Model: "</span>, MSE1b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>MSE univ Model:  0.6999091760117259
+MSE multiv Model:  0.529629315140828</code></pre>
+</div>
+</div>
+<p>What does that mean?</p>
+</section>
+<section id="inference" class="slide level2">
+<h2>Inference</h2>
+<h4 id="asymptotic-theory-for-ordinary-least-squares">Asymptotic Theory for Ordinary Least Squares</h4>
+<ul>
+<li><p>The ordinary least squares estimator <span class="math inline">\(\hat{\beta}\)</span> is a <em>consistent</em> estimator for the true regression coefficient <span class="math inline">\(\beta\)</span> under the assumption stated above.</p></li>
+<li><p>The estimator is asymptotically normally distributed.</p></li>
+<li><p>Under homoskedasticity, the OLS estimator is BLUE (Best Linear Unbiased Estimator)</p></li>
+</ul>
+<p>We omit the proofs. But, as you will see in the problem set, you need to understand the results.</p>
+</section>
+<section id="inference-1" class="slide level2">
+<h2>Inference</h2>
+<h4 id="ols-consistency">OLS Consistency</h4>
+<p>Under the assumptions that <span class="math inline">\(\E[\varepsilon \vert X_1, ..., X_p] = 0\)</span> , <span class="math inline">\(\rank \E[X'X] = p\)</span> and provided the population regression model is <span class="math inline">\(Y = X\beta+\varepsilon\)</span>, it can be shown that the OLS estimator <span class="math inline">\(\hat{\beta}\)</span> is a consistent estimator for <span class="math inline">\(\beta\)</span>, i.e., <span class="math display">\[\hat{\beta}_n\Pto\beta,\]</span></p>
+<p>as <span class="math inline">\(n\rightarrow \infty\)</span>.</p>
+<p>It can also be shown that, under the same assumptions, the OLS estimator is an <em>unbiased</em> estimator for the regression coefficient <span class="math inline">\(\beta\)</span>, i.e.,</p>
+<p><span class="math display">\[bias(\hat{\beta}_n):=\E[\hat{\beta}_n]-\beta = 0.\]</span></p>
+</section>
+<section id="inference-2" class="slide level2">
+<h2>Inference</h2>
+<h4 id="gauss-markov-theorem-blue">Gauss-Markov Theorem (BLUE)<sup>1</sup></h4>
+<p>Under the following assumptions, there is no linear and unbiased estimator of the <span class="math inline">\(\beta\)</span> coefficients that has a smaller variance than the OLS estimator <span class="math inline">\(\hat{\beta}\)</span>, i.e., if it holds that</p>
+<ul>
+<li>The true regression model is <span class="math inline">\(Y = X\beta + \varepsilon\)</span>,</li>
+<li>X is of full rank (p),</li>
+<li><span class="math inline">\(\E[\varepsilon \vert X] = 0\)</span>,</li>
+<li>Homoskedasticity <span class="math inline">\(\E\left[\varepsilon \varepsilon' \right] = \sigma^2 I\)</span>.</li>
+</ul>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>Proof omitted.</p></li></ol></aside></section>
+<section id="inference-3" class="slide level2">
+<h2>Inference</h2>
+<h4 id="gauss-markov-theorem-blue-1">Gauss-Markov Theorem (BLUE)</h4>
+<p>From the Gauss-Markov Theorem, we can already see that there is an efficiency loss under <em>heteroskedasticity</em>. However, consistency of OLS is not affected by heteroskedasticity.</p>
+</section>
+<section id="inference-4" class="slide level2">
+<h2>Inference</h2>
+<h4 id="asymptotic-normality-of-ols-estimator">Asymptotic Normality of OLS estimator</h4>
+<p>Consistency and unbiasedness are important properties. However, if we would like to test hypotheses on the model, we need more information on the variability of OLS estimates.</p>
+<p>To perform inference, we need to quantify the estimator’s randomness in some way. For instance, we want to test a hypothesis on one of the regression coefficients.</p>
+<p>In our California housing data example we could test:</p>
+<p><span class="math display">\[H_0: \beta_{MedInc} =  0  ~~ vs. H_1: \beta_{MedInc} \neq  0.\]</span></p>
+</section>
+<section id="inference-5" class="slide level2">
+<h2>Inference</h2>
+<h4 id="asymptotic-normality-of-ols-estimator-1">Asymptotic Normality of OLS estimator</h4>
+<p>If we knew that the estimator <span class="math inline">\(\hat{\beta}\)</span> was asymptotically normally distributed around the true (unknown) coefficient <span class="math inline">\(\beta\)</span>, we could set up a proper hypothesis test. That is, we could control the probability of a type I error at a significance level <span class="math inline">\(\alpha\)</span>.</p>
+</section>
+<section id="inference-6" class="slide level2">
+<h2>Inference</h2>
+<h4 id="asymptotic-normality-of-ols-estimator-2">Asymptotic Normality of OLS estimator</h4>
+<p>We can show that <span class="math display">\[\sqrt{n}(\hat{\beta} - \beta) \xrightarrow[]{d} N(0, \Omega),\]</span></p>
+<p>where <span class="math inline">\(\Omega\)</span> is a variance-covariance matrix with</p>
+<p><span class="math display">\[\Omega = (X'X)^{-1}X'\E[\varepsilon \varepsilon'] X (X'X)^{-1}.\]</span></p>
+</section>
+<section id="inference-7" class="slide level2">
+<h2>Inference</h2>
+<h4 id="asymptotic-normality-of-ols-estimator-3">Asymptotic Normality of OLS estimator</h4>
+<p>Under homoskedasticity, for instance as implied by the assumption <span class="math inline">\(\E\left[\varepsilon \varepsilon' \right] = \sigma^2 I\)</span>, <span class="math inline">\(\Omega\)</span> can be simplified to</p>
+<p><span class="math display">\[\Omega = (X'X)^{-1}X'\E[\varepsilon \varepsilon'] X (X'X)^{-1} = (X'X)^{-1}(X'X)\sigma^2 (X'X)^{-1} = \sigma^2 (X'X)^{-1}.\]</span></p>
+</section>
+<section id="tests-for-ols" class="slide level2">
+<h2>Tests for OLS</h2>
+<h5 id="t-test">t-test</h5>
+<ul>
+<li><p>Since we know that the OLS estimator is asymptotically normal under appropriate assumptions, we can <em>test</em> the regression coefficients.</p></li>
+<li><p>Suppose, we are interested in testing whether a regression coefficient <span class="math inline">\(\beta_j\)</span> (e.g.&nbsp;<span class="math inline">\(\beta_{MedInc}\)</span>) is different from zero, i.e., our null hypothesis and the alternative are</p></li>
+</ul>
+<p><span class="math display">\[H_0: \beta_{j} =  0  ~~ vs. H_1: \beta_{j} \neq  0.\]</span></p>
+<ul>
+<li>Under the <span class="math inline">\(H_0\)</span>, we now that <span class="math inline">\(\hat{\beta_j}\)</span> is asymptotically normally distributed around <span class="math inline">\(\beta_j = 0\)</span>.</li>
+</ul>
+</section>
+<section id="tests-for-ols-1" class="slide level2">
+<h2>Tests for OLS</h2>
+<h5 id="t-test-1">t-test</h5>
+<ul>
+<li><p>The probability that the true <span class="math inline">\(\beta_j\)</span> is zero (<span class="math inline">\(H_0\)</span>) and that we obtain an estimate <span class="math inline">\(\hat{\beta}_j\)</span> which is very far away from zero is very small.</p></li>
+<li><p>It can be shown that, under the <span class="math inline">\(H_0\)</span>, the t-statistic <span class="math inline">\(t_j\)</span> is <span class="math inline">\(t\)</span>-distributed with <span class="math inline">\(n-p-1\)</span> degrees of freedom.</p></li>
+</ul>
+<p><span class="math display">\[t_j = \frac{\hat{\beta}_j - \beta_j}{SE(\hat\beta_j)} \sim t(n-p-1), \]</span> where <span class="math inline">\(SE(\hat{\beta}_j)\)</span> is the (estimated) standard error of <span class="math inline">\(\hat{\beta}_j\)</span>.</p>
+</section>
+<section id="tests-for-ols-2" class="slide level2">
+<h2>Tests for OLS</h2>
+<h5 id="t-test-2">t-test</h5>
+<ul>
+<li><p>We reject the hypotheses <span class="math inline">\(H_0\)</span> if <span class="math inline">\(|t_j| &gt; c_{1-\frac{\alpha}{2}}\)</span> with <span class="math inline">\(c_{1-\frac{\alpha}{2}}\)</span> being the <span class="math inline">\((1-\frac{\alpha}{2})\)</span>-quantile of the t-distribution with (n-p-1) degrees of freedom.</p></li>
+<li><p>Testing one-sided hypotheses is straigthforward.</p></li>
+</ul>
+</section>
+<section id="tests-for-ols-3" class="slide level2">
+<h2>Tests for OLS</h2>
+<h5 id="t-test-3">t-test</h5>
+<ul>
+<li><p>Questions: <em>Why don’t we have a normal distribution for the test statistic? What if <span class="math inline">\(n\)</span> is large?</em></p></li>
+<li><p>Remember that <span class="math inline">\(t_j \xrightarrow[]{d}Z \sim\N(0,1)\)</span>, i.e., if <span class="math inline">\(n\)</span> is large enough we can use the <span class="math inline">\((1-\frac{\alpha}{2})\)</span>-quantiles of the standard normal distribution.</p></li>
+</ul>
+</section>
+<section id="tests-for-ols-4" class="slide level2">
+<h2>Tests for OLS</h2>
+<h5 id="lagrange-multiplier-test">Lagrange Multiplier Test</h5>
+<ul>
+<li><p>A Lagrange multiplier test allows to test restrictions imposed on the model.</p></li>
+<li><p>Example: Test whether a subset of <span class="math inline">\(q\)</span> regression coefficients <span class="math inline">\(\beta = (\beta_1, ..., \beta_{p-q}, \beta_{p-q+1}, ..., \beta_{p})\)</span> are different from zero.</p></li>
+</ul>
+<p><span class="math display">\[H_0: \beta_{p-q+1} = \beta_{p-q+2} = ... = \beta_{p} = 0.\]</span></p>
+</section>
+<section id="tests-for-ols-5" class="slide level2">
+<h2>Tests for OLS</h2>
+<h5 id="lagrange-multiplier-test-1">Lagrange Multiplier Test</h5>
+<ul>
+<li><p>For the LM test it suffices to regress <span class="math inline">\(Y\)</span> on the first <span class="math inline">\(p-q\)</span> regressors and then to regress the residuals of this regression on the <span class="math inline">\(q\)</span> regressors we are interested in.</p></li>
+<li><p>The test is based on <span class="math inline">\(n*R^2\)</span> from the second regression being asymptotically <span class="math inline">\(\chi^2_q\)</span> distributed.</p></li>
+</ul>
+</section>
+<section id="tests-for-ols-6" class="slide level2">
+<h2>Tests for OLS</h2>
+<h4 id="example-continued">Example continued</h4>
+<ul>
+<li>What can we say about the hypothesis that <span class="math inline">\(\beta_{MedInc}\)</span> is different from zero?</li>
+</ul>
+<p><span class="math display">\[H_0: \beta_{MedInc} = 0  ~~ vs. H_1: \beta_{MedInc} \neq 0\]</span></p>
+<ul>
+<li>Unfortunately, the <code>sklearn</code> package does not provide tests as it is mainly developed for <strong>predictions</strong> <br> <span class="emoji" data-emoji="arrow_right">➡️</span> Package <code>statsmodel</code></li>
+</ul>
+</section>
+<section id="tests-for-ols-7" class="slide level2">
+<h2>Tests for OLS</h2>
+<h4 id="example-continued-1">Example continued</h4>
+<p>Let’s estimate the model from the previous example</p>
+<div id="063cc6a1" class="cell" data-execution_count="17">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href=""></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb24-2"><a href=""></a></span>
+<span id="cb24-3"><a href=""></a><span class="co"># First, we add an intercept to the data</span></span>
+<span id="cb24-4"><a href=""></a>Xc <span class="op">=</span> sm.add_constant(X)</span>
+<span id="cb24-5"><a href=""></a>ols <span class="op">=</span> sm.OLS(y,Xc)</span>
+<span id="cb24-6"><a href=""></a>ols <span class="op">=</span> ols.fit(cov_type <span class="op">=</span> <span class="st">"HC3"</span>)</span>
+<span id="cb24-7"><a href=""></a><span class="bu">print</span>(ols.summary())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                      y   R-squared:                       0.473
+Model:                            OLS   Adj. R-squared:                  0.473
+Method:                 Least Squares   F-statistic:                 1.394e+04
+Date:                Mon, 18 Nov 2024   Prob (F-statistic):               0.00
+Time:                        15:26:21   Log-Likelihood:                -25623.
+No. Observations:               20640   AIC:                         5.125e+04
+Df Residuals:                   20638   BIC:                         5.127e+04
+Df Model:                           1                                         
+Covariance Type:                  HC3                                         
+==============================================================================
+                 coef    std err          z      P&gt;|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+const          0.4509      0.014     32.021      0.000       0.423       0.478
+x1             0.4179      0.004    118.060      0.000       0.411       0.425
+==============================================================================
+Omnibus:                     4245.795   Durbin-Watson:                   0.655
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):             9273.446
+Skew:                           1.191   Prob(JB):                         0.00
+Kurtosis:                       5.260   Cond. No.                         10.2
+==============================================================================
+
+Notes:
+[1] Standard Errors are heteroscedasticity robust (HC3)</code></pre>
+</div>
+</div>
+<!-- Tabelle kleiner, da sie nicht auf eine Seite passt.. 
+Vorher: ols.summary()
+-->
+</section>
+<section id="tests-for-ols-8" class="slide level2">
+<h2>Tests for OLS</h2>
+<h4 id="example-continued-2">Example continued</h4>
+<p>We can print the confidence intervals using our OLS estimation results.</p>
+<div id="f770276c" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href=""></a>ols.conf_int(alpha<span class="op">=</span><span class="fl">0.05</span>)[<span class="dv">1</span>,:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>array([0.41100013, 0.42487685])</code></pre>
+</div>
+</div>
+<ul>
+<li><p>The predictions can also be plotted in <code>statsmodel</code></p></li>
+<li><p>You can verify yourself that the predictions are identical to those obtained with <code>sklearn</code></p></li>
+</ul>
+</section>
+<section id="quantile-regression" class="slide level2">
+<h2>Quantile Regression</h2>
+<h4 id="motivation">Motivation</h4>
+<p>Remember, what does OLS actually do?</p>
+<blockquote>
+<p>“<em>What the regression curve does is give a grand summary for the averages of the distributions corresponding to the set of xs. We could go further and compute several different regression curves corresponding to the various percentage points of the distributions and thus get a more complete picture of the set. Ordinarily this is not done, and so regression often gives a rather incomplete picture. Just as the mean gives an incomplete picture of a single distribution, so the regression curve gives a correspondingly incomplete picture for a set of distributions</em>” <span class="citation" data-cites="mosteller1977data">(<a href="#/references" role="doc-biblioref" onclick="">Mosteller and Tukey 1977</a>)</span></p>
+</blockquote>
+</section>
+<section id="quantile-regression-1" class="slide level2">
+<h2>Quantile Regression</h2>
+<h4 id="motivation-1">Motivation</h4>
+<p>Remember, what does OLS actually do?</p>
+<p>“<em>[…] quantile regression results offer a much richer, more focused view of the applications than could be achieved by looking exclusively at conditional mean models.</em>” <span class="citation" data-cites="koenker">(<a href="#/references" role="doc-biblioref" onclick="">Koenker 2005, 38:25</a>)</span></p>
+<p>Main reference for quantile regression: <span class="citation" data-cites="koenker">Koenker (<a href="#/references" role="doc-biblioref" onclick="">2005</a>)</span></p>
+</section>
+<section id="quantile-regression-2" class="slide level2">
+<h2>Quantile Regression</h2>
+<h4 id="recap-what-is-a-quantile">Recap: What is a quantile?</h4>
+<ul>
+<li><em>Unconditional quantile</em>:</li>
+</ul>
+<p><span class="math inline">\(F_{Y_i}(y)\)</span> is the cdf of <span class="math inline">\(Y_i\)</span>. Then <span class="math inline">\(q_{Y_i}(\tau)\)</span> is the <span class="math inline">\(\tau\)</span> quantile of <span class="math inline">\(Y_i\)</span> as it solves</p>
+<p><span class="math display">\[q_{Y_i}(\tau) = F_{Y_i}^{-1}(\tau):=\inf\{y : F_{Y_i}(y)\ge \tau\}.\]</span></p>
+<p>Alternatively, we can write <span class="math display">\[F(q_{Y_i}(\tau)) = \tau.\]</span></p>
+</section>
+<section id="quantile-regression-3" class="slide level2">
+<h2>Quantile Regression</h2>
+<h4 id="recap-what-is-a-quantile-1">Recap: What is a quantile?</h4>
+<ul>
+<li>Generally, we are interested in <em>conditional quantiles</em>, i.e., the quantile of <span class="math inline">\(Y_i\)</span> given values of <span class="math inline">\(X_i\)</span>.</li>
+</ul>
+<p><span class="math inline">\(F_{Y_i|X_i}(y)\)</span> is the conditional cdf of <span class="math inline">\(Y_i\)</span> given <span class="math inline">\(X_i\)</span> and, thus, <span class="math inline">\(q_{Y_i|X_i}(\tau)\)</span> is the conditional <span class="math inline">\(\tau\)</span>-quantile of <span class="math inline">\(Y\)</span> as it is the solution to</p>
+<p><span class="math display">\[F(q_{Y_i|X_i}(\tau)|X_i) = \tau.\]</span></p>
+<p>Major Question: How do covariates affect quantiles of the outcome variable?</p>
+</section>
+<section id="quantile-regression-4" class="slide level2">
+<h2>Quantile Regression</h2>
+<h4 id="recap-what-is-a-quantile-2">Recap: What is a quantile?</h4>
+<p>We are still in the linear model set up, i.e., we model our outcome as</p>
+<p><span class="math display">\[Y_i = X_i\beta + \varepsilon_i,\]</span> where we assume that <span class="math inline">\(\varepsilon\)</span> is i.i.d. and independent of <span class="math inline">\(X\)</span>.</p>
+<p>The <em>conditional quantile function</em> of <span class="math inline">\(Y\)</span> is then:</p>
+<p><span class="math display">\[q_{Y_i|X_i}(\tau) = X_i\beta_\tau + F_{\varepsilon_i}^{-1}(\tau),\]</span></p>
+<p>where <span class="math inline">\(F_{\varepsilon}\)</span> is the distribution function of the error term.</p>
+</section>
+<section id="quantile-regression-5" class="slide level2">
+<h2>Quantile Regression</h2>
+<h4 id="recap-what-is-a-quantile-3">Recap: What is a quantile?</h4>
+<p>Estimates on <span class="math inline">\(\beta_\tau\)</span> can be obtained by minimizing a “check” function:</p>
+<p><span class="math display">\[\hat{\beta_\tau} = \arg \min_{\beta} \sum_{i=1}^{n} \rho_\tau(Y_i - X_i\beta),\]</span></p>
+<p>with <span class="math inline">\(\rho_\tau = (\tau I[\varepsilon \ge 0] + (1-\tau)I[\varepsilon&lt;0])|\varepsilon| = (\tau - I[\varepsilon&lt;0])\varepsilon\)</span>. <span class="math inline">\(I(\cdot)\)</span> is an indicator function assuming value one if statement <span class="math inline">\(\cdot\)</span> is true.</p>
+<p>We skip the details on the optimization problem. Details can be found in the textbook of <span class="citation" data-cites="koenker">Koenker (<a href="#/references" role="doc-biblioref" onclick="">2005</a>)</span></p>
+</section>
+<section id="quantile-regression-6" class="slide level2">
+<h2>Quantile Regression</h2>
+<h4 id="illustration-of-check-function">Illustration of Check Function</h4>
+<p>(taken from Bonhomme, 2008)</p>
+
+<img data-src="figures/checkfct.jpg" class="r-stretch"></section>
+<section id="quantile-regression-7" class="slide level2">
+<h2>Quantile Regression</h2>
+<h4 id="median-regression-lad-regression">Median Regression = LAD Regression</h4>
+<p>The median is a special case of a quantile (i.e., the 0.5-quantile). For the median regression model, we have <span class="math inline">\(\tau = \frac{1}{2}\)</span> and</p>
+<p><span class="math display">\[\hat{\beta}_{0.5} = \arg \min_\beta \sum_{i=1}^{n} \vert Y_i - X_i\beta \vert.\]</span></p>
+<p>Hence, the median estimator minimizes the <em>absolute</em> deviations from the <span class="math inline">\(Y\)</span> values whereas the conditional mean estimator (OLS) is the minimizer of the squared error. The median estimator is therefore called <em>LAD</em>-estimator (Least Absolute Deviations).</p>
+</section>
+<section id="quantile-regression-8" class="slide level2">
+<h2>Quantile Regression</h2>
+<h4 id="computation-solving-the-minimization-problem">Computation / Solving the Minimization Problem</h4>
+<ul>
+<li><p>Quantile regression estimators are not as nice to compute as the OLS estimator because the objective function is non-differentiable (how would you set up the FOC?).</p></li>
+<li><p>However, the minimization problem can be reformulated as a linear program which can be solved. We omit the computational details. They can be found in <span class="citation" data-cites="koenker">Koenker (<a href="#/references" role="doc-biblioref" onclick="">2005</a>)</span> or (less technical) in Bonhomme (2008).</p></li>
+<li><p>Efficient optimization methods have been developed and implemented.</p></li>
+</ul>
+</section>
+<section id="quantile-regression-9" class="slide level2">
+<h2>Quantile Regression</h2>
+<h4 id="interpretation-of-coefficients">Interpretation of Coefficients</h4>
+<p>In the OLS model we have that <span class="math display">\[E(Y|X) = X\beta \]</span></p>
+<p>leading us to the interpretation of <span class="math inline">\(\beta\)</span> as a partial derivative <span class="math display">\[\frac{\partial E(Y|X)}{\partial X_j} = \beta_j.\]</span></p>
+<p>In the quantile regression we have <span class="math inline">\(q_{Y|X}(\tau) = X\beta_\tau\)</span> and thus <span class="math display">\[\frac{\partial q_{Y|X}(\tau)}{\partial X_j} = \beta_\tau .
+\]</span></p>
+</section>
+<section id="asymptotics-for-quantile-regression" class="slide level2">
+<h2>Asymptotics for Quantile Regression</h2>
+<h4 id="consistency">Consistency</h4>
+<p>As <span class="math inline">\(\beta_\tau\)</span> minimizes <span class="math inline">\(\E[\rho_\tau [Y-X\beta]]\)</span>, it can be shown that <span class="math inline">\(\hat{\beta}_\tau\)</span> is a consistent estimator for <span class="math inline">\(\beta\)</span> (a quantile estimator is a <span class="math inline">\(M\)</span>-estimator which can easily be observed in the case of median regression).</p>
+</section>
+<section id="asymptotics-for-quantile-regression-1" class="slide level2">
+<h2>Asymptotics for Quantile Regression</h2>
+<h4 id="asympotic-normality">Asympotic Normality</h4>
+<p>Moreover, <span class="citation" data-cites="koenker">Koenker (<a href="#/references" role="doc-biblioref" onclick="">2005</a>)</span> shows that <span class="math inline">\(\hat{\beta_\tau}\)</span> is asymptotically normally distributed under appropriate assumptions. However the proof of asymptotic normality is complicated by the lack of differentiability of the objective function.</p>
+</section>
+<section id="asymptotics-for-quantile-regression-2" class="slide level2">
+<h2>Asymptotics for Quantile Regression</h2>
+<h4 id="inference-8">Inference</h4>
+<p>Since we know that the <span class="math inline">\(\hat{\beta}_\tau\)</span> is asymptotically normal, we can test hypotheses and construct confidence intervals. To do this we can either estimate standard errors by their analytical expressions (Hendricks-Koencker, 1991 and Powell, 1991) or to use a bootstrap procedure. We can use tests that are similar to those for the OLS model.</p>
+</section>
+<section id="attractive-properties-of-quantile-regression" class="slide level2">
+<h2>Attractive Properties of Quantile Regression</h2>
+<p>The quantile regression model shares nice properties:</p>
+<ul>
+<li><p><em>Robustness to outliers</em>: As you remember from the basic statistics course, the median is robust to outliers (in contrast to the mean). This nice property translates into the quantile regression framework.</p></li>
+<li><p><em>Equivariance to monotone transformations</em>: Suppose there is a monotone transformation <span class="math inline">\(h()\)</span> which is imposed on the outcome variable. Then the quantile estimates remain unchanged, i.e.,</p></li>
+</ul>
+<p><span class="math display">\[q_{h(Y_i)|X_i}(\tau) = h(q_{Y_i|X_i} (\tau)).\]</span></p>
+<p>This property does not hold for the conditional mean if <span class="math inline">\(h()\)</span> is non-linear.</p>
+</section>
+<section id="attractive-properties-of-quantile-regression-1" class="slide level2">
+<h2>Attractive Properties of Quantile Regression</h2>
+<h4 id="example-wages-and-log-wages">Example: Wages and log-Wages</h4>
+<p>In labor economics, a frequent task is to estimate wage equations. The wages are denoted as <span class="math inline">\(Y_i^*\)</span>. However, typically a log-linear wage regression is estimated, i.e.&nbsp;<span class="math inline">\(Y_i = \ln(Y_i^*)\)</span> is used as a dependent variable.</p>
+<p><span class="math display">\[q_{Y_i^*|X_i}(\tau) = \exp(q_{\ln(Y_i^*)|X_i}(\tau)) = \exp(q_{Y_i| X_i}(\tau)).\]</span></p>
+<p>In contrast, the conditional mean does not share this equivariance property.</p>
+<p>How does the meaning of the OLS and quantile regression coefficients change if <span class="math inline">\(y_i\)</span> is subject to a monotone transformation <span class="math inline">\(h(\cdot)\)</span>?</p>
+</section>
+<section id="quantile-regression-10" class="slide level2">
+<h2>Quantile Regression</h2>
+<h4 id="california-housing-data">California Housing data</h4>
+<div id="d4585fef" class="cell" data-execution_count="19">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href=""></a>pred <span class="op">=</span> model.predict(X)</span>
+<span id="cb28-2"><a href=""></a></span>
+<span id="cb28-3"><a href=""></a>plt.figure(<span class="dv">1</span>,figsize<span class="op">=</span>(<span class="dv">15</span>,<span class="dv">5</span>))</span>
+<span id="cb28-4"><a href=""></a>plt.scatter(X, y, color <span class="op">=</span> <span class="st">"blue"</span>, label <span class="op">=</span> <span class="st">"Y observed"</span>)</span>
+<span id="cb28-5"><a href=""></a>plt.plot(X, pred, color <span class="op">=</span> <span class="st">"r"</span>, linewidth <span class="op">=</span> <span class="dv">3</span>, label <span class="op">=</span> <span class="st">"Regression line (OLS)"</span>)</span>
+<span id="cb28-6"><a href=""></a>plt.xlabel(<span class="st">"MedInc"</span>)</span>
+<span id="cb28-7"><a href=""></a>plt.ylabel(<span class="st">"Housing Price"</span>)</span>
+<span id="cb28-8"><a href=""></a>plt.title(<span class="st">"Scatterplot, Housing Price vs. MedInc"</span>)</span>
+<span id="cb28-9"><a href=""></a>plt.legend()</span>
+<span id="cb28-10"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="Lecture_3_files/figure-revealjs/cell-20-output-1.png" width="1171" height="449"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="quantile-regression-11" class="slide level2">
+<h2>Quantile Regression</h2>
+<h4 id="california-housing-data-1">California Housing data</h4>
+<div id="b5362bba" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href=""></a><span class="im">from</span> statsmodels.regression.quantile_regression <span class="im">import</span> QuantReg</span>
+<span id="cb29-2"><a href=""></a>qr <span class="op">=</span> sm.QuantReg(y,Xc)</span>
+<span id="cb29-3"><a href=""></a>med <span class="op">=</span> qr.fit(q <span class="op">=</span> <span class="fl">0.5</span>)</span>
+<span id="cb29-4"><a href=""></a><span class="bu">print</span>(med.summary())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                         QuantReg Regression Results                          
+==============================================================================
+Dep. Variable:                      y   Pseudo R-squared:               0.3107
+Model:                       QuantReg   Bandwidth:                      0.1220
+Method:                 Least Squares   Sparsity:                        1.695
+Date:                Mon, 18 Nov 2024   No. Observations:                20640
+Time:                        15:26:22   Df Residuals:                    20638
+                                        Df Model:                            1
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+const          0.2058      0.013     15.371      0.000       0.180       0.232
+x1             0.4387      0.003    141.268      0.000       0.433       0.445
+==============================================================================</code></pre>
+</div>
+</div>
+</section>
+<section id="quantile-regression-12" class="slide level2">
+<h2>Quantile Regression</h2>
+<h4 id="california-housing-data-2">California Housing data</h4>
+<div id="b4eecb7d" class="cell" data-execution_count="21">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href=""></a>med <span class="op">=</span> qr.fit(q <span class="op">=</span> <span class="fl">0.5</span>)</span>
+<span id="cb31-2"><a href=""></a>q005 <span class="op">=</span> qr.fit(q <span class="op">=</span> <span class="fl">0.05</span>)</span>
+<span id="cb31-3"><a href=""></a>q01 <span class="op">=</span> qr.fit(q <span class="op">=</span> <span class="fl">0.1</span>)</span>
+<span id="cb31-4"><a href=""></a>q02 <span class="op">=</span> qr.fit(q <span class="op">=</span> <span class="fl">0.2</span>)</span>
+<span id="cb31-5"><a href=""></a>q08 <span class="op">=</span> qr.fit(q <span class="op">=</span> <span class="fl">0.8</span>)</span>
+<span id="cb31-6"><a href=""></a>q09 <span class="op">=</span> qr.fit(q <span class="op">=</span> <span class="fl">0.9</span>)</span>
+<span id="cb31-7"><a href=""></a>q095 <span class="op">=</span> qr.fit(q <span class="op">=</span> <span class="fl">0.95</span>)</span>
+<span id="cb31-8"><a href=""></a></span>
+<span id="cb31-9"><a href=""></a>predmed <span class="op">=</span> med.predict(Xc)</span>
+<span id="cb31-10"><a href=""></a>pred005 <span class="op">=</span> q005.predict(Xc)</span>
+<span id="cb31-11"><a href=""></a>pred01 <span class="op">=</span> q01.predict(Xc)</span>
+<span id="cb31-12"><a href=""></a>pred02 <span class="op">=</span> q02.predict(Xc)</span>
+<span id="cb31-13"><a href=""></a>pred08 <span class="op">=</span> q08.predict(Xc)</span>
+<span id="cb31-14"><a href=""></a>pred09 <span class="op">=</span> q09.predict(Xc)</span>
+<span id="cb31-15"><a href=""></a>pred095 <span class="op">=</span> q095.predict(Xc)</span>
+<span id="cb31-16"><a href=""></a>p_quant <span class="op">=</span> plt.figure(<span class="dv">1</span>,figsize<span class="op">=</span>(<span class="dv">15</span>,<span class="dv">5</span>))</span>
+<span id="cb31-17"><a href=""></a>plt.scatter(X, y, color <span class="op">=</span> <span class="st">"blue"</span>, label <span class="op">=</span> <span class="st">"Y observed"</span>)</span>
+<span id="cb31-18"><a href=""></a>plt.plot(X, pred, color <span class="op">=</span> <span class="st">"r"</span>, linewidth <span class="op">=</span> <span class="dv">3</span>, label <span class="op">=</span> <span class="st">"Regression line (OLS)"</span>)</span>
+<span id="cb31-19"><a href=""></a>plt.plot(X, predmed, color <span class="op">=</span> <span class="st">"g"</span>, linewidth <span class="op">=</span> <span class="dv">3</span>, label <span class="op">=</span> <span class="st">"Regression line (Median)"</span>)</span>
+<span id="cb31-20"><a href=""></a>plt.plot(X, pred005, color <span class="op">=</span> <span class="st">"g"</span>, linewidth <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb31-21"><a href=""></a>plt.plot(X, pred01, color <span class="op">=</span> <span class="st">"g"</span>, linewidth <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb31-22"><a href=""></a>plt.plot(X, pred02, color <span class="op">=</span> <span class="st">"g"</span>, linewidth <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb31-23"><a href=""></a>plt.plot(X, pred08, color <span class="op">=</span> <span class="st">"g"</span>, linewidth <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb31-24"><a href=""></a>plt.plot(X, pred09, color <span class="op">=</span> <span class="st">"g"</span>, linewidth <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb31-25"><a href=""></a>plt.plot(X, pred095, color <span class="op">=</span> <span class="st">"g"</span>, linewidth <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb31-26"><a href=""></a>plt.xlabel(<span class="st">"MedInc"</span>)</span>
+<span id="cb31-27"><a href=""></a>plt.ylabel(<span class="st">"Housing Price"</span>)</span>
+<span id="cb31-28"><a href=""></a>plt.title(<span class="st">"Scatterplot, Housing Price vs. MedInc, Median Regression"</span>)</span>
+<span id="cb31-29"><a href=""></a>plt.legend()</span>
+<span id="cb31-30"><a href=""></a>p_quant.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="Lecture_3_files/figure-revealjs/cell-22-output-1.png" width="1171" height="449"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="quantile-regression-13" class="slide level2">
+<h2>Quantile Regression</h2>
+<h4 id="california-housing-data-3">California Housing data</h4>
+<p>We can also plot the regression coefficients obtained from quantile regression for various quantiles <span class="math inline">\(\tau \in (0,1)\)</span>.</p>
+
+<img data-src="figures/qcoeffs.png" class="r-stretch"></section>
+<section id="quantile-regressionit" class="slide level2">
+<h2>Quantile Regressionit</h2>
+<h4 id="california-housing-data-censoring">California Housing data: Censoring</h4>
+<p>Suppose, the dependent variable of the Boston housing data is censored at a value of 15. What happens to the regression coefficients of OLS and median regression?</p>
+
+<img data-src="figures/qcoeffs.png" class="r-stretch"><p>Question: <em>If quantile regression is so attractive, why is OLS regression so popular?</em></p>
+</section>
+<section id="ml-methods" class="slide level2">
+<h2>ML-Methods</h2>
+<ul>
+<li><p>So far, we have talked about ordinary least squares regression.</p></li>
+<li><p>“<em>Machine Learning</em>” methods have been developed, in particular to generate precise predictions in situations with many covariates <span class="math inline">\(X\)</span>, i.e., <span class="math inline">\(p &gt; n\)</span>.</p></li>
+<li><p>Remember the (OLS) regression setting: We observe a sample <span class="math inline">\((Y_1,X_1),\dots,(Y_n,X_n)\)</span> with <span class="math display">\[ Y_i = X_i\beta+\varepsilon_i=\sum\limits_{j=1}^p \beta_j X_{i,j}+\varepsilon_i\]</span> where <span class="math inline">\(X_i=(X_{i,1},\dots,X_{i,p})\in\R^{p}\)</span> is a <span class="math inline">\(p\)</span>-dimensional vector of regressors.</p></li>
+<li><p><strong>Problem</strong>: What happens if <span class="math inline">\(p&gt;n\)</span>?</p></li>
+</ul>
+</section>
+<section id="ml-methods-1" class="slide level2">
+<h2>ML-Methods</h2>
+<ul>
+<li><strong>Problem</strong>: What happens if <span class="math inline">\(p&gt;n\)</span>?</li>
+</ul>
+<p><span class="math display">\[n\ge\rank(X)=\rank(X^TX)\in \R^{p\times p}\]</span> Therefore <span class="math inline">\((X^TX)\)</span> does not have full rank and is not invertible.</p>
+<ul>
+<li>How can <span class="math inline">\(p&gt;n\)</span> occur?
+<ul>
+<li>Rich data sets: New data sets collect a lot of information on individuals, e.g.&nbsp;imagine a large online shop collecting data on past purchases</li>
+<li>New data types: Unstructured data such as text or images are typically stored in high-dimensional data structures</li>
+<li>Constructed regressors: The relationship of <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span> might be non-linear and the <span class="math inline">\(X\)</span> are transformed</li>
+</ul></li>
+</ul>
+</section>
+<section id="lasso" class="slide level2">
+<h2>Lasso</h2>
+<ul>
+<li>Define <span class="math display">\[\begin{align*}
+\hat{\beta}^{Lasso}:&amp;=\arg\min\limits_{\beta\in\R^p} \frac{1}{n}\sum\limits_{i=1}^n\big(Y_i-X_i\beta\big)^2+\lambda\sum\limits_{j=1}^p\big| \beta_j\big| \\
+&amp;= \arg\min\limits_{\beta\in\R^p} \E_n\left[\big(Y_i-X_i\beta\big)^2\right]+\lambda\|\beta\|_1
+\end{align*}
+\]</span></li>
+</ul>
+<p>where <span class="math inline">\(\lambda&gt;0\)</span> is a tuning parameter.<br></p>
+<ul>
+<li><p>Sparsity assumption: <span class="math display">\[\|\beta\|_0=\sum\limits_{j=1}^p 1_{\{\beta_j \neq 0\}} =s&lt;n.\]</span></p></li>
+<li><p>Intuition: Only a few, say <span class="math inline">\(s\)</span>, parameters are important, but it is not known which ones. We call <span class="math inline">\(s\)</span> the effective dimension.</p></li>
+</ul>
+</section>
+<section id="lasso-1" class="slide level2">
+<h2>Lasso</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h4 id="data-generating-process-dgp">Data Generating Process (DGP)</h4>
+<div id="5fffea83" class="cell" data-execution_count="22">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb32-2"><a href=""></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
+<span id="cb32-3"><a href=""></a><span class="im">from</span> sklearn <span class="im">import</span> linear_model</span>
+<span id="cb32-4"><a href=""></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb32-5"><a href=""></a><span class="im">from</span> itertools <span class="im">import</span> cycle</span>
+<span id="cb32-6"><a href=""></a></span>
+<span id="cb32-7"><a href=""></a>np.random.seed(<span class="dv">0</span>)</span>
+<span id="cb32-8"><a href=""></a>n <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb32-9"><a href=""></a>p <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb32-10"><a href=""></a>s <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb32-11"><a href=""></a></span>
+<span id="cb32-12"><a href=""></a>mean <span class="op">=</span> np.zeros(p)</span>
+<span id="cb32-13"><a href=""></a>cov <span class="op">=</span> np.identity(p)</span>
+<span id="cb32-14"><a href=""></a>X <span class="op">=</span> np.random.multivariate_normal(mean, cov, n)</span>
+<span id="cb32-15"><a href=""></a>epsilon <span class="op">=</span> np.random.normal(<span class="dv">0</span>, <span class="fl">0.5</span>, n)</span>
+<span id="cb32-16"><a href=""></a>beta <span class="op">=</span> np.append(np.ones(s), np.zeros(p<span class="op">-</span>s))</span>
+<span id="cb32-17"><a href=""></a>Y <span class="op">=</span> np.dot(X,beta)<span class="op">+</span>epsilon</span>
+<span id="cb32-18"><a href=""></a><span class="bu">print</span>(<span class="st">"beta:"</span>,beta)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>beta: [1. 1. 1. 1. 1. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.
+ 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.
+ 0. 0.]</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<h4 id="estimation-with-lasso">Estimation with Lasso</h4>
+<div id="9b688917" class="cell" data-execution_count="23">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href=""></a>lasso_reg <span class="op">=</span> linear_model.Lasso(alpha<span class="op">=</span><span class="dv">1</span>,fit_intercept <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb34-2"><a href=""></a>model <span class="op">=</span> lasso_reg.fit(X,Y)</span>
+<span id="cb34-3"><a href=""></a><span class="bu">print</span>(model.coef_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[ 0.26877208  0.12179666  0.          0.          0.62967999 -0.
+ -0.          0.         -0.         -0.          0.          0.
+ -0.         -0.         -0.          0.          0.          0.
+  0.         -0.         -0.          0.         -0.         -0.
+  0.         -0.         -0.          0.          0.          0.
+  0.          0.         -0.         -0.         -0.          0.
+  0.          0.         -0.          0.         -0.         -0.
+ -0.          0.         -0.         -0.         -0.         -0.
+ -0.         -0.        ]</code></pre>
+</div>
+</div>
+<h4 id="predictive-performance">Predictive Performance</h4>
+<div id="7fe2f66f" class="cell" data-execution_count="24">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href=""></a><span class="co"># New sample</span></span>
+<span id="cb36-2"><a href=""></a>n2 <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb36-3"><a href=""></a>X2 <span class="op">=</span> np.random.multivariate_normal(mean, cov, n2)</span>
+<span id="cb36-4"><a href=""></a>epsilon2 <span class="op">=</span> np.random.normal(<span class="dv">0</span>, <span class="fl">0.5</span>, n2)</span>
+<span id="cb36-5"><a href=""></a>Y2 <span class="op">=</span> np.dot(X2,beta)<span class="op">+</span>epsilon2</span>
+<span id="cb36-6"><a href=""></a></span>
+<span id="cb36-7"><a href=""></a>Y2_est <span class="op">=</span> model.predict(X2) <span class="co"># Prediction for Y2</span></span>
+<span id="cb36-8"><a href=""></a>MSE <span class="op">=</span> np.mean((Y2<span class="op">-</span>Y2_est)<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb36-9"><a href=""></a><span class="bu">print</span>(<span class="st">"Mean-Squared-Error:"</span>,MSE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Mean-Squared-Error: 3.2353784526350737</code></pre>
+</div>
+</div>
+</div></div>
+</section>
+<section id="lasso-2" class="slide level2">
+<h2>Lasso</h2>
+<h4 id="choice-of-lambda-k-fold-cross-validation">Choice of <span class="math inline">\(\lambda\)</span>: <span class="math inline">\(K\)</span>-fold Cross Validation</h4>
+<p><span class="math inline">\(K\)</span>-fold cross validation to select <span class="math inline">\(\lambda\)</span> proceeds as</p>
+<ol type="1">
+<li><p>Split the data randomly into <span class="math inline">\(K\)</span> “<em>folds</em>” of equal size.</p></li>
+<li><p>Given a fold <span class="math inline">\(k = 1,..., K\)</span>, we use the <span class="math inline">\(k-1\)</span> folds as a training set. We train the model by varying <span class="math inline">\(\lambda\)</span>. The fold <span class="math inline">\(k\)</span> is used as a testing set. For each <span class="math inline">\(k\)</span>, we obtain a <span class="math inline">\(MSE_k(\lambda)\)</span>.</p></li>
+<li><p>We get a <span class="math display">\[MSE_{CV}(\lambda)=\frac{1}{K}\sum_{k=1}^{K} MSE_k(\lambda)\]</span></p></li>
+<li><p>We choose the <span class="math inline">\(\lambda\)</span> that minimizes <span class="math inline">\(MSE_{CV}\)</span>.</p></li>
+</ol>
+</section>
+<section id="lasso-3" class="slide level2">
+<h2>Lasso</h2>
+<div id="f4688f86" class="cell" data-execution_count="25">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href=""></a><span class="im">from</span> sklearn <span class="im">import</span> linear_model</span>
+<span id="cb38-2"><a href=""></a>lassocv_reg <span class="op">=</span> linear_model.LassoCV(cv<span class="op">=</span><span class="dv">10</span>,fit_intercept <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb38-3"><a href=""></a>model <span class="op">=</span> lassocv_reg.fit(X, Y)</span>
+<span id="cb38-4"><a href=""></a></span>
+<span id="cb38-5"><a href=""></a><span class="co"># Display results</span></span>
+<span id="cb38-6"><a href=""></a>m_log_alphas <span class="op">=</span> <span class="op">-</span>np.log10(model.alphas_)</span>
+<span id="cb38-7"><a href=""></a>plt.figure(<span class="dv">1</span>,figsize<span class="op">=</span>(<span class="dv">15</span>,<span class="dv">5</span>))</span>
+<span id="cb38-8"><a href=""></a>plt.plot(m_log_alphas, model.mse_path_, <span class="st">':'</span>)</span>
+<span id="cb38-9"><a href=""></a>plt.plot(m_log_alphas, model.mse_path_.mean(axis<span class="op">=-</span><span class="dv">1</span>), <span class="st">'k'</span>,</span>
+<span id="cb38-10"><a href=""></a>         label<span class="op">=</span><span class="st">'Average across the folds'</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb38-11"><a href=""></a>plt.axvline(<span class="op">-</span>np.log10(model.alpha_), linestyle<span class="op">=</span><span class="st">'--'</span>, color<span class="op">=</span><span class="st">'k'</span>,</span>
+<span id="cb38-12"><a href=""></a>            label<span class="op">=</span><span class="st">'alpha: CV estimate'</span>)</span>
+<span id="cb38-13"><a href=""></a>plt.legend()</span>
+<span id="cb38-14"><a href=""></a>plt.xlabel(<span class="st">'-log(alpha)'</span>)</span>
+<span id="cb38-15"><a href=""></a>plt.ylabel(<span class="st">'Mean square error'</span>)</span>
+<span id="cb38-16"><a href=""></a>plt.title(<span class="st">'Mean square error on each fold '</span>)</span>
+<span id="cb38-17"><a href=""></a>     <span class="co">#     '(train time: %.2fs)' )#% t_lasso_cv)</span></span>
+<span id="cb38-18"><a href=""></a>plt.axis(<span class="st">'tight'</span>)</span>
+<span id="cb38-19"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="Lecture_3_files/figure-revealjs/cell-26-output-1.png" width="1180" height="449"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="lasso-4" class="slide level2">
+<h2>Lasso</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h4 id="lasso-cv">Lasso CV</h4>
+<div id="9f224ab6" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href=""></a><span class="bu">print</span>(<span class="st">"Model coefficients: "</span>, model.coef_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Model coefficients:  [ 0.88611992  0.93114166  0.89676018  0.83004346  1.06247131 -0.
+ -0.          0.          0.         -0.          0.         -0.
+ -0.          0.         -0.         -0.          0.         -0.
+ -0.03710803  0.          0.          0.         -0.         -0.
+  0.          0.         -0.          0.02923221  0.         -0.
+  0.         -0.          0.          0.         -0.00639114  0.
+  0.          0.         -0.          0.         -0.04292893  0.
+ -0.          0.00400541 -0.         -0.         -0.         -0.
+  0.         -0.        ]</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<h4 id="ols">OLS</h4>
+<ul>
+<li>What would OLS look like in this setting?</li>
+</ul>
+<div id="f79c9980" class="cell" data-execution_count="27">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href=""></a>ols <span class="op">=</span> LinearRegression()</span>
+<span id="cb41-2"><a href=""></a>ols.fit(X, Y)</span>
+<span id="cb41-3"><a href=""></a><span class="bu">print</span>(ols.coef_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[ 0.67840274  0.65041907  0.67598319  1.63496528  1.14101226  0.55942516
+ -0.29108409  0.08964193 -0.3744874  -1.08770369 -0.09498862  0.20397743
+ -0.59937501 -0.34601506  0.09735717  0.1091475   0.58814853 -0.43170982
+ -0.2559814   0.38407704 -0.29539773  0.3026306   0.32504715  0.36054311
+ -0.05266271 -0.67984362  0.19347332  0.610213    0.49378866 -0.82608547
+ -0.43004485  0.2000505  -0.13580601  0.27177739 -0.49006622 -0.29322172
+  0.31427505  0.82686301  0.12415035  0.13869825  0.06898262 -0.06983444
+  0.09382697 -0.03299244  0.22547628 -0.03846687  1.11299456  0.96955269
+  0.92906921 -0.3516677 ]</code></pre>
+</div>
+</div>
+</div></div>
+</section>
+<section id="lasso-5" class="slide level2">
+<h2>Lasso</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h4 id="lasso-cv-1">Lasso CV</h4>
+<div id="c8c2dec4" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href=""></a>Y2_est <span class="op">=</span> model.predict(X2) <span class="co"># Prediction for Y2</span></span>
+<span id="cb43-2"><a href=""></a>MSE <span class="op">=</span> np.mean((Y2<span class="op">-</span>Y2_est)<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb43-3"><a href=""></a><span class="bu">print</span>(<span class="st">"Mean-Squared-Error:"</span>,MSE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Mean-Squared-Error: 0.27389197732839926</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<h4 id="ols-1">OLS</h4>
+<ul>
+<li>What would OLS look like in this setting?</li>
+</ul>
+<div id="35fd2f38" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href=""></a>Y_ols_est <span class="op">=</span> ols.predict(X) <span class="co"># Prediction for Y</span></span>
+<span id="cb45-2"><a href=""></a>MSEins <span class="op">=</span> np.mean((Y<span class="op">-</span>Y_ols_est)<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb45-3"><a href=""></a><span class="bu">print</span>(<span class="st">"Mean-Squared-Error (INS):"</span>,MSEins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Mean-Squared-Error (INS): 4.7796542986956676e-29</code></pre>
+</div>
+</div>
+<div id="38728428" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href=""></a>Y2_ols_est <span class="op">=</span> ols.predict(X2) <span class="co"># Prediction for Y2</span></span>
+<span id="cb47-2"><a href=""></a>MSE <span class="op">=</span> np.mean((Y2<span class="op">-</span>Y2_ols_est)<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb47-3"><a href=""></a><span class="bu">print</span>(<span class="st">"Mean-Squared-Error (OOS):"</span>,MSE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Mean-Squared-Error (OOS): 11.46392012399638</code></pre>
+</div>
+</div>
+</div></div>
+</section>
+<section id="lasso-6" class="slide level2">
+<h2>Lasso</h2>
+<h4 id="intuition-what-does-lasso-actually-do">Intuition: What does Lasso actually do?</h4>
+<ul>
+<li>Lasso imposes the (approximate) sparsity assumption on the coefficients <span class="math inline">\(\hat{\beta}\)</span>.</li>
+<li>This leads to both coefficient <em>shrinkage</em> and <em>variable selection</em>.
+<ul>
+<li><em>Shrinkage</em>: All coefficents are shrunk towards zero, without sacrificing too much fit.</li>
+<li><em>Variable Selection</em>: Shrinkage ends up with setting many coefficents exactly zero, i.e., the associated variables do not have any impact on the prediction of <span class="math inline">\(Y\)</span> anymore.</li>
+</ul></li>
+<li>It can be shown that, under the (approximate) sparsity assumption, Lasso approximates <span class="math inline">\(X\beta\)</span> well, i.e., without overfitting the data.</li>
+</ul>
+</section>
+<section id="lasso-7" class="slide level2">
+<h2>Lasso</h2>
+<div id="ee793618" class="cell" data-execution_count="31">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href=""></a>alphas_lasso, coefs_lasso, _ <span class="op">=</span> linear_model.lasso_path(X, Y)</span>
+<span id="cb49-2"><a href=""></a></span>
+<span id="cb49-3"><a href=""></a><span class="co"># Display results</span></span>
+<span id="cb49-4"><a href=""></a>plt.figure(<span class="dv">2</span>,figsize<span class="op">=</span>(<span class="dv">15</span>,<span class="dv">6</span>))</span>
+<span id="cb49-5"><a href=""></a>ax <span class="op">=</span> plt.gca()</span>
+<span id="cb49-6"><a href=""></a>colors <span class="op">=</span> cycle([<span class="st">'b'</span>, <span class="st">'r'</span>, <span class="st">'g'</span>, <span class="st">'c'</span>, <span class="st">'k'</span>])</span>
+<span id="cb49-7"><a href=""></a>neg_log_alphas_lasso <span class="op">=</span> <span class="op">-</span>np.log10(alphas_lasso)</span>
+<span id="cb49-8"><a href=""></a><span class="cf">for</span> coef_l, c <span class="kw">in</span> <span class="bu">zip</span>(coefs_lasso, colors):</span>
+<span id="cb49-9"><a href=""></a>    l1 <span class="op">=</span> plt.plot(neg_log_alphas_lasso, coef_l, c<span class="op">=</span>c)</span>
+<span id="cb49-10"><a href=""></a>plt.axvline(<span class="op">-</span>np.log10(model.alpha_), linestyle<span class="op">=</span><span class="st">'--'</span>, color<span class="op">=</span><span class="st">'k'</span>,</span>
+<span id="cb49-11"><a href=""></a>            label<span class="op">=</span><span class="st">'alpha: CV estimate'</span>)</span>
+<span id="cb49-12"><a href=""></a>plt.xlabel(<span class="st">'-Log(alpha)'</span>)</span>
+<span id="cb49-13"><a href=""></a>plt.ylabel(<span class="st">'coefficients'</span>)</span>
+<span id="cb49-14"><a href=""></a>plt.title(<span class="st">'Lasso Paths'</span>)</span>
+<span id="cb49-15"><a href=""></a>plt.axis(<span class="st">'tight'</span>)</span>
+<span id="cb49-16"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="Lecture_3_files/figure-revealjs/cell-32-output-1.png" width="1195" height="523"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="ridge" class="slide level2">
+<h2>Ridge</h2>
+<ul>
+<li><p>Lasso performs penalized regression with a <span class="math inline">\(l_1\)</span>-penalty. Alternatively, one could use the <span class="math inline">\(l_2\)</span>-norm of the estimators. This gives rise to Ridge.</p></li>
+<li><p>Define <span class="math display">\[\begin{align*}\hat{\beta}^{Ridge}:&amp;=\arg\min\limits_{\beta\in\R^p} \frac{1}{n}\sum\limits_{i=1}^n\big(Y_i-X_i\beta\big)^2+\lambda\sum\limits_{j=1}^p\beta_j^2\\
+&amp;=\arg\min\limits_{\beta\in\R^p} \E_n\left[\big(Y_i-X_i\beta\big)^2\right]+\lambda\|\beta_j\|_2^2\end{align*}\]</span> where <span class="math inline">\(\lambda&gt;0\)</span> is a tuning parameter, typically chosen by cross-validation.</p></li>
+</ul>
+</section>
+<section id="ridge-1" class="slide level2">
+<h2>Ridge</h2>
+<ul>
+<li><p>Ridge shrinks coefficients more agressively and more “<em>democratically</em>” towards zero.</p></li>
+<li><p>Large values of <span class="math inline">\(\beta\)</span> are penalized more and small values are penalized less severely than by the Lasso.</p></li>
+</ul>
+<p><span class="math inline">\(\Rightarrow\)</span> Ridge only performs <em>shrinkage</em>, no <em>selection</em>.</p>
+<ul>
+<li>Ridge performs well in “dense” models, i.e., the <span class="math inline">\(\beta\)</span> are small but not zero.</li>
+</ul>
+</section>
+<section id="ridge-2" class="slide level2">
+<h2>Ridge</h2>
+<h4 id="illustration-of-penalties">Illustration of penalties</h4>
+
+<img data-src="figures/penalty.jpg" class="r-stretch quarto-figure-center"><p class="caption">Source: James et al.&nbsp;(2013, P. 71)</p></section>
+<section id="ridge-3" class="slide level2">
+<h2>Ridge</h2>
+<div id="1ddb4058" class="cell" data-execution_count="32">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href=""></a>ridgecv_reg <span class="op">=</span> linear_model.RidgeCV(cv<span class="op">=</span><span class="dv">10</span>,fit_intercept <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb50-2"><a href=""></a>model <span class="op">=</span> ridgecv_reg.fit(X, Y)</span>
+<span id="cb50-3"><a href=""></a></span>
+<span id="cb50-4"><a href=""></a><span class="bu">print</span>(model.coef_)</span>
+<span id="cb50-5"><a href=""></a>Y2_est <span class="op">=</span> model.predict(X2) <span class="co"># Prediction for Y2</span></span>
+<span id="cb50-6"><a href=""></a>MSE <span class="op">=</span> np.mean((Y2<span class="op">-</span>Y2_est)<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb50-7"><a href=""></a><span class="bu">print</span>(<span class="st">"Mean-Squared-Error:"</span>,MSE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[ 0.71620055  0.78158626  0.59712679  0.61519752  0.88251787 -0.04490642
+ -0.16247774  0.19511351  0.00706512 -0.19137218 -0.01411936  0.08918375
+ -0.08547871  0.00322719 -0.1291126   0.04587232  0.14661733 -0.10285024
+ -0.04583    -0.06478322 -0.0249108   0.02768619 -0.01969178 -0.0752375
+ -0.05067667  0.07816316 -0.10842952  0.0852931   0.07257959 -0.06496121
+ -0.01731784  0.12182367 -0.05429395  0.03683247 -0.12691407  0.02015264
+  0.11163592  0.06220769 -0.00411623  0.05214987 -0.13333813 -0.08320478
+ -0.1685247   0.22090431  0.0070746  -0.11886301  0.04622532 -0.01346212
+ -0.00486774 -0.08765673]
+Mean-Squared-Error: 1.0958578535987546</code></pre>
+</div>
+</div>
+</section>
+<section id="elastic-net" class="slide level2">
+<h2>Elastic Net</h2>
+<p>Elastic Net is a combination of Lasso and Ridge as it incorporates both a <span class="math inline">\(l_1\)</span> and <span class="math inline">\(l_2\)</span> penalty. <span class="math display">\[
+\begin{align*}\hat{\beta}^{ENet}:&amp;=\arg\min\limits_{\beta\in\R^p} \frac{1}{n}\sum\limits_{i=1}^n\big(Y_i-X_i\beta\big)^2+ \lambda_1\sum\limits_{j=1}^p\big| \beta_j\big|  + \lambda_2\sum\limits_{j=1}^p\beta_j^2
+\end{align*}
+\]</span></p>
+<ul>
+<li><p>Elastic net performs shrinkage on large coefficients as agressively as Ridge and on small coefficients as agressively as Lasso.</p></li>
+<li><p>As long as <span class="math inline">\(\lambda_1 &gt; 0\)</span>, elastic net performs variable selection.</p></li>
+</ul>
+</section>
+<section id="elastic-net-1" class="slide level2">
+<h2>Elastic Net</h2>
+<div id="d750aea4" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href=""></a>elasticnetcv_reg <span class="op">=</span> linear_model.ElasticNetCV(l1_ratio <span class="op">=</span> <span class="fl">0.5</span>, cv<span class="op">=</span><span class="dv">10</span>,fit_intercept <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb52-2"><a href=""></a>model <span class="op">=</span> elasticnetcv_reg.fit(X, Y)</span>
+<span id="cb52-3"><a href=""></a><span class="bu">print</span>(model.coef_)</span>
+<span id="cb52-4"><a href=""></a></span>
+<span id="cb52-5"><a href=""></a>Y2_est <span class="op">=</span> model.predict(X2) <span class="co"># Prediction for Y2</span></span>
+<span id="cb52-6"><a href=""></a>MSE <span class="op">=</span> np.mean((Y2<span class="op">-</span>Y2_est)<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb52-7"><a href=""></a><span class="bu">print</span>(<span class="st">"Mean-Squared-Error:"</span>,MSE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[ 0.85071618  0.91176335  0.83780023  0.79181251  1.01800481 -0.
+ -0.02459521  0.0452703   0.         -0.          0.         -0.
+ -0.00172045  0.         -0.02282421 -0.          0.         -0.
+ -0.04828678  0.          0.          0.         -0.         -0.
+ -0.          0.         -0.          0.05108801  0.         -0.00982219
+  0.          0.          0.          0.         -0.05397107  0.
+  0.          0.         -0.          0.         -0.09362981  0.
+ -0.05286494  0.06722243 -0.         -0.         -0.         -0.
+ -0.         -0.00871478]
+Mean-Squared-Error: 0.32555881620837135</code></pre>
+</div>
+</div>
+</section>
+<section id="references" class="slide level2 smaller scrollable">
+<h2>References</h2>
+<div class="quarto-auto-generated-content">
+<div class="footer footer-default">
+<p><a href="https://alexandragibbon.github.io/StatProg-HHU/">Topics in Econometrics and Data Science</a></p>
+</div>
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-koenker" class="csl-entry" role="listitem">
+Koenker, Roger. 2005. <em>Quantile Regression</em>. Vol. 38. Cambridge university press.
+</div>
+<div id="ref-mosteller1977data" class="csl-entry" role="listitem">
+Mosteller, Frederick, and John W Tukey. 1977. <span>“Data Analysis and Regression. A Second Course in Statistics.”</span> <em>Addison-Wesley Series in Behavioral Science: Quantitative Methods</em>.
+</div>
+</div>
+</section></section>
+
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="Lecture_3_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="Lecture_3_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="Lecture_3_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="Lecture_3_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="Lecture_3_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="Lecture_3_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="Lecture_3_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="Lecture_3_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="Lecture_3_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="Lecture_3_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="Lecture_3_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true,"boardmarkerWidth":5,"theme":"chalkboard"},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>
