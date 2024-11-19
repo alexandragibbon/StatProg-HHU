@@ -18,3 +18,4 @@
 * [Solution Tutorial 1](./tutorial/tutorial-1-solution/tutorial_1_solution.html)
 * [Solution Tutorial 2](./tutorial/tutorial-2-solution/tutorial_2_solution.html)
 * [Solution Tutorial 3](./tutorial/tutorial-3-solution/tutorial_3_solution.html)
+* [Solution Tutorial 4](./tutorial/tutorial-4-solution/tutorial_4_solution.html)
