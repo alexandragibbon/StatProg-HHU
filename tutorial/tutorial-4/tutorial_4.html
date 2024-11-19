@@ -71,35 +71,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -118,10 +89,6 @@ window.Quarto = {
   <li><a href="#section-2-data-visualization" id="toc-section-2-data-visualization" class="nav-link" data-scroll-target="#section-2-data-visualization">Section 2: Data Visualization</a>
   <ul class="collapse">
   <li><a href="#exercise-1-basic-visualization-with-matplotlib-and-seaborn" id="toc-exercise-1-basic-visualization-with-matplotlib-and-seaborn" class="nav-link" data-scroll-target="#exercise-1-basic-visualization-with-matplotlib-and-seaborn">Exercise 1: Basic visualization with <code>matplotlib</code> and <code>seaborn</code></a></li>
-  </ul></li>
-  <li><a href="#section-3-basic-statistics" id="toc-section-3-basic-statistics" class="nav-link" data-scroll-target="#section-3-basic-statistics">Section 3: Basic Statistics</a>
-  <ul class="collapse">
-  <li><a href="#exercise-1-normal-distribution" id="toc-exercise-1-normal-distribution" class="nav-link" data-scroll-target="#exercise-1-normal-distribution">Exercise 1: Normal distribution</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -225,7 +192,7 @@ Enter this table into a `pandas.DataFrame` called `mandms`. Use `pandas` to answ
 a) Brain size data set
 -->
 <p>Create a folder ‘data’ and save the <code>brain_size.csv</code> data set. You can enter the complete path of the data or change the current working directory to the path (which then should contain your data folder) by</p>
-<div id="654ae63a" class="cell" data-execution_count="10">
+<div id="a56d3628" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>os.chdir(<span class="st">"[INSERT YOUR PATH HERE!]"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -277,55 +244,6 @@ Download and load the Times University Ranking Data (file `timesData.csv`), whic
 
 -->
 <p><!-- * Modify the graphics in a way you like. Can you make them interactive with `plotly` or `bokeh`? Create your own visualization as based on the Times Data set.  --></p>
-</section>
-</section>
-<section id="section-3-basic-statistics" class="level1">
-<h1>Section 3: Basic Statistics</h1>
-<!--
-## Exercise 1: Binomial distribution (no programming required)
-
-1. Find $80\%$ and $90\%$ asymptotic confidence intervals for the expected value $E[X]$ based on  a survey with $n=100$ and $\hat{p}=\frac{1}{n}\sum_{i=1}^n X_i=0.45$.
-
-2. A student wishes to find the proportion of left-handed people. She surveys $100$ fellow students and finds that only $5$ are left-handed. Does a $95\%$ confidence interval contain the value of $p = 0.1$?
-
-3. A survey is taken with $250$ participants, and a $\hat{p}$ of $0.45$. The same survey is repeated with $1000$ participants and the same $\hat{p}$ value is found. Compare the two $95\%$ confidence intervals. What is the relationship? Is the margin of error for the second one four times smaller? 
--->
-<!-- 
-### Solution:
-1. $$\hat{p}\pm \frac{\hat{\sigma}_n}{\sqrt{n}}q_z(0.90) =  (0.3862436, 0.5137564) $$
-and
-$$\hat{p}\pm \frac{\hat{\sigma}_n}{\sqrt{n}}q_z(0.95) =  (0.3681696, 0.5318304)$$
-with $\hat{\sigma}_n^2 = \hat{p}(1-\hat{p})=0.2475$. We pay for the increased confidence with a bigger interval.
-
-2. We have $\hat{p}=0.05$ this implies the $95\%$ confidence interval
-$$\hat{p}\pm \frac{\hat{\sigma}_n}{\sqrt{n}}q_z(0.975) = (0.007283575, 0.092716425)$$
-with $\hat{\sigma}_n^2 = \hat{p}(1-\hat{p})=0.0475$.
-
-3. $$\hat{p}\pm \frac{\hat{\sigma}_n}{\sqrt{250}}q_z(0.975) =  (0.3883312, 0.5116688) $$
-and
-$$\hat{p}\pm \frac{\hat{\sigma}_n}{\sqrt{1000}}q_z(0.975) =  (0.4191656, 0.4808344) $$
-with $\hat{\sigma}_n^2 = \hat{p}(1-\hat{p})=0.2475$.
-The margin of error is 
-$$\frac{\hat{\sigma}_n}{\sqrt{1000}}q_z(0.975)=\frac{1}{\sqrt{4}}\frac{\hat{\sigma}_n}{\sqrt{250}}q_z(0.975)= \frac{1}{2}0.06166883$$
-only halved.
-If the sample size is increased by a factor $c$ the margin of error is decreased by the coefficient $1/\sqrt{c}$ which explains that at some point the cost of accumulating new samples is not very efficient. -->
-<section id="exercise-1-normal-distribution" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-1-normal-distribution">Exercise 1: Normal distribution</h2>
-<ol type="1">
-<li><p>A hard-drive manufacturer would like to ensure that the mean time between failures (MTBF) for its new hard drive is <span class="math inline">\(1\)</span> million hours. A stress test is designed that can simulate the workload at a much faster pace. The testers assume that a test lasting <span class="math inline">\(10\)</span> days correlates with the failure time exceeding the <span class="math inline">\(1\)</span>- million-hour mark. In stress tests of <span class="math inline">\(15\)</span> hard drives they found an average of <span class="math inline">\(9.5\)</span> days, with a standard deviation of <span class="math inline">\(1\)</span> day. Does a <span class="math inline">\(90\%\)</span> confidence level include <span class="math inline">\(10\)</span> days?</p></li>
-<li><p>Let <span class="math inline">\(X\sim \mathcal{N}(\mu,\sigma^2)\)</span>. We have seen that <span class="math display">\[\sqrt{n}\frac{\bar{X}_n-\mu}{\sigma}\sim \mathcal{N}(0,1)\]</span> and that by replacing the unknown parameter <span class="math inline">\(\sigma^2\)</span> by <span class="math inline">\(\hat{S}^2=\frac{1}{n-1}\sum_{i=1}^n(X_i-\bar{X}_n)^2\)</span> we obtain <span class="math display">\[Z_n:=\sqrt{n}\frac{\bar{X}_n-\mu}{\hat{S}} \xrightarrow[]{\mathcal{D}} Z\sim \mathcal{N}(0,1).\]</span> Therefore we can construct asymptotic confidence intervals for <span class="math inline">\(\mu\)</span>. This means that the confidence interval satisfies the confidence level when <span class="math inline">\(n\)</span> is ‘large’. But what happens when <span class="math inline">\(n\)</span> is ‘small’ and what do we mean by ‘large’? The distribution of <span class="math inline">\(Z_n\)</span> is called <span class="math inline">\(t\)</span>-distribution with <span class="math inline">\(n-1\)</span> degrees of freedom. Compare the densities of the <span class="math inline">\(t\)</span>-distribution and the normal distribution for <span class="math inline">\(n=3,10,25\)</span> and <span class="math inline">\(50\)</span>. What value of <span class="math inline">\(n\)</span> seems ‘large’ enough to say that the two distributions are essentially the same? (Hint: You can use <code>scipy.stats.t</code>)</p></li>
-<li><p>In the setting of Exercise 1.2 use a simulation to compare the resulting confidence intervals for <span class="math inline">\(\mu=0\)</span> (choose <span class="math inline">\(\sigma^2=5\)</span>) with confidence level <span class="math inline">\(95\%\)</span>. For each <span class="math inline">\(n\)</span> calculate <span class="math inline">\(1000\)</span> independent samples and count how often the true parameter <span class="math inline">\(\mu\)</span> is contained in the confidence interval.<br> <span class="math inline">\(\Big(\)</span>Hint: Remark that <code>np.var()</code> calculates <span class="math inline">\(\frac{1}{n}\sum_{i=1}^n(X_i-\bar{X}_n)^2\)</span>.<span class="math inline">\(\Big)\)</span></p></li>
-</ol>
-<!-- 
-### Solution:
-1. $$9.5 \pm \frac{1}{\sqrt{15}}q_z(0.95) =  (9.075301, 9.924699) $$
-or one-sided
-$$9.5 + \frac{1}{\sqrt{15}}q_z(0.9) =  (-\infty, 9.830895) $$
-
-2. We have -->
-<!-- 
-
-3.The confidence intervals are given by -->
 </section>
 </section>
 
