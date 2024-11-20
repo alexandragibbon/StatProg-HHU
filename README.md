@@ -13,9 +13,10 @@
 * [Tutorial 3](./tutorial/tutorial-3/tutorial_3.html) 
 * [Tutorial 4](./tutorial/tutorial-4/tutorial_4.html) 
     - Dataset: [brain_size.csv](./data/brain_size.csv) 
-* [Tutorial 5](./tutorial/tutorial-5/tutorial_5.html) 
-    - Dataset: [lightbulb_lifetime.csv](./data/lightbulb_lifetime.csv) 
 
+We are switching to a new format (Jupyter Notebooks). Please save the .ipynb file to your folder and open in VS Code, as before. 
+* [Tutorial 5](./tutorial/tutorial-5/tutorial_5.ipynb) 
+    - Dataset: [lightbulb_lifetime.csv](./data/lightbulb_lifetime.csv) 
 
 ### Solutions 
 * [Solution Tutorial 1](./tutorial/tutorial-1-solution/tutorial_1_solution.html)
