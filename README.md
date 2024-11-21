@@ -14,7 +14,7 @@
 * [Tutorial 4](./tutorial/tutorial-4/tutorial_4.html) 
     - Dataset: [brain_size.csv](./data/brain_size.csv) 
 
-We are switching to a new format (Jupyter Notebooks). Please save the .ipynb file to your folder and open in VS Code, as before. 
+From Tutorial 5 onwards, we are switching to a new format (Jupyter Notebooks). Please save the .ipynb file to your folder and open in VS Code, as before. You can directly write your code in the code blocks.
 * [Tutorial 5](./tutorial/tutorial-5/tutorial_5.ipynb) 
     - Dataset: [lightbulb_lifetime.csv](./data/lightbulb_lifetime.csv) 
 
