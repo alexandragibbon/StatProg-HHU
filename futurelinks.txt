@@ -1,6 +1,6 @@
 
-* [Lecture 4](./lecture/l4/Lecture_4.html)
-* [Lecture 5](./lecture/l5/Lecture_5.html)
+* [Lecture 4](./lecture/l4/Lecture_4.html): Classification
+* [Lecture 5](./lecture/l5/Lecture_5.html): Wrap-up
 
 * [Tutorial 6](./tutorial/tutorial-6/tutorial_6.html) 
 dataset: 
