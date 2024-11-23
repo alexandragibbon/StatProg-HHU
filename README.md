@@ -1,10 +1,10 @@
 # Lecture Slides and Tutorials
 
 ## Course 1: Lectures
-* [Lecture 1](./lecture/l1/Lecture_1.html): **Introduction to Statistical Programming**
+* [Lecture 1](./lecture/l1/Lecture_1.html): Introduction to Statistical Programming
     - Dataset: [ict.csv](./data/ict.csv)
-* [Lecture 2](./lecture/l2/Lecture_2.html): **Basics of Statistics**
-* [Lecture 3](./lecture/l3/Lecture_3.html): **Regression**
+* [Lecture 2](./lecture/l2/Lecture_2.html): Basics of Statistics
+* [Lecture 3](./lecture/l3/Lecture_3.html): Regression
 
 ## Course 2: Tutorials
 
