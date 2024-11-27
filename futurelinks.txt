@@ -8,4 +8,7 @@ dataset:
 dataset: 
 
 
-https://alexandragibbon.github.io/StatProg-HHU/info/exam_info.html
+## Term Paper
+* [Information on Term Paper](./termpaper/termpaper_info.html)
+
+[General Information: Exam Registration, Timeline](./info/exam_info.html)
