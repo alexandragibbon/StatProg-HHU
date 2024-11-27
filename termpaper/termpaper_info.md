@@ -20,7 +20,7 @@ Please book your 20 minute slot until **January 17** here: **XXX insert link XXX
 
 Please read the following guidelines for the term paper:
 
-- The term paper is to be submitted by teams of up to 4 students. Send your term paper (PDF) and Python Code (PY or IPYNB) to XXX; Subject: “Term Paper Statistical Programming”
+- The term paper is to be submitted by teams of up to 4 students. Send your term paper (PDF) and Python Code (PY or IPYNB) to **XXX***; Subject: “Term Paper Statistical Programming”
 - We will upload the assignment on **January 6**.
 - The submission deadline is **January 27, 18:00**.
 - Each group is required to submit an independent s solution and collaboration between groups is not allowed.
