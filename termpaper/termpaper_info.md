@@ -1,6 +1,4 @@
-# Exam
-
-## General information 
+# Exam - General information 
 
 The final grade is composed of two parts: 
 1. **Term paper in teams of 2**
@@ -14,7 +12,7 @@ Please book your 20 minute slot until **January 17** here: **XXX insert link XXX
 
 **XXX Hinweis, dass Gruppen hintereinander buchen sollen? XXX**
 
-## Assignment (Term Paper)
+# Assignment (Term Paper)
 
 We will upload the assignment on **January 6**.
 The submission deadline is **January 27, 18:00**.
@@ -44,6 +42,6 @@ The submission deadline is **January 27, 18:00**.
     - Quality of presentation of results (e.g. generating nice tables and figures),
     - Conciseness and quality of your answers and explanations.
 
-## Oral exam 
+# Oral exam 
 
 **XXX brauchen wir noch weitere  Infos?XXX**
