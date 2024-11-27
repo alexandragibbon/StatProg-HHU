@@ -8,13 +8,17 @@ Students of all *Prüfungsordnungen (PO, exam regulations)* are admitted to the 
 
 - Choose a partner for the group assignment until *17.01.2024*.
 
-- Choose a slot **here** for the oral exam until *17.01.2024*.
+- Choose a slot **XXX here XXX** for the oral exam until *17.01.2024*.
 
 ## Plan for the rest of the semester
-**Until 5.1.2024**: Lectures (Monday 16:30-18:00) and Tutorials (Tuesday 10:30-12:00) as usual.
+**Until 5.1.2024**\ 
+Lectures (Monday 16:30-18:00) and Tutorials (Tuesday 10:30-12:00) as usual.
 
-**Starting 6.1.2024**: Tutorials on Mondays (*6.1. and potentially 13.1., 16:30-18:00*) **AND** Tuesdays (*7.1. and  14.1. 10:30-12:00*).
+**Starting 6.1.2024**\
+Tutorials on Mondays (*6.1. and potentially 13.1., 16:30-18:00*) **AND** Tuesdays (*7.1. and  14.1. 10:30-12:00*).
 
-**Tuesday, 21.1.2024**, 10:30-12:00: (Optional) tutorial for questions.
+**Tuesday, 21.1.2024**, 10:30-12:00\
+(Optional) tutorial for questions.
 
-**Monday, 27.1.2024**, 16:30-18:00: Guest lecture by XXX -> *Relevant for oral exam*.
+**Monday, 27.1.2024**, 16:30-18:00\
+Guest lecture by XXX -> *Relevant for oral exam*.
