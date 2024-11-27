@@ -44,4 +44,8 @@ The submission deadline is **January 27, 18:00**.
 
 # Oral exam 
 
+In the oral exam, you will be asked to 
+1. Present your group's solution, focusing on interpretation.
+2. Answer a Q&A session, both on your solution and lecture contents. 
+
 **XXX brauchen wir noch weitere  Infos?XXX**
