@@ -1,8 +1,14 @@
 # Winter Semester 2024/2025
 ## Exam Registration 
-Please register for the exam in the Student Portal ([*Studierendenportal*](https://studierende.hhu.de)) during the [applicable registration period (25.11. – 13.12.2024)](https://www.hhu.de/fileadmin/redaktion/ZUV/Dezernat_1/Pruefungsamt/documents/pdf/Pruefungstermine/2025/Anmeldetermine_WiWi_WS_2024-25_und_SoSe_2025.pdf).
-
 Students of all *Prüfungsordnungen (PO, exam regulations)* are admitted to the exam.
+
+**Exam checklist**
+
+- Please register for the exam in the Student Portal ([*Studierendenportal*](https://studierende.hhu.de)) during the [applicable registration period (25.11. – 13.12.2024)](https://www.hhu.de/fileadmin/redaktion/ZUV/Dezernat_1/Pruefungsamt/documents/pdf/Pruefungstermine/2025/Anmeldetermine_WiWi_WS_2024-25_und_SoSe_2025.pdf).
+
+- Choose a partner for the group assignment until *17.01.2024*.
+
+- Choose a slot **here** for the oral exam until *17.01.2024*.
 
 ## Plan for the rest of the semester
 **Until 5.1.2024**: Lectures (Monday 16:30-18:00) and Tutorials (Tuesday 10:30-12:00) as usual.
