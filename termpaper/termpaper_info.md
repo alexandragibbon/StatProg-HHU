@@ -1,6 +1,6 @@
 # Exam
 
-The exam is composed of two parts: 
+The final grade is composed of two parts: 
 1. Term paper in teams of 2 
     - 40% of grade
     - Deadline: **January 27**
