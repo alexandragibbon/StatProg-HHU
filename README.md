@@ -20,9 +20,11 @@
 **Basics of Statistics**
 * [Tutorial 5](./tutorial/tutorial-5/tutorial_5.ipynb) 
     - Dataset: [lightbulb_lifetime.csv](./data/lightbulb_lifetime.csv) 
+* [Tutorial 6](./tutorial/tutorial-6/tutorial_6.ipynb) 
 
 ### Solutions 
 * [Solution Tutorial 1](./tutorial/tutorial-1-solution/tutorial_1_solution.html)
 * [Solution Tutorial 2](./tutorial/tutorial-2-solution/tutorial_2_solution.html)
 * [Solution Tutorial 3](./tutorial/tutorial-3-solution/tutorial_3_solution.html)
 * [Solution Tutorial 4](./tutorial/tutorial-4-solution/tutorial_4_solution.html)
+* [Solution Tutorial 5](./tutorial/tutorial-5-solution/tutorial_5_solution.ipynb)
