@@ -8,9 +8,9 @@ The final grade is composed of two parts:
     - 60% of grade
     - Dates: **January 30 and 31**
 
-Please book your 20 minute slot until **January 17** here: **XXX insert link XXX** 
+Please book your 40 minute slot per group until **January 17** here: **The link to the booking system will be published at the beginning of January.** 
 
-XXX Hinweis, dass Gruppen hintereinander buchen sollen? XXX
+Please note: Per group, only one time slot should be booked. The two individual oral exams will take place consecutively within the 40 minute slot.
 
 # Assignment (Term Paper)
 
@@ -21,7 +21,7 @@ The submission deadline is **January 27, 18:00**.
 *Please read the following guidelines for the term paper:*
 
 **Submission**
-- The term paper is to be submitted by teams of up to 4 students. Send your term paper (PDF) and Python Code (PY or IPYNB) to **XXX**; Subject: “Term Paper Statistical Programming”
+- The term paper is to be submitted by teams of 2 students. Send your term paper (IPYNB) to mattes@dice.hhu.de; Subject: “MW122 Term Paper”
 
 **Groups**
 - Each group is required to submit an independent solution and collaboration between groups is not allowed.
@@ -31,9 +31,8 @@ The submission deadline is **January 27, 18:00**.
 **Paper and Code**
 - The title page of the term paper must contain the names and matriculation numbers of all students of the group.
 - The paper should include the replicable and self-explanatory code and a readable documentation of your work. The documentation answers the (statistical) question in the exercise, explains the code and sums up your results in text form. Please provide concise and well thought-out answers and explanations. You can use in-line comments to explain what you do in a specific block of code.
-- You may answer all questions either in German or in English. You can choose the software for the documentation by yourselves (Jupyter, Quarto, Word, LateX…). We recommend you to use Quarto or Jupyter.
+- You may answer all questions either in German or in English.
 - Try to solve as many exercises of the assignment as possible, even if you can’t solve the exercise entirely.
-- You are allowed to use ChatGPT and other tools. You are required to provide a paragraph where you describe how ChatGPT helped you and also provide a short critical reflection.
 
 **Grading**
 - Among others, the final grade for your term paper will also depend on
@@ -48,4 +47,3 @@ In the oral exam, you will be asked to
 1. Present your group's solution, focusing on interpretation.
 2. Answer a Q&A session, both on your solution and lecture contents. 
 
-**XXX brauchen wir noch weitere  Infos?XXX**
