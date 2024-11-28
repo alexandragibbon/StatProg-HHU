@@ -8,11 +8,12 @@ The final grade is composed of two parts:
     - 60% of grade
     - Dates: **January 30 and 31**
 
-Please book your 40 minute slot per group until **January 17** here: **The link to the booking system will be published at the beginning of January.** 
+Please book your 40 minute slot per group until **January 17** here:\
+**The link to the booking system will be published at the beginning of January.** 
 
 Please note: Per group, only one time slot should be booked. The two individual oral exams will take place consecutively within the 40 minute slot.
 
-# Assignment (Term Paper)
+# 1. Assignment (Term Paper)
 
 We will upload the assignment on **January 6**.\
 The submission deadline is **January 27, 18:00**.
@@ -42,7 +43,7 @@ Subject: "*MW122 Term Paper*"
     - Quality of presentation of results (e.g. generating nice tables and figures),
     - Conciseness and quality of your answers and explanations.
 
-# Oral exam 
+# 2. Oral exam 
 
 In the oral exam, you will be asked to 
 1. Present your group's solution, focusing on interpretation.
