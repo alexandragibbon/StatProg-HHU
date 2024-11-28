@@ -21,11 +21,12 @@ The submission deadline is **January 27, 18:00**.
 *Please read the following guidelines for the term paper:*
 
 **Submission**
-- The term paper is to be submitted by teams of 2 students. Send your term paper (IPYNB) to mattes@dice.hhu.de; Subject: “MW122 Term Paper”
+- The term paper is to be submitted by teams of 2 students. Send your term paper (IPYNB) to [mattes@dice.hhu.de](mailto:mattes@dice.hhu.de);\
+Subject: "*MW122 Term Paper*"
 
 **Groups**
 - Each group is required to submit an independent solution and collaboration between groups is not allowed.
-- In case you don’t have a student group yet, send me an email. I will share a list with everybody who is looking for fellows.
+- In case you don't have a student group yet, send me an email. I will share a list with everybody who is looking for fellows.
 
 
 **Paper and Code**
