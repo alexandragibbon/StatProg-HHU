@@ -16,7 +16,7 @@ Please note: Per group, only one time slot should be booked. The two individual 
 # 1. Assignment (Term Paper)
 
 We will upload the assignment on **January 6**.\
-The submission deadline is **January 27, 18:00**.
+The submission deadline is **January 27, 16:00**.
 
 
 *Please read the following guidelines for the term paper:*

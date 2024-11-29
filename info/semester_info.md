@@ -8,7 +8,7 @@ Students of all *Prüfungsordnungen (PO, exam regulations)* are admitted to the 
 
 - Choose a partner for the group assignment until **17.01.2025**.
 
-- At the beginning of January: Choose a slot for the oral exam until **17.01.2025**.
+- At the beginning of January: Choose a joint slot with your group partner for the oral exam until **17.01.2025**.
 
 ## Plan for the rest of the semester
 **Until 17.12.2024**\
@@ -22,4 +22,4 @@ Tutorials on Mondays (06.01. and potentially 13.01., 16:30-18:00)\
 (Optional) tutorial for questions.
 
 **Monday, 27.01.2025**, 16:30-18:00\
-Guest lecture by Capgemini. *Relevant for oral exam*.
+Guest lecture by Capgemini. **Relevant for oral exam**.
