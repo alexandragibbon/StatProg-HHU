@@ -23,6 +23,9 @@
     - Dataset: [lightbulb_lifetime.csv](./data/lightbulb_lifetime.csv) 
 * [Tutorial 6](./tutorial/tutorial-6/tutorial_6.ipynb) 
 * [Tutorial 7](./tutorial/tutorial-7/tutorial_7.ipynb) 
+    - Dataset: [prediction.csv](./data/prediction.csv) 
+    - Dataset: [predictiontest.csv](./data/predictiontest.csv)
+    - Dataset: [Oregon.csv](./data/Oregon.csv) 
 
 ### Solutions 
 * [Solution Tutorial 1](./tutorial/tutorial-1-solution/tutorial_1_solution.html)
