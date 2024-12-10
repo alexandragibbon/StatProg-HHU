@@ -45,7 +45,8 @@ Subject: "*MW122 Term Paper*"
 
 # 2. Oral exam 
 
-In the oral exam, you will be asked to 
-1. Present your group's solution, focusing on interpretation.
-2. Answer a Q&A session, both on your solution and lecture contents. 
+1. You will be asked to answer a Q&A session on the lecture content.
+2. We will randomly ask you to present one or two of the exercises.
+3. We will ask you some questions about the remaining exercises.
+
 
