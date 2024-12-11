@@ -27,7 +27,7 @@ Subject: "*MW122 Term Paper*"
 
 **Groups**
 - Each group is required to submit an independent solution and collaboration between groups is not allowed.
-- In case you don't have a student group yet, send me an email. I will share a list with everybody who is looking for fellows.
+- In case you don’t have a student group yet, we have prepared this [google sheet](https://docs.google.com/spreadsheets/d/1JM0eBFDnNVuTV2hAn3TnNTyhOVkRTTj5cCwxTJTZF8k/edit?usp=sharing). Here, you can insert your name and email address so that another student who is also looking for a group partner can contact you.
 
 
 **Paper and Code**

@@ -33,4 +33,5 @@
 * [Solution Tutorial 3](./tutorial/tutorial-3-solution/tutorial_3_solution.html)
 * [Solution Tutorial 4](./tutorial/tutorial-4-solution/tutorial_4_solution.html)
 * [Solution Tutorial 5](./tutorial/tutorial-5-solution/tutorial_5_solution.ipynb)
-* [Solution Tutorial 6](./tutorial/tutorial-6-solution/tutorial_6_solution.ipynb) 
+* [Solution Tutorial 6](./tutorial/tutorial-6-solution/tutorial_6_solution.ipynb)
+* [Solution Tutorial 7](./tutorial/tutorial-7-solution/tutorial_7_solution.ipynb)  
