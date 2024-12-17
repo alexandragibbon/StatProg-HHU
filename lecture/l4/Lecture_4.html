@@ -8,7 +8,7 @@
 <link href="Lecture_4_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="Lecture_4_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="Lecture_4_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.433">
+  <meta name="generator" content="quarto-1.5.57">
 
   <title>Lecture 4: Classification</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -30,7 +30,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -41,7 +41,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -224,7 +224,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -460,29 +461,29 @@
 <section id="classification-1" class="slide level2">
 <h2>Classification</h2>
 <h4 id="example">Example</h4>
-<div class="cell" data-execution_count="1">
-<details>
+<div id="7dc9e709" class="cell" data-execution_count="1">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2"></a>np.random.seed(<span class="dv">0</span>)</span>
-<span id="cb1-3"><a href="#cb1-3"></a>n <span class="op">=</span> [<span class="dv">100</span>,<span class="dv">90</span>,<span class="dv">130</span>]</span>
-<span id="cb1-4"><a href="#cb1-4"></a>Y <span class="op">=</span> np.append(np.append(np.zeros(n[<span class="dv">0</span>]),np.ones(n[<span class="dv">1</span>])),<span class="dv">2</span><span class="op">*</span>np.ones(n[<span class="dv">2</span>]))</span>
-<span id="cb1-5"><a href="#cb1-5"></a></span>
-<span id="cb1-6"><a href="#cb1-6"></a>X1 <span class="op">=</span> np.random.multivariate_normal([<span class="dv">0</span>,<span class="dv">0</span>], [[<span class="dv">1</span>,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="dv">1</span>]], n[<span class="dv">0</span>])</span>
-<span id="cb1-7"><a href="#cb1-7"></a>X2 <span class="op">=</span> np.random.multivariate_normal([<span class="dv">1</span>,<span class="op">-</span><span class="dv">2</span>], [[<span class="dv">1</span>,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="dv">1</span>]], n[<span class="dv">1</span>])</span>
-<span id="cb1-8"><a href="#cb1-8"></a>X3 <span class="op">=</span> np.random.multivariate_normal([<span class="dv">3</span>,<span class="dv">0</span>],[[<span class="dv">1</span>,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="dv">1</span>]], n[<span class="dv">2</span>])</span>
-<span id="cb1-9"><a href="#cb1-9"></a></span>
-<span id="cb1-10"><a href="#cb1-10"></a>X <span class="op">=</span> np.concatenate((X1,X2,X3))</span>
-<span id="cb1-11"><a href="#cb1-11"></a></span>
-<span id="cb1-12"><a href="#cb1-12"></a><span class="co"># Construction of the test sample</span></span>
-<span id="cb1-13"><a href="#cb1-13"></a>n_test <span class="op">=</span> [<span class="dv">100</span>,<span class="dv">90</span>,<span class="dv">130</span>]</span>
-<span id="cb1-14"><a href="#cb1-14"></a>Y_test <span class="op">=</span> np.append(np.append(np.zeros(n_test[<span class="dv">0</span>]),np.ones(n_test[<span class="dv">1</span>])),<span class="dv">2</span><span class="op">*</span>np.ones(n_test[<span class="dv">2</span>]))</span>
-<span id="cb1-15"><a href="#cb1-15"></a></span>
-<span id="cb1-16"><a href="#cb1-16"></a>X1_test <span class="op">=</span> np.random.multivariate_normal([<span class="dv">0</span>,<span class="dv">0</span>], [[<span class="dv">1</span>,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="dv">1</span>]], n_test[<span class="dv">0</span>])</span>
-<span id="cb1-17"><a href="#cb1-17"></a>X2_test <span class="op">=</span> np.random.multivariate_normal([<span class="dv">1</span>,<span class="op">-</span><span class="dv">2</span>], [[<span class="dv">1</span>,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="dv">1</span>]], n_test[<span class="dv">1</span>])</span>
-<span id="cb1-18"><a href="#cb1-18"></a>X3_test <span class="op">=</span> np.random.multivariate_normal([<span class="dv">3</span>,<span class="dv">0</span>],[[<span class="dv">1</span>,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="dv">1</span>]], n_test[<span class="dv">2</span>])</span>
-<span id="cb1-19"><a href="#cb1-19"></a></span>
-<span id="cb1-20"><a href="#cb1-20"></a>X_test <span class="op">=</span> np.concatenate((X1_test,X2_test,X3_test))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href=""></a>np.random.seed(<span class="dv">0</span>)</span>
+<span id="cb1-3"><a href=""></a>n <span class="op">=</span> [<span class="dv">100</span>,<span class="dv">90</span>,<span class="dv">130</span>]</span>
+<span id="cb1-4"><a href=""></a>Y <span class="op">=</span> np.append(np.append(np.zeros(n[<span class="dv">0</span>]),np.ones(n[<span class="dv">1</span>])),<span class="dv">2</span><span class="op">*</span>np.ones(n[<span class="dv">2</span>]))</span>
+<span id="cb1-5"><a href=""></a></span>
+<span id="cb1-6"><a href=""></a>X1 <span class="op">=</span> np.random.multivariate_normal([<span class="dv">0</span>,<span class="dv">0</span>], [[<span class="dv">1</span>,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="dv">1</span>]], n[<span class="dv">0</span>])</span>
+<span id="cb1-7"><a href=""></a>X2 <span class="op">=</span> np.random.multivariate_normal([<span class="dv">1</span>,<span class="op">-</span><span class="dv">2</span>], [[<span class="dv">1</span>,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="dv">1</span>]], n[<span class="dv">1</span>])</span>
+<span id="cb1-8"><a href=""></a>X3 <span class="op">=</span> np.random.multivariate_normal([<span class="dv">3</span>,<span class="dv">0</span>],[[<span class="dv">1</span>,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="dv">1</span>]], n[<span class="dv">2</span>])</span>
+<span id="cb1-9"><a href=""></a></span>
+<span id="cb1-10"><a href=""></a>X <span class="op">=</span> np.concatenate((X1,X2,X3))</span>
+<span id="cb1-11"><a href=""></a></span>
+<span id="cb1-12"><a href=""></a><span class="co"># Construction of the test sample</span></span>
+<span id="cb1-13"><a href=""></a>n_test <span class="op">=</span> [<span class="dv">100</span>,<span class="dv">90</span>,<span class="dv">130</span>]</span>
+<span id="cb1-14"><a href=""></a>Y_test <span class="op">=</span> np.append(np.append(np.zeros(n_test[<span class="dv">0</span>]),np.ones(n_test[<span class="dv">1</span>])),<span class="dv">2</span><span class="op">*</span>np.ones(n_test[<span class="dv">2</span>]))</span>
+<span id="cb1-15"><a href=""></a></span>
+<span id="cb1-16"><a href=""></a>X1_test <span class="op">=</span> np.random.multivariate_normal([<span class="dv">0</span>,<span class="dv">0</span>], [[<span class="dv">1</span>,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="dv">1</span>]], n_test[<span class="dv">0</span>])</span>
+<span id="cb1-17"><a href=""></a>X2_test <span class="op">=</span> np.random.multivariate_normal([<span class="dv">1</span>,<span class="op">-</span><span class="dv">2</span>], [[<span class="dv">1</span>,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="dv">1</span>]], n_test[<span class="dv">1</span>])</span>
+<span id="cb1-18"><a href=""></a>X3_test <span class="op">=</span> np.random.multivariate_normal([<span class="dv">3</span>,<span class="dv">0</span>],[[<span class="dv">1</span>,<span class="dv">0</span>],[<span class="dv">0</span>,<span class="dv">1</span>]], n_test[<span class="dv">2</span>])</span>
+<span id="cb1-19"><a href=""></a></span>
+<span id="cb1-20"><a href=""></a>X_test <span class="op">=</span> np.concatenate((X1_test,X2_test,X3_test))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 
@@ -511,11 +512,11 @@
 </section>
 <section id="logistic-regression-logit-3" class="slide level2">
 <h2>Logistic Regression (Logit)</h2>
-<div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
-<span id="cb2-2"><a href="#cb2-2"></a>logisticRegr <span class="op">=</span> LogisticRegression(penalty <span class="op">=</span> <span class="st">'l2'</span> ,solver <span class="op">=</span> <span class="st">'liblinear'</span>, multi_class <span class="op">=</span> <span class="st">'auto'</span>)</span>
-<span id="cb2-3"><a href="#cb2-3"></a>model <span class="op">=</span> logisticRegr.fit(X, Y)</span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="bu">print</span>(<span class="st">'Accuracy:'</span>, np.mean(np.equal(model.predict(X_test),Y_test)) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e0b47771" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href=""></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
+<span id="cb2-2"><a href=""></a>logisticRegr <span class="op">=</span> LogisticRegression(penalty <span class="op">=</span> <span class="st">'l2'</span> ,solver <span class="op">=</span> <span class="st">'liblinear'</span>, multi_class <span class="op">=</span> <span class="st">'auto'</span>)</span>
+<span id="cb2-3"><a href=""></a>model <span class="op">=</span> logisticRegr.fit(X, Y)</span>
+<span id="cb2-4"><a href=""></a><span class="bu">print</span>(<span class="st">'Accuracy:'</span>, np.mean(np.equal(model.predict(X_test),Y_test)) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Accuracy: 0.8375</code></pre>
 </div>
@@ -540,7 +541,7 @@
 <h2>Nearest Neighbors Classification</h2>
 <ul>
 <li><p>The <span class="math inline">\(k\)</span>-nearest neighbor classification is a prediction rule which weights the <span class="math inline">\(k\)</span> nearest neighbors and performs the prediction due to a simple majority vote.</p></li>
-<li><p>The distance of two points <span class="math inline">\(x=(x_1,\dots,x_p)\)</span> and <span class="math inline">\(x'=(x'_1,\dots,x'_p)\)</span> is measured with the euclidean distance <span class="math display">\[d(x,x')=\|x-x'\|_2=\Big(\sum\limits_{i=1}^n(x_i-x'_i)^2\Big)^{1/2}.\]</span> Given a sample <span class="math inline">\((Y_1,X_1),\dots,(Y_n,X_n)\)</span> and a point <span class="math inline">\(x\)</span> we can calculate the distance of each point to <span class="math inline">\(x\)</span> <span class="math display">\[d_i(x):=d(X_i,x).\]</span></p></li>
+<li><p>The distance of two points <span class="math inline">\(x=(x_1,\dots,x_p)\)</span> and <span class="math inline">\(x'=(x'_1,\dots,x'_p)\)</span> is measured with the euclidean distance <span class="math display">\[d(x,x')=\|x-x'\|_2=\Big(\sum\limits_{j=1}^n(x_j-x'_j)^2\Big)^{1/2}.\]</span> Given a sample <span class="math inline">\((Y_1,X_1),\dots,(Y_n,X_n)\)</span> and a point <span class="math inline">\(x\)</span> we can calculate the distance of each point to <span class="math inline">\(x\)</span> <span class="math display">\[d_i(x):=d(X_i,x).\]</span></p></li>
 </ul>
 </section>
 <section id="nearest-neighbors-classification-1" class="slide level2">
@@ -559,12 +560,12 @@
 </section>
 <section id="nearest-neighbors-classification-3" class="slide level2">
 <h2>Nearest Neighbors Classification</h2>
-<div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">from</span> sklearn <span class="im">import</span> neighbors</span>
-<span id="cb4-2"><a href="#cb4-2"></a>neighb <span class="op">=</span> neighbors.KNeighborsClassifier(n_neighbors <span class="op">=</span> <span class="dv">20</span>, weights <span class="op">=</span> <span class="st">'uniform'</span>)</span>
-<span id="cb4-3"><a href="#cb4-3"></a>model <span class="op">=</span> neighb.fit(X, Y)</span>
-<span id="cb4-4"><a href="#cb4-4"></a></span>
-<span id="cb4-5"><a href="#cb4-5"></a><span class="bu">print</span>(<span class="st">'Accuracy:'</span>, np.mean(np.equal(model.predict(X_test),Y_test)) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="42ec5a57" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a><span class="im">from</span> sklearn <span class="im">import</span> neighbors</span>
+<span id="cb4-2"><a href=""></a>neighb <span class="op">=</span> neighbors.KNeighborsClassifier(n_neighbors <span class="op">=</span> <span class="dv">20</span>, weights <span class="op">=</span> <span class="st">'uniform'</span>)</span>
+<span id="cb4-3"><a href=""></a>model <span class="op">=</span> neighb.fit(X, Y)</span>
+<span id="cb4-4"><a href=""></a></span>
+<span id="cb4-5"><a href=""></a><span class="bu">print</span>(<span class="st">'Accuracy:'</span>, np.mean(np.equal(model.predict(X_test),Y_test)) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Accuracy: 0.840625</code></pre>
 </div>
@@ -573,12 +574,12 @@
 <img data-src="figures/Example_1_kNN_uniform.png" class="r-stretch"></section>
 <section id="nearest-neighbors-classification-4" class="slide level2">
 <h2>Nearest Neighbors Classification</h2>
-<div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">from</span> sklearn <span class="im">import</span> neighbors</span>
-<span id="cb6-2"><a href="#cb6-2"></a>neighb <span class="op">=</span> neighbors.KNeighborsClassifier(n_neighbors <span class="op">=</span> <span class="dv">20</span>, weights <span class="op">=</span> <span class="st">'distance'</span>)</span>
-<span id="cb6-3"><a href="#cb6-3"></a>model <span class="op">=</span> neighb.fit(X, Y)</span>
-<span id="cb6-4"><a href="#cb6-4"></a></span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="bu">print</span>(<span class="st">'Accuracy:'</span>, np.mean(np.equal(model.predict(X_test),Y_test)) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="4da48671" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href=""></a><span class="im">from</span> sklearn <span class="im">import</span> neighbors</span>
+<span id="cb6-2"><a href=""></a>neighb <span class="op">=</span> neighbors.KNeighborsClassifier(n_neighbors <span class="op">=</span> <span class="dv">20</span>, weights <span class="op">=</span> <span class="st">'distance'</span>)</span>
+<span id="cb6-3"><a href=""></a>model <span class="op">=</span> neighb.fit(X, Y)</span>
+<span id="cb6-4"><a href=""></a></span>
+<span id="cb6-5"><a href=""></a><span class="bu">print</span>(<span class="st">'Accuracy:'</span>, np.mean(np.equal(model.predict(X_test),Y_test)) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Accuracy: 0.828125</code></pre>
 </div>
@@ -635,13 +636,16 @@ y_if(x_i)&gt;0.
 <li><p>It is possible to find the “<em>best</em>” hyperplane defined by <span class="math inline">\(\hat{f}(x)=x\hat{\beta}+\hat{\beta}_0\)</span> which separates the target variables on the sample</p></li>
 </ul>
 </div><div class="column" style="width:30%;">
-<div class="cell" data-execution_count="5">
+<div id="2e0bef7b" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
+<div>
+<figure>
 <p><img data-src="Lecture_4_files/figure-revealjs/cell-6-output-1.png" width="260" height="209"></p>
+</figure>
 </div>
 </div>
 </div>
-</div>
+</div></div>
 </section>
 <section id="support-vector-machines-5" class="slide level2">
 <h2>Support Vector Machines</h2>
@@ -677,13 +681,16 @@ y_i(x_i\beta+\beta_0)\ge M(1-\xi_i),\quad i=1,\dots,n
 \]</span> with <span class="math inline">\(\xi_i\ge 0\)</span></p></li>
 </ul>
 </div><div class="column" style="width:30%;">
-<div class="cell" data-execution_count="6">
+<div id="977636bf" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
+<div>
+<figure>
 <p><img data-src="Lecture_4_files/figure-revealjs/cell-7-output-1.png" width="271" height="209"></p>
+</figure>
 </div>
 </div>
 </div>
-</div>
+</div></div>
 </section>
 <section id="support-vector-machines-8" class="slide level2">
 <h2>Support Vector Machines</h2>
@@ -695,13 +702,16 @@ y_i(x_i\beta+\beta_0)\ge M(1-\xi_i),\quad i=1,\dots,n
 <li><span class="math inline">\(\xi_i\)</span> proportional amount by which the prediction <span class="math inline">\(f(x_i)\)</span> is on the wrong side of the margin.</li>
 </ul>
 </div><div class="column" style="width:30%;">
-<div class="cell" data-execution_count="7">
+<div id="9f4c225f" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
+<div>
+<figure>
 <p><img data-src="Lecture_4_files/figure-revealjs/cell-8-output-1.png" width="271" height="209"></p>
+</figure>
 </div>
 </div>
 </div>
-</div>
+</div></div>
 <ul>
 <li><strong>Solution</strong>: <strong>Soft-margin SVM classifier</strong></li>
 </ul>
@@ -759,9 +769,13 @@ y_i(x_i\beta+\beta_0)\ge 1-\xi_i,\quad\xi_i\ge 0,\quad  i=1,\dots,n.
 <section id="support-vector-machines-13" class="slide level2">
 <h2>Support Vector Machines</h2>
 <h4 id="kernel-trick-3">Kernel Trick</h4>
-<div class="cell" data-execution_count="8">
+<div id="79935e9b" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
+<div>
+<figure>
 <p><img data-src="Lecture_4_files/figure-revealjs/cell-9-output-1.png" width="495" height="357"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -790,11 +804,11 @@ y_i(x_i\beta+\beta_0)\ge 1-\xi_i,\quad\xi_i\ge 0,\quad  i=1,\dots,n.
 </section>
 <section id="decision-trees-3" class="slide level2">
 <h2>Decision Trees</h2>
-<div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
-<span id="cb8-2"><a href="#cb8-2"></a>decisiontree <span class="op">=</span> DecisionTreeClassifier(max_depth<span class="op">=</span> <span class="dv">1</span>,random_state<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb8-3"><a href="#cb8-3"></a>model <span class="op">=</span> decisiontree.fit(X, Y)</span>
-<span id="cb8-4"><a href="#cb8-4"></a><span class="bu">print</span>(<span class="st">'Accuracy:'</span>, np.mean(np.equal(model.predict(X_test),Y_test)) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="c5712f87" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href=""></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
+<span id="cb8-2"><a href=""></a>decisiontree <span class="op">=</span> DecisionTreeClassifier(max_depth<span class="op">=</span> <span class="dv">1</span>,random_state<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb8-3"><a href=""></a>model <span class="op">=</span> decisiontree.fit(X, Y)</span>
+<span id="cb8-4"><a href=""></a><span class="bu">print</span>(<span class="st">'Accuracy:'</span>, np.mean(np.equal(model.predict(X_test),Y_test)) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Accuracy: 0.665625</code></pre>
 </div>
@@ -803,19 +817,23 @@ y_i(x_i\beta+\beta_0)\ge 1-\xi_i,\quad\xi_i\ge 0,\quad  i=1,\dots,n.
 <img data-src="figures/Example_1_decisiontree_split_1.png" class="r-stretch"></section>
 <section id="decision-trees-4" class="slide level2">
 <h2>Decision Trees</h2>
-<div class="cell" data-execution_count="10">
-<details>
+<div id="5880e6ec" class="cell" data-execution_count="10">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> plot_tree</span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb10-3"><a href="#cb10-3"></a></span>
-<span id="cb10-4"><a href="#cb10-4"></a><span class="co"># Plot the decision tree</span></span>
-<span id="cb10-5"><a href="#cb10-5"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
-<span id="cb10-6"><a href="#cb10-6"></a>plot_tree(model, filled<span class="op">=</span><span class="va">True</span>, feature_names <span class="op">=</span> [<span class="st">"X1"</span>, <span class="st">"X2"</span>], class_names <span class="op">=</span> [<span class="st">"0"</span>, <span class="st">"1"</span>, <span class="st">"2"</span>])</span>
-<span id="cb10-7"><a href="#cb10-7"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href=""></a><span class="im">from</span> sklearn.tree <span class="im">import</span> plot_tree</span>
+<span id="cb10-2"><a href=""></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb10-3"><a href=""></a></span>
+<span id="cb10-4"><a href=""></a><span class="co"># Plot the decision tree</span></span>
+<span id="cb10-5"><a href=""></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
+<span id="cb10-6"><a href=""></a>plot_tree(model, filled<span class="op">=</span><span class="va">True</span>, feature_names <span class="op">=</span> [<span class="st">"X1"</span>, <span class="st">"X2"</span>], class_names <span class="op">=</span> [<span class="st">"0"</span>, <span class="st">"1"</span>, <span class="st">"2"</span>])</span>
+<span id="cb10-7"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
+<div>
+<figure>
 <p><img data-src="Lecture_4_files/figure-revealjs/cell-11-output-1.png" width="614" height="315"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -828,13 +846,13 @@ y_i(x_i\beta+\beta_0)\ge 1-\xi_i,\quad\xi_i\ge 0,\quad  i=1,\dots,n.
 </section>
 <section id="decision-trees-6" class="slide level2">
 <h2>Decision Trees</h2>
-<div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
-<span id="cb11-2"><a href="#cb11-2"></a>maxdepth <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb11-3"><a href="#cb11-3"></a>rand <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb11-4"><a href="#cb11-4"></a>decisiontree <span class="op">=</span> DecisionTreeClassifier(max_depth<span class="op">=</span> maxdepth,random_state<span class="op">=</span>rand)</span>
-<span id="cb11-5"><a href="#cb11-5"></a>model <span class="op">=</span> decisiontree.fit(X, Y)</span>
-<span id="cb11-6"><a href="#cb11-6"></a><span class="bu">print</span>(<span class="st">'Accuracy:'</span>, np.mean(np.equal(model.predict(X_test),Y_test)) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="4bcaa866" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href=""></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
+<span id="cb11-2"><a href=""></a>maxdepth <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb11-3"><a href=""></a>rand <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb11-4"><a href=""></a>decisiontree <span class="op">=</span> DecisionTreeClassifier(max_depth<span class="op">=</span> maxdepth,random_state<span class="op">=</span>rand)</span>
+<span id="cb11-5"><a href=""></a>model <span class="op">=</span> decisiontree.fit(X, Y)</span>
+<span id="cb11-6"><a href=""></a><span class="bu">print</span>(<span class="st">'Accuracy:'</span>, np.mean(np.equal(model.predict(X_test),Y_test)) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Accuracy: 0.815625</code></pre>
 </div>
@@ -846,28 +864,32 @@ y_i(x_i\beta+\beta_0)\ge 1-\xi_i,\quad\xi_i\ge 0,\quad  i=1,\dots,n.
 <img data-src="figures/Example_1_decisiontree_split_2.png" class="r-stretch"></section>
 <section id="decision-trees-8" class="slide level2">
 <h2>Decision Trees</h2>
-<div class="cell" data-execution_count="12">
-<details>
+<div id="55c62688" class="cell" data-execution_count="12">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># Plot the decision tree</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
-<span id="cb13-3"><a href="#cb13-3"></a>plot_tree(model, filled<span class="op">=</span><span class="va">True</span>, feature_names <span class="op">=</span> [<span class="st">"X1"</span>, <span class="st">"X2"</span>], class_names <span class="op">=</span> [<span class="st">"0"</span>, <span class="st">"1"</span>, <span class="st">"2"</span>])</span>
-<span id="cb13-4"><a href="#cb13-4"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href=""></a><span class="co"># Plot the decision tree</span></span>
+<span id="cb13-2"><a href=""></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
+<span id="cb13-3"><a href=""></a>plot_tree(model, filled<span class="op">=</span><span class="va">True</span>, feature_names <span class="op">=</span> [<span class="st">"X1"</span>, <span class="st">"X2"</span>], class_names <span class="op">=</span> [<span class="st">"0"</span>, <span class="st">"1"</span>, <span class="st">"2"</span>])</span>
+<span id="cb13-4"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
+<div>
+<figure>
 <p><img data-src="Lecture_4_files/figure-revealjs/cell-13-output-1.png" width="614" height="315"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="decision-trees-9" class="slide level2">
 <h2>Decision Trees</h2>
-<div class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
-<span id="cb14-2"><a href="#cb14-2"></a>maxdepth <span class="op">=</span> <span class="dv">3</span></span>
-<span id="cb14-3"><a href="#cb14-3"></a>rand <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb14-4"><a href="#cb14-4"></a>decisiontree <span class="op">=</span> DecisionTreeClassifier(max_depth<span class="op">=</span> maxdepth,random_state<span class="op">=</span>rand)</span>
-<span id="cb14-5"><a href="#cb14-5"></a>model <span class="op">=</span> decisiontree.fit(X, Y)</span>
-<span id="cb14-6"><a href="#cb14-6"></a><span class="bu">print</span>(<span class="st">'Accuracy:'</span>, np.mean(np.equal(model.predict(X_test),Y_test)) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="a7fa5a55" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href=""></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
+<span id="cb14-2"><a href=""></a>maxdepth <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb14-3"><a href=""></a>rand <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb14-4"><a href=""></a>decisiontree <span class="op">=</span> DecisionTreeClassifier(max_depth<span class="op">=</span> maxdepth,random_state<span class="op">=</span>rand)</span>
+<span id="cb14-5"><a href=""></a>model <span class="op">=</span> decisiontree.fit(X, Y)</span>
+<span id="cb14-6"><a href=""></a><span class="bu">print</span>(<span class="st">'Accuracy:'</span>, np.mean(np.equal(model.predict(X_test),Y_test)) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Accuracy: 0.828125</code></pre>
 </div>
@@ -879,19 +901,23 @@ y_i(x_i\beta+\beta_0)\ge 1-\xi_i,\quad\xi_i\ge 0,\quad  i=1,\dots,n.
 <img data-src="figures/Example_1_decisiontree_split_3.png" class="r-stretch"></section>
 <section id="decision-trees-11" class="slide level2">
 <h2>Decision Trees</h2>
-<div class="cell" data-execution_count="14">
-<details>
+<div id="344bb382" class="cell" data-execution_count="14">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> plot_tree</span>
-<span id="cb16-2"><a href="#cb16-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb16-3"><a href="#cb16-3"></a></span>
-<span id="cb16-4"><a href="#cb16-4"></a><span class="co"># Plot the decision tree</span></span>
-<span id="cb16-5"><a href="#cb16-5"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
-<span id="cb16-6"><a href="#cb16-6"></a>plot_tree(model, filled<span class="op">=</span><span class="va">True</span>, feature_names <span class="op">=</span> [<span class="st">"X1"</span>, <span class="st">"X2"</span>], class_names <span class="op">=</span> [<span class="st">"0"</span>, <span class="st">"1"</span>, <span class="st">"2"</span>])</span>
-<span id="cb16-7"><a href="#cb16-7"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href=""></a><span class="im">from</span> sklearn.tree <span class="im">import</span> plot_tree</span>
+<span id="cb16-2"><a href=""></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb16-3"><a href=""></a></span>
+<span id="cb16-4"><a href=""></a><span class="co"># Plot the decision tree</span></span>
+<span id="cb16-5"><a href=""></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
+<span id="cb16-6"><a href=""></a>plot_tree(model, filled<span class="op">=</span><span class="va">True</span>, feature_names <span class="op">=</span> [<span class="st">"X1"</span>, <span class="st">"X2"</span>], class_names <span class="op">=</span> [<span class="st">"0"</span>, <span class="st">"1"</span>, <span class="st">"2"</span>])</span>
+<span id="cb16-7"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
+<div>
+<figure>
 <p><img data-src="Lecture_4_files/figure-revealjs/cell-15-output-1.png" width="614" height="315"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -909,13 +935,13 @@ y_i(x_i\beta+\beta_0)\ge 1-\xi_i,\quad\xi_i\ge 0,\quad  i=1,\dots,n.
 <section id="decision-trees-13" class="slide level2">
 <h2>Decision Trees</h2>
 <h4 id="problems-1">Problems</h4>
-<div class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
-<span id="cb17-2"><a href="#cb17-2"></a>maxdepth <span class="op">=</span> <span class="dv">40</span></span>
-<span id="cb17-3"><a href="#cb17-3"></a>rand <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb17-4"><a href="#cb17-4"></a>decisiontree <span class="op">=</span> DecisionTreeClassifier(max_depth<span class="op">=</span> maxdepth,random_state<span class="op">=</span>rand)</span>
-<span id="cb17-5"><a href="#cb17-5"></a>model <span class="op">=</span> decisiontree.fit(X, Y)</span>
-<span id="cb17-6"><a href="#cb17-6"></a><span class="bu">print</span>(<span class="st">'Accuracy:'</span>, np.mean(np.equal(model.predict(X_test),Y_test)) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="c95bcf66" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href=""></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
+<span id="cb17-2"><a href=""></a>maxdepth <span class="op">=</span> <span class="dv">40</span></span>
+<span id="cb17-3"><a href=""></a>rand <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb17-4"><a href=""></a>decisiontree <span class="op">=</span> DecisionTreeClassifier(max_depth<span class="op">=</span> maxdepth,random_state<span class="op">=</span>rand)</span>
+<span id="cb17-5"><a href=""></a>model <span class="op">=</span> decisiontree.fit(X, Y)</span>
+<span id="cb17-6"><a href=""></a><span class="bu">print</span>(<span class="st">'Accuracy:'</span>, np.mean(np.equal(model.predict(X_test),Y_test)) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Accuracy: 0.803125</code></pre>
 </div>
@@ -924,19 +950,23 @@ y_i(x_i\beta+\beta_0)\ge 1-\xi_i,\quad\xi_i\ge 0,\quad  i=1,\dots,n.
 <section id="decision-trees-14" class="slide level2">
 <h2>Decision Trees</h2>
 <h4 id="problems-2">Problems</h4>
-<div class="cell" data-execution_count="16">
-<details>
+<div id="fed0c865" class="cell" data-execution_count="16">
+<details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> plot_tree</span>
-<span id="cb19-2"><a href="#cb19-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb19-3"><a href="#cb19-3"></a></span>
-<span id="cb19-4"><a href="#cb19-4"></a><span class="co"># Plot the decision tree</span></span>
-<span id="cb19-5"><a href="#cb19-5"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
-<span id="cb19-6"><a href="#cb19-6"></a>plot_tree(model, filled<span class="op">=</span><span class="va">True</span>, feature_names <span class="op">=</span> [<span class="st">"X1"</span>, <span class="st">"X2"</span>], class_names <span class="op">=</span> [<span class="st">"0"</span>, <span class="st">"1"</span>, <span class="st">"2"</span>])</span>
-<span id="cb19-7"><a href="#cb19-7"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href=""></a><span class="im">from</span> sklearn.tree <span class="im">import</span> plot_tree</span>
+<span id="cb19-2"><a href=""></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb19-3"><a href=""></a></span>
+<span id="cb19-4"><a href=""></a><span class="co"># Plot the decision tree</span></span>
+<span id="cb19-5"><a href=""></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
+<span id="cb19-6"><a href=""></a>plot_tree(model, filled<span class="op">=</span><span class="va">True</span>, feature_names <span class="op">=</span> [<span class="st">"X1"</span>, <span class="st">"X2"</span>], class_names <span class="op">=</span> [<span class="st">"0"</span>, <span class="st">"1"</span>, <span class="st">"2"</span>])</span>
+<span id="cb19-7"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
+<div>
+<figure>
 <p><img data-src="Lecture_4_files/figure-revealjs/cell-17-output-1.png" width="614" height="315"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -978,11 +1008,11 @@ y_i(x_i\beta+\beta_0)\ge 1-\xi_i,\quad\xi_i\ge 0,\quad  i=1,\dots,n.
 <ul>
 <li>One very important modification is the use of additional randomization to “decorrelate” the trees: Instead of choosing the best split on all variables we just split on a random subset of the regressors <span class="math inline">\(\Rightarrow\)</span> <strong>Random Forest</strong></li>
 </ul>
-<div class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span>
-<span id="cb20-2"><a href="#cb20-2"></a>randforest <span class="op">=</span> RandomForestClassifier(max_depth<span class="op">=</span><span class="dv">4</span>,random_state<span class="op">=</span><span class="dv">0</span>, n_estimators <span class="op">=</span> <span class="dv">100</span>)</span>
-<span id="cb20-3"><a href="#cb20-3"></a>model <span class="op">=</span> randforest.fit(X, Y)</span>
-<span id="cb20-4"><a href="#cb20-4"></a><span class="bu">print</span>(<span class="st">'Accuracy:'</span>, np.mean(np.equal(model.predict(X_test),Y_test)) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="329cc917" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href=""></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span>
+<span id="cb20-2"><a href=""></a>randforest <span class="op">=</span> RandomForestClassifier(max_depth<span class="op">=</span><span class="dv">4</span>,random_state<span class="op">=</span><span class="dv">0</span>, n_estimators <span class="op">=</span> <span class="dv">100</span>)</span>
+<span id="cb20-3"><a href=""></a>model <span class="op">=</span> randforest.fit(X, Y)</span>
+<span id="cb20-4"><a href=""></a><span class="bu">print</span>(<span class="st">'Accuracy:'</span>, np.mean(np.equal(model.predict(X_test),Y_test)) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Accuracy: 0.834375</code></pre>
 </div>
@@ -991,8 +1021,10 @@ y_i(x_i\beta+\beta_0)\ge 1-\xi_i,\quad\xi_i\ge 0,\quad  i=1,\dots,n.
 <section id="random-forest-classifiers-and-bagging-5" class="slide level2">
 <h2>Random Forest Classifiers and Bagging</h2>
 
-<img data-src="figures/Example_1_rndforest.png" class="r-stretch"><div class="footer footer-default">
+<img data-src="figures/Example_1_rndforest.png" class="r-stretch"><div class="quarto-auto-generated-content">
+<div class="footer footer-default">
 <p><a href="https://alexandragibbon.github.io/StatProg-HHU/">Topics in Econometrics and Data Science</a></p>
+</div>
 </div>
 </section></section>
     </div>
@@ -1022,7 +1054,6 @@ y_i(x_i\beta+\beta_0)\ge 1-\xi_i,\quad\xi_i\ge 0,\quad  i=1,\dots,n.
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1240,18 +1271,7 @@ y_i(x_i\beta+\beta_0)\ge 1-\xi_i,\quad\xi_i\ge 0,\quad  i=1,\dots,n.
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1283,11 +1303,50 @@ y_i(x_i\beta+\beta_0)\ge 1-\xi_i,\quad\xi_i\ge 0,\quad  i=1,\dots,n.
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
-      function tippyHover(el, contentFn) {
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1297,8 +1356,17 @@ y_i(x_i\beta+\beta_0)\ge 1-\xi_i,\quad\xi_i\ge 0,\quad  i=1,\dots,n.
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1312,7 +1380,11 @@ y_i(x_i\beta+\beta_0)\ge 1-\xi_i,\quad\xi_i\ge 0,\quad  i=1,\dots,n.
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {
