@@ -531,7 +531,7 @@
 <section id="ordinary-least-squares-regression-4" class="slide level2">
 <h2>Ordinary Least Squares Regression</h2>
 <h4 id="example-california-housing-data">Example: California Housing Data</h4>
-<div id="c7b90970" class="cell" data-execution_count="1">
+<div id="7f0ce9d9" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a><span class="co">## Example: California Housing Data</span></span>
 <span id="cb1-2"><a href=""></a><span class="co"># Import data </span></span>
 <span id="cb1-3"><a href=""></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> fetch_california_housing</span>
@@ -543,7 +543,7 @@
 <ul>
 <li>Description of data set</li>
 </ul>
-<div id="13671787" class="cell" data-execution_count="2">
+<div id="f01bae60" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href=""></a><span class="bu">print</span>(california_housing.DESCR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -553,7 +553,7 @@
 <ul>
 <li>Inspect data</li>
 </ul>
-<div id="bd8b93fd" class="cell" data-execution_count="3">
+<div id="fc193b85" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a>california_housing.data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div>
@@ -654,7 +654,7 @@
 <ul>
 <li>Inspect data</li>
 </ul>
-<div id="3aa96233" class="cell" data-execution_count="4">
+<div id="d2f4d6ad" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a>california_housing.data.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <div>
@@ -788,7 +788,7 @@
 <ul>
 <li>Inspect the <strong>target</strong> variable, i.e., the median of the house value for each district</li>
 </ul>
-<div id="682db25e" class="cell" data-execution_count="5">
+<div id="c125d372" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a>california_housing.target.head()</span>
 <span id="cb5-2"><a href=""></a>california_housing.target.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
@@ -807,7 +807,7 @@ Name: MedHouseVal, dtype: float64</code></pre>
 <section id="ordinary-least-squares-regression-8" class="slide level2">
 <h2>Ordinary Least Squares Regression</h2>
 <h4 id="example-california-housing-data-4">Example: California Housing Data</h4>
-<div id="7386cdff" class="cell" data-execution_count="6">
+<div id="27ce3608" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href=""></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb7-2"><a href=""></a></span>
 <span id="cb7-3"><a href=""></a>california_housing.frame.hist(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">5</span>), bins<span class="op">=</span><span class="dv">30</span>, edgecolor<span class="op">=</span><span class="st">"black"</span>)</span>
@@ -824,7 +824,7 @@ Name: MedHouseVal, dtype: float64</code></pre>
 <section id="ordinary-least-squares-regression-9" class="slide level2">
 <h2>Ordinary Least Squares Regression</h2>
 <h4 id="example-california-housing-data-5">Example: California Housing Data</h4>
-<div id="5bea1796" class="cell" data-execution_count="7">
+<div id="dd5a5792" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href=""></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb8-2"><a href=""></a></span>
 <span id="cb8-3"><a href=""></a>california_housing.target.hist(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">5</span>), bins<span class="op">=</span><span class="dv">30</span>, edgecolor<span class="op">=</span><span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -844,14 +844,14 @@ Name: MedHouseVal, dtype: float64</code></pre>
 <li><p>First, we will run a simple example with only one explanatory variable</p></li>
 <li><p>Look at the relationship between <code>MedInc</code> (avg. income) and housing prices</p></li>
 </ul>
-<div id="a70f9eba" class="cell" data-execution_count="8">
+<div id="64e57025" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href=""></a><span class="co"># Features</span></span>
 <span id="cb9-2"><a href=""></a>df <span class="op">=</span> pd.DataFrame(california_housing.data, columns<span class="op">=</span>california_housing.feature_names)</span>
 <span id="cb9-3"><a href=""></a></span>
 <span id="cb9-4"><a href=""></a>X <span class="op">=</span> df[<span class="st">"MedInc"</span>].to_numpy().reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
 <span id="cb9-5"><a href=""></a>y <span class="op">=</span> california_housing.target.values[:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="dfe08c39" class="cell" data-execution_count="9">
+<div id="fc4b0ad1" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href=""></a><span class="im">import</span> sklearn</span>
 <span id="cb10-2"><a href=""></a><span class="co"># Initiate linear regression model</span></span>
 <span id="cb10-3"><a href=""></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
@@ -870,7 +870,7 @@ Name: MedHouseVal, dtype: float64</code></pre>
 <ul>
 <li>We can also compute the <span class="math inline">\(R^2\)</span> of the model</li>
 </ul>
-<div id="14b6c0a7" class="cell" data-execution_count="10">
+<div id="add98fbb" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href=""></a><span class="bu">print</span>(<span class="st">"R^2: "</span>, np.<span class="bu">round</span>(model.score(X, y),<span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>R^2:  0.4734</code></pre>
@@ -883,7 +883,7 @@ Name: MedHouseVal, dtype: float64</code></pre>
 <ul>
 <li>Let us plot the housing prices against the income variable and add the predictions obtained from the regression model.</li>
 </ul>
-<div id="6ef1527b" class="cell" data-execution_count="11">
+<div id="f05774a6" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href=""></a><span class="co"># We generate predictions from the regression model </span></span>
@@ -915,7 +915,7 @@ Name: MedHouseVal, dtype: float64</code></pre>
 <ul>
 <li>What if we include more covariates in the regression, say all available in the data? How does the coefficient on MedInc change?</li>
 </ul>
-<div id="770bcf91" class="cell" data-execution_count="12">
+<div id="44003737" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href=""></a>X1b <span class="op">=</span> df.to_numpy()</span>
 <span id="cb15-2"><a href=""></a>model1b <span class="op">=</span> LinearRegression()</span>
 <span id="cb15-3"><a href=""></a>model1b.fit(X1b, y)</span>
@@ -935,7 +935,7 @@ R^2:  0.6062</code></pre>
 <ul>
 <li>Let us plot the housing prices against the avg. income and add the predictions as obtained from the multivariate regression model (Example 1b).</li>
 </ul>
-<div id="50f5a48e" class="cell" data-execution_count="13">
+<div id="758f225a" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href=""></a><span class="co"># We generate predictions from the regression model </span></span>
@@ -980,7 +980,7 @@ R^2:  0.6062</code></pre>
 </section>
 <section id="short-digression-partialling-out-2" class="slide level2">
 <h2>Short Digression: Partialling Out</h2>
-<div id="220fa844" class="cell" data-execution_count="14">
+<div id="0148c561" class="cell" data-execution_count="14">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href=""></a>X1b_1ststage <span class="op">=</span> df.drop([<span class="st">"MedInc"</span>], axis <span class="op">=</span> <span class="dv">1</span>).to_numpy()</span>
@@ -1056,7 +1056,7 @@ R^2:  0.6062</code></pre>
 </section>
 <section id="comparison-of-predictive-accuracy-of-the-models-3" class="slide level2">
 <h2>Comparison of Predictive Accuracy of the Models</h2>
-<div id="904356fe" class="cell" data-execution_count="15">
+<div id="847ee77b" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href=""></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb20-2"><a href=""></a></span>
 <span id="cb20-3"><a href=""></a><span class="co"># Basic Model (1 Regressor MedInc)</span></span>
@@ -1078,7 +1078,7 @@ Multivariate Model:
 </section>
 <section id="comparison-of-predictive-accuracy-of-the-models-4" class="slide level2">
 <h2>Comparison of Predictive Accuracy of the Models</h2>
-<div id="410e5c8d" class="cell" data-execution_count="16">
+<div id="0bac8275" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href=""></a>model.fit(X_train, Y_train)</span>
 <span id="cb22-2"><a href=""></a>Y_pred <span class="op">=</span> model.predict(X_test)</span>
 <span id="cb22-3"><a href=""></a>MSE <span class="op">=</span> np.mean((Y_pred <span class="op">-</span> Y_test)<span class="op">**</span><span class="dv">2</span>)</span>
@@ -1225,7 +1225,7 @@ MSE multiv Model:  0.529629315140828</code></pre>
 <h2>Tests for OLS</h2>
 <h4 id="example-continued-1">Example continued</h4>
 <p>Let’s estimate the model from the previous example</p>
-<div id="dba47949" class="cell" data-execution_count="17">
+<div id="4f61485e" class="cell" data-execution_count="17">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href=""></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
@@ -1243,7 +1243,7 @@ Dep. Variable:                      y   R-squared:                       0.473
 Model:                            OLS   Adj. R-squared:                  0.473
 Method:                 Least Squares   F-statistic:                 1.394e+04
 Date:                Tue, 17 Dec 2024   Prob (F-statistic):               0.00
-Time:                        18:50:43   Log-Likelihood:                -25623.
+Time:                        18:58:52   Log-Likelihood:                -25623.
 No. Observations:               20640   AIC:                         5.125e+04
 Df Residuals:                   20638   BIC:                         5.127e+04
 Df Model:                           1                                         
@@ -1272,7 +1272,7 @@ Vorher: ols.summary()
 <h2>Tests for OLS</h2>
 <h4 id="example-continued-2">Example continued</h4>
 <p>We can print the confidence intervals using our OLS estimation results.</p>
-<div id="0df65460" class="cell" data-execution_count="18">
+<div id="a41dd198" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href=""></a>ols.conf_int(alpha<span class="op">=</span><span class="fl">0.05</span>)[<span class="dv">1</span>,:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>array([0.41100013, 0.42487685])</code></pre>
@@ -1337,8 +1337,7 @@ Vorher: ols.summary()
 </section>
 <section id="quantile-regression-6" class="slide level2">
 <h2>Quantile Regression</h2>
-<h4 id="illustration-of-check-function">Illustration of Check Function</h4>
-<p>(taken from Bonhomme, 2008)</p>
+<h4 id="illustration-of-check-function-taken-from-bonhomme-2008">Illustration of Check Function (taken from Bonhomme, 2008)</h4>
 <p>The functions <span class="math inline">\(\rho_\tau\)</span>, <span class="math inline">\(\tau \in [0, 1]\)</span></p>
 <p><span class="math display">\[\begin{equation*}
 \rho_\tau(u) =
@@ -1347,35 +1346,7 @@ Vorher: ols.summary()
 -(1 - \tau)u &amp; \text{if } u &lt; 0
 \end{cases}
 \end{equation*}\]</span></p>
-<div id="577af03f" class="cell" data-execution_count="19">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb28-2"><a href=""></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb28-3"><a href=""></a></span>
-<span id="cb28-4"><a href=""></a><span class="co"># Define the rho_tau function</span></span>
-<span id="cb28-5"><a href=""></a><span class="kw">def</span> rho_tau(u, tau):</span>
-<span id="cb28-6"><a href=""></a>    <span class="cf">return</span> np.where(u <span class="op">&gt;=</span> <span class="dv">0</span>, tau <span class="op">*</span> u, <span class="op">-</span>(<span class="dv">1</span> <span class="op">-</span> tau) <span class="op">*</span> u)</span>
-<span id="cb28-7"><a href=""></a></span>
-<span id="cb28-8"><a href=""></a><span class="co"># Generate the input data</span></span>
-<span id="cb28-9"><a href=""></a>u <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">100</span>)</span>
-<span id="cb28-10"><a href=""></a></span>
-<span id="cb28-11"><a href=""></a><span class="co"># Values of tau</span></span>
-<span id="cb28-12"><a href=""></a>taus <span class="op">=</span> [<span class="fl">0.5</span>, <span class="fl">0.2</span>, <span class="fl">0.95</span>]</span>
-<span id="cb28-13"><a href=""></a></span>
-<span id="cb28-14"><a href=""></a><span class="co"># Create the plots</span></span>
-<span id="cb28-15"><a href=""></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">3</span>))</span>
-<span id="cb28-16"><a href=""></a></span>
-<span id="cb28-17"><a href=""></a><span class="cf">for</span> i, tau <span class="kw">in</span> <span class="bu">enumerate</span>(taus):</span>
-<span id="cb28-18"><a href=""></a>    rho <span class="op">=</span> rho_tau(u, tau)</span>
-<span id="cb28-19"><a href=""></a>    axes[i].plot(u, rho, color<span class="op">=</span><span class="st">'black'</span>)</span>
-<span id="cb28-20"><a href=""></a>    axes[i].set_title(<span class="ss">f'$</span><span class="ch">\\</span><span class="ss">tau = </span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">$'</span>)</span>
-<span id="cb28-21"><a href=""></a>    axes[i].set_xlabel(<span class="st">"u"</span>)</span>
-<span id="cb28-22"><a href=""></a>    axes[i].set_ylabel(<span class="vs">r'$\rho_\tau(u)$'</span>)</span>
-<span id="cb28-23"><a href=""></a></span>
-<span id="cb28-24"><a href=""></a>plt.tight_layout()</span>
-<span id="cb28-25"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div id="e7e9fada" class="cell" data-execution_count="19">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -1445,19 +1416,19 @@ Vorher: ols.summary()
 <section id="quantile-regression-10" class="slide level2">
 <h2>Quantile Regression</h2>
 <h4 id="california-housing-data">California Housing data</h4>
-<div id="a22199c4" class="cell" data-execution_count="20">
+<div id="a12bf546" class="cell" data-execution_count="20">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href=""></a>pred <span class="op">=</span> model.predict(X)</span>
-<span id="cb29-2"><a href=""></a></span>
-<span id="cb29-3"><a href=""></a>plt.figure(<span class="dv">1</span>,figsize<span class="op">=</span>(<span class="dv">15</span>,<span class="dv">5</span>))</span>
-<span id="cb29-4"><a href=""></a>plt.scatter(X, y, color <span class="op">=</span> <span class="st">"blue"</span>, label <span class="op">=</span> <span class="st">"Y observed"</span>)</span>
-<span id="cb29-5"><a href=""></a>plt.plot(X, pred, color <span class="op">=</span> <span class="st">"r"</span>, linewidth <span class="op">=</span> <span class="dv">3</span>, label <span class="op">=</span> <span class="st">"Regression line (OLS)"</span>)</span>
-<span id="cb29-6"><a href=""></a>plt.xlabel(<span class="st">"MedInc"</span>)</span>
-<span id="cb29-7"><a href=""></a>plt.ylabel(<span class="st">"Housing Price"</span>)</span>
-<span id="cb29-8"><a href=""></a>plt.title(<span class="st">"Scatterplot, Housing Price vs. MedInc"</span>)</span>
-<span id="cb29-9"><a href=""></a>plt.legend()</span>
-<span id="cb29-10"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href=""></a>pred <span class="op">=</span> model.predict(X)</span>
+<span id="cb28-2"><a href=""></a></span>
+<span id="cb28-3"><a href=""></a>plt.figure(<span class="dv">1</span>,figsize<span class="op">=</span>(<span class="dv">15</span>,<span class="dv">5</span>))</span>
+<span id="cb28-4"><a href=""></a>plt.scatter(X, y, color <span class="op">=</span> <span class="st">"blue"</span>, label <span class="op">=</span> <span class="st">"Y observed"</span>)</span>
+<span id="cb28-5"><a href=""></a>plt.plot(X, pred, color <span class="op">=</span> <span class="st">"r"</span>, linewidth <span class="op">=</span> <span class="dv">3</span>, label <span class="op">=</span> <span class="st">"Regression line (OLS)"</span>)</span>
+<span id="cb28-6"><a href=""></a>plt.xlabel(<span class="st">"MedInc"</span>)</span>
+<span id="cb28-7"><a href=""></a>plt.ylabel(<span class="st">"Housing Price"</span>)</span>
+<span id="cb28-8"><a href=""></a>plt.title(<span class="st">"Scatterplot, Housing Price vs. MedInc"</span>)</span>
+<span id="cb28-9"><a href=""></a>plt.legend()</span>
+<span id="cb28-10"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -1471,11 +1442,11 @@ Vorher: ols.summary()
 <section id="quantile-regression-11" class="slide level2">
 <h2>Quantile Regression</h2>
 <h4 id="california-housing-data-1">California Housing data</h4>
-<div id="523fa02e" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href=""></a><span class="im">from</span> statsmodels.regression.quantile_regression <span class="im">import</span> QuantReg</span>
-<span id="cb30-2"><a href=""></a>qr <span class="op">=</span> sm.QuantReg(y,Xc)</span>
-<span id="cb30-3"><a href=""></a>med <span class="op">=</span> qr.fit(q <span class="op">=</span> <span class="fl">0.5</span>)</span>
-<span id="cb30-4"><a href=""></a><span class="bu">print</span>(med.summary())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="08336ab1" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href=""></a><span class="im">from</span> statsmodels.regression.quantile_regression <span class="im">import</span> QuantReg</span>
+<span id="cb29-2"><a href=""></a>qr <span class="op">=</span> sm.QuantReg(y,Xc)</span>
+<span id="cb29-3"><a href=""></a>med <span class="op">=</span> qr.fit(q <span class="op">=</span> <span class="fl">0.5</span>)</span>
+<span id="cb29-4"><a href=""></a><span class="bu">print</span>(med.summary())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                         QuantReg Regression Results                          
 ==============================================================================
@@ -1483,7 +1454,7 @@ Dep. Variable:                      y   Pseudo R-squared:               0.3107
 Model:                       QuantReg   Bandwidth:                      0.1220
 Method:                 Least Squares   Sparsity:                        1.695
 Date:                Tue, 17 Dec 2024   No. Observations:                20640
-Time:                        18:50:46   Df Residuals:                    20638
+Time:                        18:58:55   Df Residuals:                    20638
                                         Df Model:                            1
 ==============================================================================
                  coef    std err          t      P&gt;|t|      [0.025      0.975]
@@ -1497,39 +1468,39 @@ x1             0.4387      0.003    141.268      0.000       0.433       0.445
 <section id="quantile-regression-12" class="slide level2">
 <h2>Quantile Regression</h2>
 <h4 id="california-housing-data-2">California Housing data</h4>
-<div id="30591ea0" class="cell" data-execution_count="22">
+<div id="27980fc1" class="cell" data-execution_count="22">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href=""></a>med <span class="op">=</span> qr.fit(q <span class="op">=</span> <span class="fl">0.5</span>)</span>
-<span id="cb32-2"><a href=""></a>q005 <span class="op">=</span> qr.fit(q <span class="op">=</span> <span class="fl">0.05</span>)</span>
-<span id="cb32-3"><a href=""></a>q01 <span class="op">=</span> qr.fit(q <span class="op">=</span> <span class="fl">0.1</span>)</span>
-<span id="cb32-4"><a href=""></a>q02 <span class="op">=</span> qr.fit(q <span class="op">=</span> <span class="fl">0.2</span>)</span>
-<span id="cb32-5"><a href=""></a>q08 <span class="op">=</span> qr.fit(q <span class="op">=</span> <span class="fl">0.8</span>)</span>
-<span id="cb32-6"><a href=""></a>q09 <span class="op">=</span> qr.fit(q <span class="op">=</span> <span class="fl">0.9</span>)</span>
-<span id="cb32-7"><a href=""></a>q095 <span class="op">=</span> qr.fit(q <span class="op">=</span> <span class="fl">0.95</span>)</span>
-<span id="cb32-8"><a href=""></a></span>
-<span id="cb32-9"><a href=""></a>predmed <span class="op">=</span> med.predict(Xc)</span>
-<span id="cb32-10"><a href=""></a>pred005 <span class="op">=</span> q005.predict(Xc)</span>
-<span id="cb32-11"><a href=""></a>pred01 <span class="op">=</span> q01.predict(Xc)</span>
-<span id="cb32-12"><a href=""></a>pred02 <span class="op">=</span> q02.predict(Xc)</span>
-<span id="cb32-13"><a href=""></a>pred08 <span class="op">=</span> q08.predict(Xc)</span>
-<span id="cb32-14"><a href=""></a>pred09 <span class="op">=</span> q09.predict(Xc)</span>
-<span id="cb32-15"><a href=""></a>pred095 <span class="op">=</span> q095.predict(Xc)</span>
-<span id="cb32-16"><a href=""></a>p_quant <span class="op">=</span> plt.figure(<span class="dv">1</span>,figsize<span class="op">=</span>(<span class="dv">15</span>,<span class="dv">5</span>))</span>
-<span id="cb32-17"><a href=""></a>plt.scatter(X, y, color <span class="op">=</span> <span class="st">"blue"</span>, label <span class="op">=</span> <span class="st">"Y observed"</span>)</span>
-<span id="cb32-18"><a href=""></a>plt.plot(X, pred, color <span class="op">=</span> <span class="st">"r"</span>, linewidth <span class="op">=</span> <span class="dv">3</span>, label <span class="op">=</span> <span class="st">"Regression line (OLS)"</span>)</span>
-<span id="cb32-19"><a href=""></a>plt.plot(X, predmed, color <span class="op">=</span> <span class="st">"g"</span>, linewidth <span class="op">=</span> <span class="dv">3</span>, label <span class="op">=</span> <span class="st">"Regression line (Median)"</span>)</span>
-<span id="cb32-20"><a href=""></a>plt.plot(X, pred005, color <span class="op">=</span> <span class="st">"g"</span>, linewidth <span class="op">=</span> <span class="dv">1</span>)</span>
-<span id="cb32-21"><a href=""></a>plt.plot(X, pred01, color <span class="op">=</span> <span class="st">"g"</span>, linewidth <span class="op">=</span> <span class="dv">1</span>)</span>
-<span id="cb32-22"><a href=""></a>plt.plot(X, pred02, color <span class="op">=</span> <span class="st">"g"</span>, linewidth <span class="op">=</span> <span class="dv">1</span>)</span>
-<span id="cb32-23"><a href=""></a>plt.plot(X, pred08, color <span class="op">=</span> <span class="st">"g"</span>, linewidth <span class="op">=</span> <span class="dv">1</span>)</span>
-<span id="cb32-24"><a href=""></a>plt.plot(X, pred09, color <span class="op">=</span> <span class="st">"g"</span>, linewidth <span class="op">=</span> <span class="dv">1</span>)</span>
-<span id="cb32-25"><a href=""></a>plt.plot(X, pred095, color <span class="op">=</span> <span class="st">"g"</span>, linewidth <span class="op">=</span> <span class="dv">1</span>)</span>
-<span id="cb32-26"><a href=""></a>plt.xlabel(<span class="st">"MedInc"</span>)</span>
-<span id="cb32-27"><a href=""></a>plt.ylabel(<span class="st">"Housing Price"</span>)</span>
-<span id="cb32-28"><a href=""></a>plt.title(<span class="st">"Scatterplot, Housing Price vs. MedInc, Median Regression"</span>)</span>
-<span id="cb32-29"><a href=""></a>plt.legend()</span>
-<span id="cb32-30"><a href=""></a>p_quant.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href=""></a>med <span class="op">=</span> qr.fit(q <span class="op">=</span> <span class="fl">0.5</span>)</span>
+<span id="cb31-2"><a href=""></a>q005 <span class="op">=</span> qr.fit(q <span class="op">=</span> <span class="fl">0.05</span>)</span>
+<span id="cb31-3"><a href=""></a>q01 <span class="op">=</span> qr.fit(q <span class="op">=</span> <span class="fl">0.1</span>)</span>
+<span id="cb31-4"><a href=""></a>q02 <span class="op">=</span> qr.fit(q <span class="op">=</span> <span class="fl">0.2</span>)</span>
+<span id="cb31-5"><a href=""></a>q08 <span class="op">=</span> qr.fit(q <span class="op">=</span> <span class="fl">0.8</span>)</span>
+<span id="cb31-6"><a href=""></a>q09 <span class="op">=</span> qr.fit(q <span class="op">=</span> <span class="fl">0.9</span>)</span>
+<span id="cb31-7"><a href=""></a>q095 <span class="op">=</span> qr.fit(q <span class="op">=</span> <span class="fl">0.95</span>)</span>
+<span id="cb31-8"><a href=""></a></span>
+<span id="cb31-9"><a href=""></a>predmed <span class="op">=</span> med.predict(Xc)</span>
+<span id="cb31-10"><a href=""></a>pred005 <span class="op">=</span> q005.predict(Xc)</span>
+<span id="cb31-11"><a href=""></a>pred01 <span class="op">=</span> q01.predict(Xc)</span>
+<span id="cb31-12"><a href=""></a>pred02 <span class="op">=</span> q02.predict(Xc)</span>
+<span id="cb31-13"><a href=""></a>pred08 <span class="op">=</span> q08.predict(Xc)</span>
+<span id="cb31-14"><a href=""></a>pred09 <span class="op">=</span> q09.predict(Xc)</span>
+<span id="cb31-15"><a href=""></a>pred095 <span class="op">=</span> q095.predict(Xc)</span>
+<span id="cb31-16"><a href=""></a>p_quant <span class="op">=</span> plt.figure(<span class="dv">1</span>,figsize<span class="op">=</span>(<span class="dv">15</span>,<span class="dv">5</span>))</span>
+<span id="cb31-17"><a href=""></a>plt.scatter(X, y, color <span class="op">=</span> <span class="st">"blue"</span>, label <span class="op">=</span> <span class="st">"Y observed"</span>)</span>
+<span id="cb31-18"><a href=""></a>plt.plot(X, pred, color <span class="op">=</span> <span class="st">"r"</span>, linewidth <span class="op">=</span> <span class="dv">3</span>, label <span class="op">=</span> <span class="st">"Regression line (OLS)"</span>)</span>
+<span id="cb31-19"><a href=""></a>plt.plot(X, predmed, color <span class="op">=</span> <span class="st">"g"</span>, linewidth <span class="op">=</span> <span class="dv">3</span>, label <span class="op">=</span> <span class="st">"Regression line (Median)"</span>)</span>
+<span id="cb31-20"><a href=""></a>plt.plot(X, pred005, color <span class="op">=</span> <span class="st">"g"</span>, linewidth <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb31-21"><a href=""></a>plt.plot(X, pred01, color <span class="op">=</span> <span class="st">"g"</span>, linewidth <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb31-22"><a href=""></a>plt.plot(X, pred02, color <span class="op">=</span> <span class="st">"g"</span>, linewidth <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb31-23"><a href=""></a>plt.plot(X, pred08, color <span class="op">=</span> <span class="st">"g"</span>, linewidth <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb31-24"><a href=""></a>plt.plot(X, pred09, color <span class="op">=</span> <span class="st">"g"</span>, linewidth <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb31-25"><a href=""></a>plt.plot(X, pred095, color <span class="op">=</span> <span class="st">"g"</span>, linewidth <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb31-26"><a href=""></a>plt.xlabel(<span class="st">"MedInc"</span>)</span>
+<span id="cb31-27"><a href=""></a>plt.ylabel(<span class="st">"Housing Price"</span>)</span>
+<span id="cb31-28"><a href=""></a>plt.title(<span class="st">"Scatterplot, Housing Price vs. MedInc, Median Regression"</span>)</span>
+<span id="cb31-29"><a href=""></a>plt.legend()</span>
+<span id="cb31-30"><a href=""></a>p_quant.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -1597,27 +1568,27 @@ x1             0.4387      0.003    141.268      0.000       0.433       0.445
 <div class="columns">
 <div class="column" style="width:33%;">
 <h4 id="data-generating-process-dgp">Data Generating Process (DGP)</h4>
-<div id="42f77df3" class="cell" data-execution_count="23">
+<div id="47c0c017" class="cell" data-execution_count="23">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb33-2"><a href=""></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
-<span id="cb33-3"><a href=""></a><span class="im">from</span> sklearn <span class="im">import</span> linear_model</span>
-<span id="cb33-4"><a href=""></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb33-5"><a href=""></a><span class="im">from</span> itertools <span class="im">import</span> cycle</span>
-<span id="cb33-6"><a href=""></a></span>
-<span id="cb33-7"><a href=""></a>np.random.seed(<span class="dv">0</span>)</span>
-<span id="cb33-8"><a href=""></a>n <span class="op">=</span> <span class="dv">50</span></span>
-<span id="cb33-9"><a href=""></a>p <span class="op">=</span> <span class="dv">50</span></span>
-<span id="cb33-10"><a href=""></a>s <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb33-11"><a href=""></a></span>
-<span id="cb33-12"><a href=""></a>mean <span class="op">=</span> np.zeros(p)</span>
-<span id="cb33-13"><a href=""></a>cov <span class="op">=</span> np.identity(p)</span>
-<span id="cb33-14"><a href=""></a>X <span class="op">=</span> np.random.multivariate_normal(mean, cov, n)</span>
-<span id="cb33-15"><a href=""></a>epsilon <span class="op">=</span> np.random.normal(<span class="dv">0</span>, <span class="fl">0.5</span>, n)</span>
-<span id="cb33-16"><a href=""></a>beta <span class="op">=</span> np.append(np.ones(s), np.zeros(p<span class="op">-</span>s))</span>
-<span id="cb33-17"><a href=""></a>Y <span class="op">=</span> np.dot(X,beta)<span class="op">+</span>epsilon</span>
-<span id="cb33-18"><a href=""></a><span class="bu">print</span>(<span class="st">"beta:"</span>,beta)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href=""></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb32-2"><a href=""></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
+<span id="cb32-3"><a href=""></a><span class="im">from</span> sklearn <span class="im">import</span> linear_model</span>
+<span id="cb32-4"><a href=""></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb32-5"><a href=""></a><span class="im">from</span> itertools <span class="im">import</span> cycle</span>
+<span id="cb32-6"><a href=""></a></span>
+<span id="cb32-7"><a href=""></a>np.random.seed(<span class="dv">0</span>)</span>
+<span id="cb32-8"><a href=""></a>n <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb32-9"><a href=""></a>p <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb32-10"><a href=""></a>s <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb32-11"><a href=""></a></span>
+<span id="cb32-12"><a href=""></a>mean <span class="op">=</span> np.zeros(p)</span>
+<span id="cb32-13"><a href=""></a>cov <span class="op">=</span> np.identity(p)</span>
+<span id="cb32-14"><a href=""></a>X <span class="op">=</span> np.random.multivariate_normal(mean, cov, n)</span>
+<span id="cb32-15"><a href=""></a>epsilon <span class="op">=</span> np.random.normal(<span class="dv">0</span>, <span class="fl">0.5</span>, n)</span>
+<span id="cb32-16"><a href=""></a>beta <span class="op">=</span> np.append(np.ones(s), np.zeros(p<span class="op">-</span>s))</span>
+<span id="cb32-17"><a href=""></a>Y <span class="op">=</span> np.dot(X,beta)<span class="op">+</span>epsilon</span>
+<span id="cb32-18"><a href=""></a><span class="bu">print</span>(<span class="st">"beta:"</span>,beta)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>beta: [1. 1. 1. 1. 1. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.
@@ -1627,12 +1598,12 @@ x1             0.4387      0.003    141.268      0.000       0.433       0.445
 </div>
 </div><div class="column" style="width:33%;">
 <h4 id="estimation-with-lasso">Estimation with Lasso</h4>
-<div id="3668992f" class="cell" data-execution_count="24">
+<div id="2418296c" class="cell" data-execution_count="24">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href=""></a>lasso_reg <span class="op">=</span> linear_model.Lasso(alpha<span class="op">=</span><span class="dv">1</span>,fit_intercept <span class="op">=</span> <span class="va">False</span>)</span>
-<span id="cb35-2"><a href=""></a>model <span class="op">=</span> lasso_reg.fit(X,Y)</span>
-<span id="cb35-3"><a href=""></a><span class="bu">print</span>(model.coef_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href=""></a>lasso_reg <span class="op">=</span> linear_model.Lasso(alpha<span class="op">=</span><span class="dv">1</span>,fit_intercept <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb34-2"><a href=""></a>model <span class="op">=</span> lasso_reg.fit(X,Y)</span>
+<span id="cb34-3"><a href=""></a><span class="bu">print</span>(model.coef_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[ 0.26877208  0.12179666  0.          0.          0.62967999 -0.
@@ -1648,18 +1619,18 @@ x1             0.4387      0.003    141.268      0.000       0.433       0.445
 </div>
 </div><div class="column" style="width:33%;">
 <h4 id="predictive-performance">Predictive Performance</h4>
-<div id="2f84e42c" class="cell" data-execution_count="25">
+<div id="99a2c4a0" class="cell" data-execution_count="25">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href=""></a><span class="co"># New sample</span></span>
-<span id="cb37-2"><a href=""></a>n2 <span class="op">=</span> <span class="dv">50</span></span>
-<span id="cb37-3"><a href=""></a>X2 <span class="op">=</span> np.random.multivariate_normal(mean, cov, n2)</span>
-<span id="cb37-4"><a href=""></a>epsilon2 <span class="op">=</span> np.random.normal(<span class="dv">0</span>, <span class="fl">0.5</span>, n2)</span>
-<span id="cb37-5"><a href=""></a>Y2 <span class="op">=</span> np.dot(X2,beta)<span class="op">+</span>epsilon2</span>
-<span id="cb37-6"><a href=""></a></span>
-<span id="cb37-7"><a href=""></a>Y2_est <span class="op">=</span> model.predict(X2) <span class="co"># Prediction for Y2</span></span>
-<span id="cb37-8"><a href=""></a>MSE <span class="op">=</span> np.mean((Y2<span class="op">-</span>Y2_est)<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb37-9"><a href=""></a><span class="bu">print</span>(<span class="st">"Mean-Squared-Error:"</span>,MSE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href=""></a><span class="co"># New sample</span></span>
+<span id="cb36-2"><a href=""></a>n2 <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb36-3"><a href=""></a>X2 <span class="op">=</span> np.random.multivariate_normal(mean, cov, n2)</span>
+<span id="cb36-4"><a href=""></a>epsilon2 <span class="op">=</span> np.random.normal(<span class="dv">0</span>, <span class="fl">0.5</span>, n2)</span>
+<span id="cb36-5"><a href=""></a>Y2 <span class="op">=</span> np.dot(X2,beta)<span class="op">+</span>epsilon2</span>
+<span id="cb36-6"><a href=""></a></span>
+<span id="cb36-7"><a href=""></a>Y2_est <span class="op">=</span> model.predict(X2) <span class="co"># Prediction for Y2</span></span>
+<span id="cb36-8"><a href=""></a>MSE <span class="op">=</span> np.mean((Y2<span class="op">-</span>Y2_est)<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb36-9"><a href=""></a><span class="bu">print</span>(<span class="st">"Mean-Squared-Error:"</span>,MSE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Mean-Squared-Error: 3.2353784526350737</code></pre>
@@ -1680,28 +1651,28 @@ x1             0.4387      0.003    141.268      0.000       0.433       0.445
 </section>
 <section id="lasso-3" class="slide level2">
 <h2>Lasso</h2>
-<div id="de3702b2" class="cell" data-execution_count="26">
+<div id="bb4fff52" class="cell" data-execution_count="26">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href=""></a><span class="im">from</span> sklearn <span class="im">import</span> linear_model</span>
-<span id="cb39-2"><a href=""></a>lassocv_reg <span class="op">=</span> linear_model.LassoCV(cv<span class="op">=</span><span class="dv">10</span>,fit_intercept <span class="op">=</span> <span class="va">False</span>)</span>
-<span id="cb39-3"><a href=""></a>model <span class="op">=</span> lassocv_reg.fit(X, Y)</span>
-<span id="cb39-4"><a href=""></a></span>
-<span id="cb39-5"><a href=""></a><span class="co"># Display results</span></span>
-<span id="cb39-6"><a href=""></a>m_log_alphas <span class="op">=</span> <span class="op">-</span>np.log10(model.alphas_)</span>
-<span id="cb39-7"><a href=""></a>plt.figure(<span class="dv">1</span>,figsize<span class="op">=</span>(<span class="dv">15</span>,<span class="dv">5</span>))</span>
-<span id="cb39-8"><a href=""></a>plt.plot(m_log_alphas, model.mse_path_, <span class="st">':'</span>)</span>
-<span id="cb39-9"><a href=""></a>plt.plot(m_log_alphas, model.mse_path_.mean(axis<span class="op">=-</span><span class="dv">1</span>), <span class="st">'k'</span>,</span>
-<span id="cb39-10"><a href=""></a>         label<span class="op">=</span><span class="st">'Average across the folds'</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb39-11"><a href=""></a>plt.axvline(<span class="op">-</span>np.log10(model.alpha_), linestyle<span class="op">=</span><span class="st">'--'</span>, color<span class="op">=</span><span class="st">'k'</span>,</span>
-<span id="cb39-12"><a href=""></a>            label<span class="op">=</span><span class="st">'alpha: CV estimate'</span>)</span>
-<span id="cb39-13"><a href=""></a>plt.legend()</span>
-<span id="cb39-14"><a href=""></a>plt.xlabel(<span class="st">'-log(alpha)'</span>)</span>
-<span id="cb39-15"><a href=""></a>plt.ylabel(<span class="st">'Mean square error'</span>)</span>
-<span id="cb39-16"><a href=""></a>plt.title(<span class="st">'Mean square error on each fold '</span>)</span>
-<span id="cb39-17"><a href=""></a>     <span class="co">#     '(train time: %.2fs)' )#% t_lasso_cv)</span></span>
-<span id="cb39-18"><a href=""></a>plt.axis(<span class="st">'tight'</span>)</span>
-<span id="cb39-19"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href=""></a><span class="im">from</span> sklearn <span class="im">import</span> linear_model</span>
+<span id="cb38-2"><a href=""></a>lassocv_reg <span class="op">=</span> linear_model.LassoCV(cv<span class="op">=</span><span class="dv">10</span>,fit_intercept <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb38-3"><a href=""></a>model <span class="op">=</span> lassocv_reg.fit(X, Y)</span>
+<span id="cb38-4"><a href=""></a></span>
+<span id="cb38-5"><a href=""></a><span class="co"># Display results</span></span>
+<span id="cb38-6"><a href=""></a>m_log_alphas <span class="op">=</span> <span class="op">-</span>np.log10(model.alphas_)</span>
+<span id="cb38-7"><a href=""></a>plt.figure(<span class="dv">1</span>,figsize<span class="op">=</span>(<span class="dv">15</span>,<span class="dv">5</span>))</span>
+<span id="cb38-8"><a href=""></a>plt.plot(m_log_alphas, model.mse_path_, <span class="st">':'</span>)</span>
+<span id="cb38-9"><a href=""></a>plt.plot(m_log_alphas, model.mse_path_.mean(axis<span class="op">=-</span><span class="dv">1</span>), <span class="st">'k'</span>,</span>
+<span id="cb38-10"><a href=""></a>         label<span class="op">=</span><span class="st">'Average across the folds'</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb38-11"><a href=""></a>plt.axvline(<span class="op">-</span>np.log10(model.alpha_), linestyle<span class="op">=</span><span class="st">'--'</span>, color<span class="op">=</span><span class="st">'k'</span>,</span>
+<span id="cb38-12"><a href=""></a>            label<span class="op">=</span><span class="st">'alpha: CV estimate'</span>)</span>
+<span id="cb38-13"><a href=""></a>plt.legend()</span>
+<span id="cb38-14"><a href=""></a>plt.xlabel(<span class="st">'-log(alpha)'</span>)</span>
+<span id="cb38-15"><a href=""></a>plt.ylabel(<span class="st">'Mean square error'</span>)</span>
+<span id="cb38-16"><a href=""></a>plt.title(<span class="st">'Mean square error on each fold '</span>)</span>
+<span id="cb38-17"><a href=""></a>     <span class="co">#     '(train time: %.2fs)' )#% t_lasso_cv)</span></span>
+<span id="cb38-18"><a href=""></a>plt.axis(<span class="st">'tight'</span>)</span>
+<span id="cb38-19"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -1717,8 +1688,8 @@ x1             0.4387      0.003    141.268      0.000       0.433       0.445
 <div class="columns">
 <div class="column" style="width:50%;">
 <h4 id="lasso-cv">Lasso CV</h4>
-<div id="4c410cb4" class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href=""></a><span class="bu">print</span>(<span class="st">"Model coefficients: "</span>, model.coef_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="2c4647e5" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href=""></a><span class="bu">print</span>(<span class="st">"Model coefficients: "</span>, model.coef_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Model coefficients:  [ 0.88611992  0.93114166  0.89676018  0.83004346  1.06247131 -0.
  -0.          0.          0.         -0.          0.         -0.
@@ -1736,12 +1707,12 @@ x1             0.4387      0.003    141.268      0.000       0.433       0.445
 <ul>
 <li>What would OLS look like in this setting?</li>
 </ul>
-<div id="9986394d" class="cell" data-execution_count="28">
+<div id="f5ef4816" class="cell" data-execution_count="28">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href=""></a>ols <span class="op">=</span> LinearRegression()</span>
-<span id="cb42-2"><a href=""></a>ols.fit(X, Y)</span>
-<span id="cb42-3"><a href=""></a><span class="bu">print</span>(ols.coef_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href=""></a>ols <span class="op">=</span> LinearRegression()</span>
+<span id="cb41-2"><a href=""></a>ols.fit(X, Y)</span>
+<span id="cb41-3"><a href=""></a><span class="bu">print</span>(ols.coef_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[ 0.67840274  0.65041907  0.67598319  1.63496528  1.14101226  0.55942516
@@ -1762,10 +1733,10 @@ x1             0.4387      0.003    141.268      0.000       0.433       0.445
 <div class="columns">
 <div class="column" style="width:50%;">
 <h4 id="lasso-cv-1">Lasso CV</h4>
-<div id="76c955eb" class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href=""></a>Y2_est <span class="op">=</span> model.predict(X2) <span class="co"># Prediction for Y2</span></span>
-<span id="cb44-2"><a href=""></a>MSE <span class="op">=</span> np.mean((Y2<span class="op">-</span>Y2_est)<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb44-3"><a href=""></a><span class="bu">print</span>(<span class="st">"Mean-Squared-Error:"</span>,MSE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="eaf1f564" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href=""></a>Y2_est <span class="op">=</span> model.predict(X2) <span class="co"># Prediction for Y2</span></span>
+<span id="cb43-2"><a href=""></a>MSE <span class="op">=</span> np.mean((Y2<span class="op">-</span>Y2_est)<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb43-3"><a href=""></a><span class="bu">print</span>(<span class="st">"Mean-Squared-Error:"</span>,MSE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Mean-Squared-Error: 0.27389197732839926</code></pre>
 </div>
@@ -1775,18 +1746,18 @@ x1             0.4387      0.003    141.268      0.000       0.433       0.445
 <ul>
 <li>What would OLS look like in this setting?</li>
 </ul>
-<div id="9a610c99" class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href=""></a>Y_ols_est <span class="op">=</span> ols.predict(X) <span class="co"># Prediction for Y</span></span>
-<span id="cb46-2"><a href=""></a>MSEins <span class="op">=</span> np.mean((Y<span class="op">-</span>Y_ols_est)<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb46-3"><a href=""></a><span class="bu">print</span>(<span class="st">"Mean-Squared-Error (INS):"</span>,MSEins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e535078b" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href=""></a>Y_ols_est <span class="op">=</span> ols.predict(X) <span class="co"># Prediction for Y</span></span>
+<span id="cb45-2"><a href=""></a>MSEins <span class="op">=</span> np.mean((Y<span class="op">-</span>Y_ols_est)<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb45-3"><a href=""></a><span class="bu">print</span>(<span class="st">"Mean-Squared-Error (INS):"</span>,MSEins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Mean-Squared-Error (INS): 4.7796542986956676e-29</code></pre>
 </div>
 </div>
-<div id="38755390" class="cell" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href=""></a>Y2_ols_est <span class="op">=</span> ols.predict(X2) <span class="co"># Prediction for Y2</span></span>
-<span id="cb48-2"><a href=""></a>MSE <span class="op">=</span> np.mean((Y2<span class="op">-</span>Y2_ols_est)<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb48-3"><a href=""></a><span class="bu">print</span>(<span class="st">"Mean-Squared-Error (OOS):"</span>,MSE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="bcba1348" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href=""></a>Y2_ols_est <span class="op">=</span> ols.predict(X2) <span class="co"># Prediction for Y2</span></span>
+<span id="cb47-2"><a href=""></a>MSE <span class="op">=</span> np.mean((Y2<span class="op">-</span>Y2_ols_est)<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb47-3"><a href=""></a><span class="bu">print</span>(<span class="st">"Mean-Squared-Error (OOS):"</span>,MSE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Mean-Squared-Error (OOS): 11.46392012399638</code></pre>
 </div>
@@ -1808,25 +1779,25 @@ x1             0.4387      0.003    141.268      0.000       0.433       0.445
 </section>
 <section id="lasso-7" class="slide level2">
 <h2>Lasso</h2>
-<div id="e8026edf" class="cell" data-execution_count="32">
+<div id="a39452b8" class="cell" data-execution_count="32">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href=""></a>alphas_lasso, coefs_lasso, _ <span class="op">=</span> linear_model.lasso_path(X, Y)</span>
-<span id="cb50-2"><a href=""></a></span>
-<span id="cb50-3"><a href=""></a><span class="co"># Display results</span></span>
-<span id="cb50-4"><a href=""></a>plt.figure(<span class="dv">2</span>,figsize<span class="op">=</span>(<span class="dv">15</span>,<span class="dv">6</span>))</span>
-<span id="cb50-5"><a href=""></a>ax <span class="op">=</span> plt.gca()</span>
-<span id="cb50-6"><a href=""></a>colors <span class="op">=</span> cycle([<span class="st">'b'</span>, <span class="st">'r'</span>, <span class="st">'g'</span>, <span class="st">'c'</span>, <span class="st">'k'</span>])</span>
-<span id="cb50-7"><a href=""></a>neg_log_alphas_lasso <span class="op">=</span> <span class="op">-</span>np.log10(alphas_lasso)</span>
-<span id="cb50-8"><a href=""></a><span class="cf">for</span> coef_l, c <span class="kw">in</span> <span class="bu">zip</span>(coefs_lasso, colors):</span>
-<span id="cb50-9"><a href=""></a>    l1 <span class="op">=</span> plt.plot(neg_log_alphas_lasso, coef_l, c<span class="op">=</span>c)</span>
-<span id="cb50-10"><a href=""></a>plt.axvline(<span class="op">-</span>np.log10(model.alpha_), linestyle<span class="op">=</span><span class="st">'--'</span>, color<span class="op">=</span><span class="st">'k'</span>,</span>
-<span id="cb50-11"><a href=""></a>            label<span class="op">=</span><span class="st">'alpha: CV estimate'</span>)</span>
-<span id="cb50-12"><a href=""></a>plt.xlabel(<span class="st">'-Log(alpha)'</span>)</span>
-<span id="cb50-13"><a href=""></a>plt.ylabel(<span class="st">'coefficients'</span>)</span>
-<span id="cb50-14"><a href=""></a>plt.title(<span class="st">'Lasso Paths'</span>)</span>
-<span id="cb50-15"><a href=""></a>plt.axis(<span class="st">'tight'</span>)</span>
-<span id="cb50-16"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href=""></a>alphas_lasso, coefs_lasso, _ <span class="op">=</span> linear_model.lasso_path(X, Y)</span>
+<span id="cb49-2"><a href=""></a></span>
+<span id="cb49-3"><a href=""></a><span class="co"># Display results</span></span>
+<span id="cb49-4"><a href=""></a>plt.figure(<span class="dv">2</span>,figsize<span class="op">=</span>(<span class="dv">15</span>,<span class="dv">6</span>))</span>
+<span id="cb49-5"><a href=""></a>ax <span class="op">=</span> plt.gca()</span>
+<span id="cb49-6"><a href=""></a>colors <span class="op">=</span> cycle([<span class="st">'b'</span>, <span class="st">'r'</span>, <span class="st">'g'</span>, <span class="st">'c'</span>, <span class="st">'k'</span>])</span>
+<span id="cb49-7"><a href=""></a>neg_log_alphas_lasso <span class="op">=</span> <span class="op">-</span>np.log10(alphas_lasso)</span>
+<span id="cb49-8"><a href=""></a><span class="cf">for</span> coef_l, c <span class="kw">in</span> <span class="bu">zip</span>(coefs_lasso, colors):</span>
+<span id="cb49-9"><a href=""></a>    l1 <span class="op">=</span> plt.plot(neg_log_alphas_lasso, coef_l, c<span class="op">=</span>c)</span>
+<span id="cb49-10"><a href=""></a>plt.axvline(<span class="op">-</span>np.log10(model.alpha_), linestyle<span class="op">=</span><span class="st">'--'</span>, color<span class="op">=</span><span class="st">'k'</span>,</span>
+<span id="cb49-11"><a href=""></a>            label<span class="op">=</span><span class="st">'alpha: CV estimate'</span>)</span>
+<span id="cb49-12"><a href=""></a>plt.xlabel(<span class="st">'-Log(alpha)'</span>)</span>
+<span id="cb49-13"><a href=""></a>plt.ylabel(<span class="st">'coefficients'</span>)</span>
+<span id="cb49-14"><a href=""></a>plt.title(<span class="st">'Lasso Paths'</span>)</span>
+<span id="cb49-15"><a href=""></a>plt.axis(<span class="st">'tight'</span>)</span>
+<span id="cb49-16"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -1863,16 +1834,16 @@ x1             0.4387      0.003    141.268      0.000       0.433       0.445
 <img data-src="figures/penalty.jpg" class="r-stretch quarto-figure-center"><p class="caption">Source: James et al.&nbsp;(2013, P. 71)</p></section>
 <section id="ridge-3" class="slide level2">
 <h2>Ridge</h2>
-<div id="94adf366" class="cell" data-execution_count="33">
+<div id="527fbd47" class="cell" data-execution_count="33">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href=""></a>ridgecv_reg <span class="op">=</span> linear_model.RidgeCV(cv<span class="op">=</span><span class="dv">10</span>,fit_intercept <span class="op">=</span> <span class="va">False</span>)</span>
-<span id="cb51-2"><a href=""></a>model <span class="op">=</span> ridgecv_reg.fit(X, Y)</span>
-<span id="cb51-3"><a href=""></a></span>
-<span id="cb51-4"><a href=""></a><span class="bu">print</span>(model.coef_)</span>
-<span id="cb51-5"><a href=""></a>Y2_est <span class="op">=</span> model.predict(X2) <span class="co"># Prediction for Y2</span></span>
-<span id="cb51-6"><a href=""></a>MSE <span class="op">=</span> np.mean((Y2<span class="op">-</span>Y2_est)<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb51-7"><a href=""></a><span class="bu">print</span>(<span class="st">"Mean-Squared-Error:"</span>,MSE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href=""></a>ridgecv_reg <span class="op">=</span> linear_model.RidgeCV(cv<span class="op">=</span><span class="dv">10</span>,fit_intercept <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb50-2"><a href=""></a>model <span class="op">=</span> ridgecv_reg.fit(X, Y)</span>
+<span id="cb50-3"><a href=""></a></span>
+<span id="cb50-4"><a href=""></a><span class="bu">print</span>(model.coef_)</span>
+<span id="cb50-5"><a href=""></a>Y2_est <span class="op">=</span> model.predict(X2) <span class="co"># Prediction for Y2</span></span>
+<span id="cb50-6"><a href=""></a>MSE <span class="op">=</span> np.mean((Y2<span class="op">-</span>Y2_est)<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb50-7"><a href=""></a><span class="bu">print</span>(<span class="st">"Mean-Squared-Error:"</span>,MSE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[ 0.71620055  0.78158626  0.59712679  0.61519752  0.88251787 -0.04490642
@@ -1901,14 +1872,14 @@ Mean-Squared-Error: 1.0958578535987546</code></pre>
 </section>
 <section id="elastic-net-1" class="slide level2">
 <h2>Elastic Net</h2>
-<div id="111c4514" class="cell" data-execution_count="34">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href=""></a>elasticnetcv_reg <span class="op">=</span> linear_model.ElasticNetCV(l1_ratio <span class="op">=</span> <span class="fl">0.5</span>, cv<span class="op">=</span><span class="dv">10</span>,fit_intercept <span class="op">=</span> <span class="va">False</span>)</span>
-<span id="cb53-2"><a href=""></a>model <span class="op">=</span> elasticnetcv_reg.fit(X, Y)</span>
-<span id="cb53-3"><a href=""></a><span class="bu">print</span>(model.coef_)</span>
-<span id="cb53-4"><a href=""></a></span>
-<span id="cb53-5"><a href=""></a>Y2_est <span class="op">=</span> model.predict(X2) <span class="co"># Prediction for Y2</span></span>
-<span id="cb53-6"><a href=""></a>MSE <span class="op">=</span> np.mean((Y2<span class="op">-</span>Y2_est)<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb53-7"><a href=""></a><span class="bu">print</span>(<span class="st">"Mean-Squared-Error:"</span>,MSE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="0076f80d" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href=""></a>elasticnetcv_reg <span class="op">=</span> linear_model.ElasticNetCV(l1_ratio <span class="op">=</span> <span class="fl">0.5</span>, cv<span class="op">=</span><span class="dv">10</span>,fit_intercept <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb52-2"><a href=""></a>model <span class="op">=</span> elasticnetcv_reg.fit(X, Y)</span>
+<span id="cb52-3"><a href=""></a><span class="bu">print</span>(model.coef_)</span>
+<span id="cb52-4"><a href=""></a></span>
+<span id="cb52-5"><a href=""></a>Y2_est <span class="op">=</span> model.predict(X2) <span class="co"># Prediction for Y2</span></span>
+<span id="cb52-6"><a href=""></a>MSE <span class="op">=</span> np.mean((Y2<span class="op">-</span>Y2_est)<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb52-7"><a href=""></a><span class="bu">print</span>(<span class="st">"Mean-Squared-Error:"</span>,MSE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[ 0.85071618  0.91176335  0.83780023  0.79181251  1.01800481 -0.
  -0.02459521  0.0452703   0.         -0.          0.         -0.
