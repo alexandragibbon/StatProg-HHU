@@ -36,3 +36,4 @@
 * [Solution Tutorial 5](./tutorial/tutorial-5-solution/tutorial_5_solution.ipynb)
 * [Solution Tutorial 6](./tutorial/tutorial-6-solution/tutorial_6_solution.ipynb)
 * [Solution Tutorial 7](./tutorial/tutorial-7-solution/tutorial_7_solution.ipynb)  
+* [Solution Tutorial 8](./tutorial/tutorial-8-solution/tutorial_8_solution.ipynb)  
