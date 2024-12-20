@@ -18,8 +18,5 @@ Lectures (Monday 16:30-18:00) and Tutorials (Tuesday 10:30-12:00) as usual.
 Tutorials on Mondays (06.01. and potentially 13.01., 16:30-18:00)\
 **AND** Tuesdays (07.01. and  14.01. 10:30-12:00).
 
-**Tuesday, 21.01.2025**, 10:30-12:00\
-(Optional) tutorial for questions.
-
 **Monday, 27.01.2025**, 16:30-18:00\
 Guest lecture by Capgemini. **Relevant for oral exam**.
