@@ -27,6 +27,8 @@
     - Dataset: [predictiontest.csv](./data/predictiontest.csv)
     - Dataset: [Oregon.csv](./data/Oregon.csv) 
 * [Tutorial 8](./tutorial/tutorial-8/tutorial_8.ipynb) 
+* [Tutorial 9](./tutorial/tutorial-9/tutorial_9.ipynb) 
+    - Dataset: [classification_1.csv](./data/classification_1.csv) 
 
 ### Solutions 
 * [Solution Tutorial 1](./tutorial/tutorial-1-solution/tutorial_1_solution.html)
