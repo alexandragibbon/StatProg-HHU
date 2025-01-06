@@ -29,6 +29,7 @@
 * [Tutorial 8](./tutorial/tutorial-8/tutorial_8.ipynb) 
 * [Tutorial 9](./tutorial/tutorial-9/tutorial_9.ipynb) 
     - Dataset: [classification_1.csv](./data/classification_1.csv) 
+* [Tutorial 10](./tutorial/tutorial-10/tutorial_10.ipynb) 
 
 ### Solutions 
 * [Solution Tutorial 1](./tutorial/tutorial-1-solution/tutorial_1_solution.html)
