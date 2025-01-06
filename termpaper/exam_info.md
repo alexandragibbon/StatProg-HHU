@@ -9,7 +9,7 @@ The final grade is composed of two parts:
     - Dates: **January 30 and 31**
 
 Please book your 40 minute slot per group until **January 17** here:\
-**The link to the booking system will be published at the beginning of January.** 
+[link to the booking system](https://terminplaner6.dfn.de/b/beaf43ff465ad53667134ea1cffaffe5-993644)
 
 Please note: Per group, only one time slot should be booked. The two individual oral exams will take place consecutively within the 40 minute slot.
 
