@@ -29,4 +29,4 @@ Please read the following guidelines for the term paper:
 
 # Term Paper and Data Sets 
 
-Zip-Folder: [TermPaper_WiSe2425.zip](./termpaper/TermPaper_WiSe2425.zip) 
+Zip-Folder: [TermPaper_WiSe2425.zip](./TermPaper_WiSe2425.zip) 
