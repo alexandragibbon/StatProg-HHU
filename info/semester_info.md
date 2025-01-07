@@ -15,8 +15,8 @@ Students of all *Prüfungsordnungen (PO, exam regulations)* are admitted to the 
 Lectures (Monday 16:30-18:00) and Tutorials (Tuesday 10:30-12:00) as usual.
 
 **Starting 06.01.2025**\
-Tutorials on Mondays (06.01. and potentially 13.01., 16:30-18:00)\
-**AND** Tuesdays (07.01. and  14.01. 10:30-12:00).
+Tutorial on Monday (06.01., 16:30-18:00)\
+**AND** Tuesday (07.01., 10:30-12:00).
 
 **Monday, 27.01.2025**, 16:30-18:00\
 Guest lecture by Capgemini. **Relevant for oral exam**.
