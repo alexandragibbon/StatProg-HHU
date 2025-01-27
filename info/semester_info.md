@@ -18,5 +18,7 @@ Lectures (Monday 16:30-18:00) and Tutorials (Tuesday 10:30-12:00) as usual.
 Tutorial on Monday (06.01., 16:30-18:00)\
 **AND** Tuesday (07.01., 10:30-12:00).
 
-**Monday, 27.01.2025**, 16:30-18:00\
+**Monday, 27.01.2025**, 16:30-18:00\ (**canceled**)
 Guest lecture by Capgemini. **Relevant for oral exam**.
+
+Unfortunately, the guest speaker is ill and will not be able to give a presentation. Therefore, there will be no guest lecture by Capgemini.
